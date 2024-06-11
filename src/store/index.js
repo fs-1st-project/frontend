@@ -1,11 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import newsSlice from "./news-slice";
-import searchSlice from "./search-slice";
+import signupSlice from "./signup-slice";
 
 const store = configureStore({
   reducer: {
-    news: newsSlice.reducer,
-    search: searchSlice.reducer,
+    signup: signupSlice.reducer,
   },
 });
 

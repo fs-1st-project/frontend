@@ -5,6 +5,7 @@ import "./Signup.css";
 
 const Signup = () => {
   const [isChecked, setIsChecked] = useState(false);
+  const email = useSelector((state) => state.signup.email);
 
   // all agree 체크박스에 체크했을 때 핸들하는 함수
   const handleAllAgreeCheck = () => {
