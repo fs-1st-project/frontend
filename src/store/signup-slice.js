@@ -1,28 +1,32 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const fetchNewsData = () => {
+export const postEmailPasswordToServer = (data) => {
   return async (dispatch) => {
-    // fetch data with api
-    const fetchData = async () => {
-      const response = await fetch(
-        "https://newsapi.org/v2/everything?domains=wsj.com&apiKey=1fc542c3515443c1aaeeea95ae52f0cf"
-      );
+    try {
+      // 데이터를 서버에 보낼 엔드포인트 URL
+      const url = "http://localhost:8080/users/register";
+
+      // 서버로 전송할 데이터와 요청 옵션 설정
+      const requestOptions = {
+        method: "POST", // HTTP 요청 메서드
+        headers: {
+          "Content-Type": "application/json", // 요청 헤더의 컨텐츠 타입 설정
+        },
+        body: JSON.stringify(data), // 데이터를 JSON 문자열로 변환하여 요청 본문에 설정
+      };
+
+      const response = await fetch(url, requestOptions);
 
       if (!response.ok) {
-        throw new Error("전체 뉴스 패치 실패");
+        throw new Error("이메일, 패스워드 POST 서버 응답 실패");
       }
 
-      const newsData = await response.json();
-
-      // get the array from newData (articles has an array of data)
-      return newsData.articles;
-    };
-
-    try {
-      const newsArticlesData = await fetchData();
-      dispatch(newsActions.replaceNews(newsArticlesData));
+      // POST 한 후, 서버로부터 돌아오는 답이 필요할까?
+      // const responseData = await response.json();
+      return true;
     } catch (error) {
-      console.error(error.message);
+      console.error("서버에 이메일,패스워드 post 요청 중 에러 발생:", error);
+      return false;
     }
   };
 };
@@ -30,16 +34,22 @@ export const fetchNewsData = () => {
 const signupSlice = createSlice({
   name: "signup",
   initialState: {
-    email: null,
-    password: null,
+    email: "",
+    password: "",
   },
   reducers: {
     // replaceNews(state, action) {
     //   state.news = action.payload;
     // },
+    setEmail(state, action) {
+      state.email = action.payload;
+    },
+    setPassword(state, action) {
+      state.password = action.payload;
+    },
   },
 });
 
-export const newsActions = signupSlice.actions;
+export const signupActions = signupSlice.actions;
 
 export default signupSlice;

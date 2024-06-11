@@ -1,24 +1,65 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 import "./Signup.css";
 import { useDispatch, useSelector } from "react-redux";
+import {
+  postEmailPasswordToServer,
+  signupActions,
+} from "../../store/signup-slice";
 
 const Signup = () => {
   const [isChecked, setIsChecked] = useState(false);
   const email = useSelector((state) => state.signup.email);
   const password = useSelector((state) => state.signup.password);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   // all agree 체크박스에 체크했을 때 핸들하는 함수
   const handleAllAgreeCheck = () => {
     setIsChecked(!isChecked);
   };
 
+  // slice의 이메일 상태값 변경하는 함수
+  const emailInputChangeHandler = (e) => {
+    const inputEmail = e.target.value;
+    dispatch(signupActions.setEmail(inputEmail));
+  };
+
+  // slice의 패스워드 상태값 변경하는 함수
+  const passwordInputChangeHandler = (e) => {
+    const inputPassword = e.target.value;
+    dispatch(signupActions.setPassword(inputPassword));
+  };
+
   // agree 체크하고 이메일 아이디 입력한 다음 제출 버튼 눌렀을 때 핸들하는 함수
-  const joinSubmitHandler = (event) => {
-    event.preventDefault();
-    dispatch()
+  const joinSubmitHandler = async (e) => {
+    e.preventDefault();
+
+    // 비밀번호 6자 이하 또는 12자 이상 alert 띄우기
+    if (password.trim().length < 6) {
+      alert("비밀번호 6자 이상 입력이 필요합니다");
+      return;
+    } else if (password.trim().length > 12) {
+      alert("비밀번호 12자 이하 입력이 필요합니다");
+      return;
+    }
+
+    // 이메일과 패스워드를 한꺼번에 만들어 보내기
+    const data = {
+      email,
+      password,
+    };
+
+    // POST 호출 함수 후 성공 시 signin 페이지로 redirect
+    dispatch(postEmailPasswordToServer(data)).then((success) => {
+      if (success == true) {
+        navigate("/signin");
+      } else {
+        console.error("Registration failed");
+        alert("회원 가입에 실패하였습니다");
+      }
+    });
   };
 
   return (
@@ -84,6 +125,7 @@ const Signup = () => {
                     type="email"
                     className="email"
                     value={email}
+                    onChange={emailInputChangeHandler}
                     required
                   ></input>
                 </div>
@@ -93,6 +135,7 @@ const Signup = () => {
                     type="password"
                     className="password"
                     value={password}
+                    onChange={passwordInputChangeHandler}
                     required
                   ></input>
                 </div>

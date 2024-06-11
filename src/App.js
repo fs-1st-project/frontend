@@ -10,7 +10,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="*" element={<Home />} /> {/* 404 페이지로 리디렉션 */}
         </Routes>
       </div>
     </Router>
