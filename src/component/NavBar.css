@@ -1,0 +1,72 @@
+.NavBar {
+  padding-top: 12px;
+  padding-bottom: 16px;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  display: flex;
+  position: relative;
+  margin: auto;
+  max-width: 1128px;
+}
+.NavBar-logo img {
+  width: 102px;
+  height: auto;
+}
+.NavBar-menu {
+  padding-top: 0px;
+  overflow-x: auto;
+  justify-content: flex-start;
+  align-items: center;
+  width: max-content;
+  display: flex;
+  margin-left: auto;
+  order: 3;
+}
+
+.NavBar-menu_pages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.NavBar-menu_pages-icons {
+  width: 80px;
+}
+
+.NavBar-menu_pages-icons-click {
+  justify-content: cente;
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.NavBar-menu_pages-icons-click img {
+  justify-content: center;
+  flex-shrink: 0;
+  display: flex;
+  width: 24px;
+  height: 24px;
+}
+
+.NavBar-menu_font {
+  line-height: 1.25;
+  font-weight: 400;
+  font-size: 12px;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell,
+    "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+  text-align: center;
+}
+
+.NavBar-menu_click {
+  column-gap: 8px;
+  justify-content: flex-end;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+  min-width: 100px;
+  display: flex;
+  order: 3;
+}

@@ -14,6 +14,7 @@ function App() {
       </div>
     </Router>
   );
+  return <div className="App"></div>;
 }
 
 export default App;
