@@ -2,14 +2,23 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import "./Signup.css";
+import { useDispatch, useSelector } from "react-redux";
 
 const Signup = () => {
   const [isChecked, setIsChecked] = useState(false);
   const email = useSelector((state) => state.signup.email);
+  const password = useSelector((state) => state.signup.password);
+  const dispatch = useDispatch();
 
   // all agree 체크박스에 체크했을 때 핸들하는 함수
   const handleAllAgreeCheck = () => {
     setIsChecked(!isChecked);
+  };
+
+  // agree 체크하고 이메일 아이디 입력한 다음 제출 버튼 눌렀을 때 핸들하는 함수
+  const joinSubmitHandler = (event) => {
+    event.preventDefault();
+    dispatch()
   };
 
   return (
@@ -33,6 +42,7 @@ const Signup = () => {
                 className="agree-all-terms"
                 checked={isChecked}
                 onChange={handleAllAgreeCheck}
+                required
               />
               <label for="agree-all-terms" className="agree-all-terms--label">
                 Agree to all terms
@@ -64,14 +74,27 @@ const Signup = () => {
             </p>
 
             <section className="form-container">
-              <form className="email-password-form">
+              <form
+                className="email-password-form"
+                onSubmit={joinSubmitHandler}
+              >
                 <div className="email-container">
                   <label>Email</label>
-                  <input type="email" className="email"></input>
+                  <input
+                    type="email"
+                    className="email"
+                    value={email}
+                    required
+                  ></input>
                 </div>
                 <div className="password-container">
                   <label>Password(6+ characters)</label>
-                  <input type="password" className="password"></input>
+                  <input
+                    type="password"
+                    className="password"
+                    value={password}
+                    required
+                  ></input>
                 </div>
                 <p className="bottom-agree">
                   By clicking Agree & Join, you agree to the LinkedIn{" "}
