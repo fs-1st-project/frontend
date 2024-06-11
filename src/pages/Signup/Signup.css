@@ -1,0 +1,133 @@
+.signup-container {
+  background-color: rgb(243, 242, 240);
+  width: 100vw;
+  margin: 0;
+}
+.main-container {
+  padding: 20px 80px 30px 80px;
+}
+.main-logo {
+  width: 130px;
+  height: 32px;
+  padding-left: 50px;
+}
+
+.main-title {
+  margin: 20px 350px 5px 345px;
+  text-align: center;
+  font-weight: 400;
+  font-size: 1.75rem;
+  padding-top: 40px;
+}
+
+.consent-signup-container {
+  background-color: white;
+  width: 30rem;
+  height: 45rem;
+  margin: 20px 400px 5px 390px;
+  padding: 5px 10px 5px 10px;
+  border-radius: 10px;
+}
+
+.container {
+  padding: 15px;
+}
+
+.main-subtitle {
+  font-weight: 400;
+}
+
+.hightlight {
+  color: rgb(11, 101, 194);
+  font-weight: 500;
+}
+
+.consent-understanding {
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  color: rgb(133, 133, 133);
+  text-align: center;
+}
+
+.agree-all-terms--label {
+  font-size: 1.2rem;
+}
+.term1-term2--container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  gap: 10px;
+  padding: 10px;
+  background-color: rgb(249, 250, 251);
+}
+
+.further-information,
+.bottom-agree {
+  font-size: 0.8rem;
+  color: rgb(120, 120, 120);
+  text-align: center;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.email-container,
+.password-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+
+.email,
+.password {
+  height: 25px;
+  margin-top: 5px;
+}
+
+.agree-join--button {
+  width: 20rem;
+  height: 50px;
+  border-radius: 30px;
+  border: none;
+  background-color: rgb(11, 101, 194);
+  color: white;
+  font-size: 1rem;
+  margin-left: 60px;
+  margin-bottom: 20px;
+}
+
+.google-login-button--container {
+  display: flex;
+  flex-direction: column;
+}
+
+.or-span {
+  margin-left: 47%;
+}
+
+.google-login-button {
+  margin-top: 20px;
+  width: 20rem;
+  height: 40px;
+  margin-left: 60px;
+  border-radius: 30px;
+  border-width: 1px;
+  background-color: white;
+}
+
+.already {
+  margin-left: 120px;
+  margin-top: 30px;
+}
+
+.bottom-get-help {
+  margin: 20px 400px 5px 450px;
+}
