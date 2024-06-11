@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import "./Signup.css";
 
 const Signup = () => {
+  const [isChecked, setIsChecked] = useState(false);
+
+  // all agree 체크박스에 체크했을 때 핸들하는 함수
+  const handleAllAgreeCheck = () => {
+    setIsChecked(!isChecked);
+  };
+
   return (
     <div className="signup-container">
       <main className="main-container">
@@ -20,20 +27,29 @@ const Signup = () => {
               eact item listed.
             </p>
             <div>
-              <input type="checkbox" className="agree-all-terms" />
+              <input
+                type="checkbox"
+                className="agree-all-terms"
+                checked={isChecked}
+                onChange={handleAllAgreeCheck}
+              />
               <label for="agree-all-terms" className="agree-all-terms--label">
                 Agree to all terms
               </label>
               <div className="term1-term2--container">
                 <div className="agree-term1">
-                  <input type="checkbox" />
+                  <input type="checkbox" checked={isChecked} />
                   <label>
                     We collect and use personal information{" "}
                     <span className="hightlight">Learn more</span>
                   </label>
                 </div>
                 <div className="agree-term2">
-                  <input type="checkbox" className="agree-term2" />
+                  <input
+                    type="checkbox"
+                    className="agree-term2"
+                    checked={isChecked}
+                  />
                   <label for="agree-term2">
                     We share personal infromation with third parties to provide
                     out services. <span className="hightlight">Learn more</span>
@@ -72,12 +88,13 @@ const Signup = () => {
               </button>
             </div>
             <p className="already">
-              Already on LinkedIn? <Link>Sign In</Link>
+              Already on LinkedIn? <Link to="/signin">Sign In</Link>
             </p>
           </div>
         </section>
         <p className="bottom-get-help">
-          Looking to create a page for a business? Get help
+          Looking to create a page for a business?{" "}
+          <span className="hightlight">Get help</span>
         </p>
       </main>
     </div>
