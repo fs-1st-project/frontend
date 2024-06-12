@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import "./Signup.css";
+import google from "../../component/google-logo.png";
 import { useDispatch, useSelector } from "react-redux";
 import {
   postRegisterEmailPasswordToServer,
@@ -152,7 +153,11 @@ const Signup = () => {
             </section>
             <div className="google-login-button--container">
               <span className="or-span">or</span>
+              {/* <button className="google-login-button">
+                Continue with Google
+              </button> */}
               <button className="google-login-button">
+                <img src={google} className="google-logo" />
                 Continue with Google
               </button>
             </div>
