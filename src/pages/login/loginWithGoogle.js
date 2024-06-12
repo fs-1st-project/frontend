@@ -1,5 +1,9 @@
 import axios from "axios";
-import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import {
+  signInWithPopup,
+  GoogleAuthProvider,
+  signInWithCustomToken,
+} from "firebase/auth";
 import { auth } from "../../firebaseConfig";
 
 const loginWithGoogle = async (e) => {
@@ -20,7 +24,7 @@ const loginWithGoogle = async (e) => {
     const customToken = response.data;
 
     // 커스텀 토큰으로 firebase에 로그인
-    await auth.signInWithCustomToken(customToken);
+    await signInWithCustomToken(auth, customToken);
 
     console.log("User authenticated successfully");
   } catch (error) {
