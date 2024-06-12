@@ -112,6 +112,7 @@
 .google-login-button--container {
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 }
 
 .or-span {
@@ -129,6 +130,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .already {

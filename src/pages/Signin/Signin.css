@@ -80,6 +80,13 @@
   padding: 5px;
 }
 
+.buttons-google-apple-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 .button-google,
 .button-apple {
   width: 20rem;
@@ -95,6 +102,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .google-logo {

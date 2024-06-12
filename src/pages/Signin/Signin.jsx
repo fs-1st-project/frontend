@@ -85,6 +85,8 @@ const Signin = () => {
             Sign in
           </button>
           <p className="or">or</p>
+        </form>
+        <div className="buttons-google-apple-container">
           <button className="button-google">
             <img src={google} className="google-logo" />
             Continue with Google
@@ -94,7 +96,7 @@ const Signin = () => {
             <img src="/apple-logo.png" className="apple-logo" />
             Sign in With Apple
           </button>
-        </form>
+        </div>
       </main>
       <p className="to-signup">
         Need to LinkedIn?{" "}
