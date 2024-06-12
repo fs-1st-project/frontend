@@ -21,9 +21,9 @@ const Home = () => {
                 </div>
               </button>
               <div className="Main-left_body-divider-left-right">
-                ::before
-                <div className="Main-bottom_divider-or"> or </div>
-                ::after
+                {
+                  "---------------------------------  or  ----------------------------------"
+                }
               </div>
               <div className="Main-left_body-form">
                 <div className="Main-bottom_form-input">
@@ -42,10 +42,18 @@ const Home = () => {
                 </div>
                 <div className="Main-bottom_form-signin"></div>
               </div>
+              <div className="forgot_password">Forgot your password?</div>
             </div>
             <div className="Main-footer">
-              <span>New to Linkedin?</span>
-              <Link to="/signup">Join the membership</Link>
+              <div className="login-button-click">log in</div>
+              <div className="NewtoLinkedin">
+                <span>New to Linkedin?</span>
+                <a className="Join-membership" href="/signup">
+                  <span className="Join-membership_click">
+                    join the membership
+                  </span>
+                </a>
+              </div>
             </div>
           </div>
           <div className="Main-right">

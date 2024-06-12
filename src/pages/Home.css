@@ -20,7 +20,7 @@
 .Main-left {
   align-self: flex-start;
   flex-shrink: 0;
-  width: 55%;
+  width: 52%;
   position: relative;
   padding-right: 42px;
 }
@@ -45,6 +45,7 @@
 }
 
 .Main-right img {
+  padding-top: 20px;
   width: 700px;
   height: auto;
   display: block;
@@ -123,4 +124,52 @@
 .goole-button-click:hover {
   background-color: #f8faff;
   border: 2px solid black;
+  cursor: pointer;
+}
+
+.forgot_password {
+  color: #0a66c5;
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 30px;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell,
+    "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+  letter-spacing: 0.01em;
+}
+
+.login-button-click {
+  width: 400px;
+  height: 45px;
+  background-color: #0a66c2;
+  border-radius: 30px;
+  border: 1px solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  margin-bottom: 30px;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell,
+    "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+}
+.NewtoLinkedin {
+  margin-left: 70px;
+  margin-right: 8px;
+}
+
+.Join-membership {
+  text-decoration: none;
+  color: #0a66c2;
+  font-weight: bold;
+  padding: 5px;
+}
+
+.Main-left_body-divider-left-right {
+  margin-left: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
