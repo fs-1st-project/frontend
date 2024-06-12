@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import "./Signup.css";
+import google from "../../component/google-logo.png";
 import { useDispatch, useSelector } from "react-redux";
 import {
   postRegisterEmailPasswordToServer,
@@ -101,7 +102,7 @@ const Signup = () => {
   return (
     <div className="signup-container">
       <main className="main-container">
-        <div className="main-logo--container">
+        <div className="main-logo--container" onClick={() => navigate("/")}>
           <img src="/LinkedIn-logo.png" className="main-logo" />
         </div>
         <h1 className="main-title">Make the most of your professional life</h1>
@@ -187,6 +188,7 @@ const Signup = () => {
             <div className="google-login-button--container">
               <span className="or-span">or</span>
               <button onClick={loginWithGoogle} className="google-login-button">
+                <img src={google} className="google-logo" />
                 Continue with Google
               </button>
             </div>

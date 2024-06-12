@@ -89,7 +89,7 @@ const Signin = () => {
 
   return (
     <div className="signin-page-container">
-      <div className="header_logo-container">
+      <div className="header_logo-container" onClick={() => navigate("/")}>
         <img src="/LinkedIn-logo.png" className="main-logo" />
       </div>
       <main className="signin-main-container">
@@ -119,6 +119,8 @@ const Signin = () => {
             Sign in
           </button>
           <p className="or">or</p>
+        </form>
+        <div className="buttons-google-apple-container">
           <button className="button-google" onClick={loginWithGoogle}>
             <img src={google} className="google-logo" />
             Continue with Google
@@ -128,7 +130,7 @@ const Signin = () => {
             <img src="/apple-logo.png" className="apple-logo" />
             Sign in With Apple
           </button>
-        </form>
+        </div>
       </main>
       <p className="to-signup">
         Need to LinkedIn?{" "}

@@ -1,6 +1,10 @@
 .signin-container {
   margin-top: 100px;
 }
+
+.header_logo-container {
+  cursor: pointer;
+}
 .main-logo {
   padding: 0;
   width: 100px;

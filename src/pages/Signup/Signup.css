@@ -6,6 +6,11 @@
 .main-container {
   padding: 20px 80px 30px 80px;
 }
+
+.main-logo--container {
+  cursor: pointer;
+}
+
 .main-logo {
   width: 130px;
   height: 32px;
@@ -107,6 +112,7 @@
 .google-login-button--container {
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 }
 
 .or-span {
@@ -116,11 +122,15 @@
 .google-login-button {
   margin-top: 20px;
   width: 20rem;
-  height: 40px;
+  height: 45px;
   margin-left: 60px;
   border-radius: 30px;
   border-width: 1px;
   background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
 
 .already {

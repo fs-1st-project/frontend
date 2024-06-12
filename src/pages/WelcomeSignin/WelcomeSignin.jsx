@@ -8,7 +8,7 @@ const WelcomeSignin = () => {
   return (
     <div>
       <main className="signin-container">
-        <div className="header_logo-container">
+        <div className="header_logo-container" onClick={() => navigate("/")}>
           <img src="/LinkedIn-logo.png" className="main-logo" />
         </div>
         <h1 className="title">Welcome back</h1>

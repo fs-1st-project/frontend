@@ -1,15 +1,16 @@
 import React from "react";
-import NavBar from "../component/NavBar";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import NavBar from "../../component/NavBar";
 import "./FirstPage.css";
-//import loginWithGoogle from "./login/loginWithGoogle";
+import google from "../../component/google-logo.png";
+import { Link, useNavigate } from "react-router-dom";
+import "./FirstPage.css";
 import axios from "axios";
 import {
   signInWithPopup,
   GoogleAuthProvider,
   signInWithCustomToken,
 } from "firebase/auth";
-import { auth } from "../firebaseConfig";
+import { auth } from "../../firebaseConfig";
 
 const FirstPage = () => {
   const navigate = useNavigate();
@@ -48,12 +49,10 @@ const FirstPage = () => {
             <div className="Main-left_head">Community for Pros</div>
             <div className="Main-left_body">
               <div className="goole-button">
-                <button onClick={loginWithGoogle}>Google Login</button>
-              </div>
-              <div className="Main-left_body-divider-left-right">
-                ::before
-                <div className="Main-bottom_divider-or"> or </div>
-                ::after
+                <button className="button-google" onClick={loginWithGoogle}>
+                  <img src={google} className="google-logo" />
+                  Continue with Google
+                </button>
               </div>
               <div className="Main-left_body-form">
                 <div className="Main-bottom_form-input">
