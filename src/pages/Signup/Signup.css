@@ -6,6 +6,11 @@
 .main-container {
   padding: 20px 80px 30px 80px;
 }
+
+.main-logo--container {
+  cursor: pointer;
+}
+
 .main-logo {
   width: 130px;
   height: 32px;

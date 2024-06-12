@@ -55,7 +55,7 @@ const Signin = () => {
 
   return (
     <div className="signin-page-container">
-      <div className="header_logo-container">
+      <div className="header_logo-container" onClick={() => navigate("/")}>
         <img src="/LinkedIn-logo.png" className="main-logo" />
       </div>
       <main className="signin-main-container">

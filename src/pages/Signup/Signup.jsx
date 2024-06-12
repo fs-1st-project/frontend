@@ -67,7 +67,7 @@ const Signup = () => {
   return (
     <div className="signup-container">
       <main className="main-container">
-        <div className="main-logo--container">
+        <div className="main-logo--container" onClick={() => navigate("/")}>
           <img src="/LinkedIn-logo.png" className="main-logo" />
         </div>
         <h1 className="main-title">Make the most of your professional life</h1>
