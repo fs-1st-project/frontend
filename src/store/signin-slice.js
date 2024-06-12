@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const postRegisterEmailPasswordToServer = (registrationData) => {
+export const postEmailPasswordToServer = (signinData) => {
   return async (dispatch) => {
     try {
       // 데이터를 서버에 보낼 엔드포인트 URL
-      const url = "http://localhost:8080/users/register";
+      const url = "http://localhost:8080/users/signin";
 
       // 서버로 전송할 데이터와 요청 옵션 설정
       const requestOptions = {
@@ -12,7 +12,7 @@ export const postRegisterEmailPasswordToServer = (registrationData) => {
         headers: {
           "Content-Type": "application/json", // 요청 헤더의 컨텐츠 타입 설정
         },
-        body: JSON.stringify(registrationData), // 데이터를 JSON 문자열로 변환하여 요청 본문에 설정
+        body: JSON.stringify(signinData), // 데이터를 JSON 문자열로 변환하여 요청 본문에 설정
       };
 
       const response = await fetch(url, requestOptions);
@@ -31,16 +31,13 @@ export const postRegisterEmailPasswordToServer = (registrationData) => {
   };
 };
 
-const signupSlice = createSlice({
-  name: "signup",
+const signinSlice = createSlice({
+  name: "signin",
   initialState: {
     email: "",
     password: "",
   },
   reducers: {
-    // replaceNews(state, action) {
-    //   state.news = action.payload;
-    // },
     setEmail(state, action) {
       state.email = action.payload;
     },
@@ -50,6 +47,6 @@ const signupSlice = createSlice({
   },
 });
 
-export const signupActions = signupSlice.actions;
+export const signinActions = signinSlice.actions;
 
-export default signupSlice;
+export default signinSlice;
