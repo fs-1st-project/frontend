@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./WelcomeSignin.css";
 
 const WelcomeSignin = () => {
@@ -24,7 +24,10 @@ const WelcomeSignin = () => {
           Sign in using another account
         </div>
         <p className="bottom-title">
-          New to LinkedIn? <span className="highlight">Join now</span>
+          New to LinkedIn?{" "}
+          <Link to="/signup" className="highlight">
+            Join now
+          </Link>
         </p>
       </main>
     </div>

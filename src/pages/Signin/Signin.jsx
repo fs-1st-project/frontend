@@ -1,5 +1,6 @@
 import React from "react";
 import "./Signin.css";
+import google from "../../component/google-logo.png";
 
 import { Link } from "react-router-dom";
 
@@ -30,8 +31,15 @@ const Signin = () => {
           <span className="span-forgot-password">Forgot password?</span>
           <button className="button-signin">Sign in</button>
           <p className="or">or</p>
-          <button className="button-google">Continue with Google</button>
-          <button className="button-apple">Sign in With Apple</button>
+          <button className="button-google">
+            <img src={google} className="google-logo" />
+            Continue with Google
+          </button>
+          <button className="button-apple">
+            {" "}
+            <img src="/apple-logo.png" className="apple-logo" />
+            Sign in With Apple
+          </button>
         </form>
       </main>
       <p className="to-signup">

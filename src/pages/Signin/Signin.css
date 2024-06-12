@@ -92,12 +92,30 @@
 
 .button-google {
   font-size: 0.9rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.google-logo {
+  width: 32px;
+  height: 30px;
+  margin-right: 8px;
 }
 
 .button-apple {
   font-size: 1rem;
   font-weight: 600;
   color: rgb(102, 102, 102);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.apple-logo {
+  width: 27px;
+  height: 30px;
+  margin-right: 8px;
 }
 
 .to-signup {
@@ -108,6 +126,7 @@
 .join {
   color: rgb(11, 101, 194);
   font-weight: 600;
+  cursor: pointer;
 }
 
 ::placeholder {
