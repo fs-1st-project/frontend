@@ -9,6 +9,14 @@ import {
   signupActions,
 } from "../../store/signup-slice";
 
+import axios from "axios";
+import {
+  signInWithPopup,
+  GoogleAuthProvider,
+  signInWithCustomToken,
+} from "firebase/auth";
+import { auth } from "../../firebaseConfig";
+
 const Signup = () => {
   const [isChecked, setIsChecked] = useState(false);
   const email = useSelector((state) => state.signup.email);
@@ -63,6 +71,32 @@ const Signup = () => {
         }
       }
     );
+  };
+
+  const loginWithGoogle = async (e) => {
+    e.preventDefault(); // 기본 동작 막기
+
+    const provider = new GoogleAuthProvider();
+
+    try {
+      // Firebase로 Google 로그인
+      const result = await signInWithPopup(auth, provider);
+      const idToken = await result.user.getIdToken();
+
+      // id 토큰을 백엔드 API로 전달하여 커스텀 토큰을 요청
+      const response = await axios.post(
+        "http://localhost:8080/firebase/auth/google",
+        { idToken }
+      );
+      const customToken = response.data;
+
+      // 커스텀 토큰으로 firebase에 로그인
+      await signInWithCustomToken(auth, customToken);
+      console.log("User authenticated successfully");
+      navigate("/home");
+    } catch (error) {
+      console.error("Error during authentication", error);
+    }
   };
 
   return (
@@ -153,10 +187,7 @@ const Signup = () => {
             </section>
             <div className="google-login-button--container">
               <span className="or-span">or</span>
-              {/* <button className="google-login-button">
-                Continue with Google
-              </button> */}
-              <button className="google-login-button">
+              <button onClick={loginWithGoogle} className="google-login-button">
                 <img src={google} className="google-logo" />
                 Continue with Google
               </button>
