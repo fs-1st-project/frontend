@@ -15,10 +15,7 @@ const Home = () => {
               <button className="goole-button-click">
                 <div className="goole-button_des">
                   <div className="goole-button_logo">
-                    <img
-                      src="https://blog.kakaocdn.net/dn/HDY7T/btrY2our4Rw/Fw6bz0QroBUp1YxglkkwEK/img.webp"
-                      alt=""
-                    ></img>
+                    <img src="/goole-logo.png" alt="" />
                   </div>
                   Continue with Google
                 </div>
