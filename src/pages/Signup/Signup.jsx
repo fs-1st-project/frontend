@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import "./Signup.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  postEmailPasswordToServer,
+  postRegisterEmailPasswordToServer,
   signupActions,
 } from "../../store/signup-slice";
 
@@ -46,20 +46,22 @@ const Signup = () => {
     }
 
     // 이메일과 패스워드를 한꺼번에 만들어 보내기
-    const data = {
+    const registrationData = {
       email,
       password,
     };
 
     // POST 호출 함수 후 성공 시 signin 페이지로 redirect
-    dispatch(postEmailPasswordToServer(data)).then((success) => {
-      if (success == true) {
-        navigate("/signin");
-      } else {
-        console.error("Registration failed");
-        alert("회원 가입에 실패하였습니다");
+    dispatch(postRegisterEmailPasswordToServer(registrationData)).then(
+      (success) => {
+        if (success == true) {
+          navigate("/signin");
+        } else {
+          console.error("Registration failed");
+          alert("회원 가입에 실패하였습니다");
+        }
       }
-    });
+    );
   };
 
   return (

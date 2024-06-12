@@ -1,9 +1,9 @@
 import React from "react";
 import NavBar from "../component/NavBar";
 import { Link } from "react-router-dom";
-import "./Home.css";
+import "./FirstPage.css";
 
-const Home = () => {
+const FirstPage = () => {
   return (
     <div>
       <NavBar />
@@ -46,4 +46,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default FirstPage;

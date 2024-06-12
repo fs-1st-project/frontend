@@ -49,11 +49,11 @@ const NavBar = () => {
         </div>
         <div className="NavBar-menu_click">
           <div>|</div>
-          <div className="joinin">
-            <Link to="/signup">Join the membership</Link>
+          <div className="joinnow">
+            <Link to="/signup">Join now</Link>
           </div>
-          <div className="login">
-            <Link to="/login">log in</Link>
+          <div className="welcom-signin">
+            <Link to="/welcome-signin">Sign in</Link>
           </div>
         </div>
       </div>
