@@ -25,7 +25,6 @@ const loginWithGoogle = async (e) => {
 
     // 커스텀 토큰으로 firebase에 로그인
     await signInWithCustomToken(auth, customToken);
-
     console.log("User authenticated successfully");
   } catch (error) {
     console.error("Error during authentication", error);

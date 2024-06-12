@@ -1,10 +1,10 @@
 import React from "react";
 import NavBar from "../component/NavBar";
 import { Link } from "react-router-dom";
-import "./Home.css";
+import "./FirstPage.css";
 import loginWithGoogle from "./login/loginWithGoogle";
 
-const Home = () => {
+const FirstPage = () => {
   return (
     <div>
       <NavBar />
@@ -47,4 +47,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default FirstPage;

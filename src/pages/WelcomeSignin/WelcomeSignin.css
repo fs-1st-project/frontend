@@ -1,0 +1,63 @@
+.signin-container {
+  margin-top: 100px;
+}
+.main-logo {
+  padding: 0;
+  width: 100px;
+  height: 25px;
+  margin-bottom: 10px;
+}
+.signin-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.title {
+  font-weight: 500;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.subtitle {
+  margin-top: 0;
+  margin-bottom: 40px;
+  font-weight: 400;
+  font-size: 1rem;
+  color: rgb(133, 133, 133);
+  text-align: center;
+}
+
+.sign_existing-account {
+  border: 1px solid rgb(207, 207, 207);
+}
+.sign_another-account {
+  border: 1px solid rgb(207, 207, 207);
+  border-top: none;
+  font-weight: 500;
+  color: rgb(102, 102, 102);
+}
+
+.sign_existing-account,
+.sign_another-account {
+  width: 23rem;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign_existing-account:hover,
+.sign_another-account:hover {
+  background-color: rgb(236, 236, 236);
+  cursor: pointer;
+}
+
+.bottom-title {
+  margin-top: 30px;
+}
+
+.highlight {
+  color: rgb(11, 101, 194);
+  font-weight: 500;
+}
