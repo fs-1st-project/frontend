@@ -2,14 +2,18 @@ import React from "react";
 import "./Signin.css";
 import google from "../../component/google-logo.png";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { signinActions } from "../../store/signin-slice";
+import {
+  postSigninEmailPasswordToServer,
+  signinActions,
+} from "../../store/signin-slice";
 
 const Signin = () => {
   const email = useSelector((state) => state.signin.email);
   const password = useSelector((state) => state.signin.password);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   // slice의 이메일 상태값 변경하는 함수
   const emailInputChangeHandler = (e) => {
@@ -24,7 +28,30 @@ const Signin = () => {
   };
 
   // sign in 버튼 눌렀을 때 핸들
-  const signinClickHandler = (e) => {};
+  const signinClickHandler = (e) => {
+    // 비밀번호 6자 이하 또는 12자 이상 alert 띄우기
+    if (password.trim().length < 6) {
+      alert("비밀번호 6자 이상 입력이 필요합니다");
+      return;
+    } else if (password.trim().length > 12) {
+      alert("비밀번호 12자 이하 입력이 필요합니다");
+      return;
+    }
+
+    // 서버에 입력된 이메일과 패스워드 요청 보내기
+    const signinData = {
+      email,
+      password,
+    };
+    dispatch(postSigninEmailPasswordToServer(signinData)).then((success) => {
+      if (success == true) {
+        navigate("/home");
+      } else {
+        console.error("Sign in failed");
+        alert("아이디나 패스워드가 일치하지 않습니다.");
+      }
+    });
+  };
 
   return (
     <div className="signin-page-container">

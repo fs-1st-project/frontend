@@ -8,24 +8,22 @@ export const postRegisterEmailPasswordToServer = (registrationData) => {
 
       // 서버로 전송할 데이터와 요청 옵션 설정
       const requestOptions = {
-        method: "POST", // HTTP 요청 메서드
+        method: "POST",
         headers: {
-          "Content-Type": "application/json", // 요청 헤더의 컨텐츠 타입 설정
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(registrationData), // 데이터를 JSON 문자열로 변환하여 요청 본문에 설정
+        body: JSON.stringify(registrationData),
       };
 
       const response = await fetch(url, requestOptions);
 
       if (!response.ok) {
-        throw new Error("이메일, 패스워드 POST 서버 응답 실패");
+        throw new Error("회원 가입 이메일, 패스워드 POST 서버 응답 실패");
       }
 
-      // POST 한 후, 서버로부터 돌아오는 답이 필요할까?
-      // const responseData = await response.json();
       return true;
     } catch (error) {
-      console.error("서버에 이메일,패스워드 post 요청 중 에러 발생:", error);
+      console.error("회원 가입 이메일,패스워드 post 요청 중 에러 발생:", error);
       return false;
     }
   };
@@ -38,9 +36,6 @@ const signupSlice = createSlice({
     password: "",
   },
   reducers: {
-    // replaceNews(state, action) {
-    //   state.news = action.payload;
-    // },
     setEmail(state, action) {
       state.email = action.payload;
     },
