@@ -2,6 +2,7 @@ import React from "react";
 import NavBar from "../component/NavBar";
 import { Link } from "react-router-dom";
 import "./Home.css";
+import loginWithGoogle from "./login/loginWithGoogle";
 
 const Home = () => {
   return (
@@ -13,7 +14,7 @@ const Home = () => {
             <div className="Main-left_head">Community for Pros</div>
             <div className="Main-left_body">
               <div className="goole-button">
-                <button>Google Login</button>
+                <button onClick={loginWithGoogle}>Google Login</button>
               </div>
               <div className="Main-left_body-divider-left-right">
                 ::before

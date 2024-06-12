@@ -8,6 +8,8 @@ import {
   signupActions,
 } from "../../store/signup-slice";
 
+import loginWithGoogle from "../login/loginWithGoogle";
+
 const Signup = () => {
   const [isChecked, setIsChecked] = useState(false);
   const email = useSelector((state) => state.signup.email);
@@ -150,7 +152,7 @@ const Signup = () => {
             </section>
             <div className="google-login-button--container">
               <span className="or-span">or</span>
-              <button className="google-login-button">
+              <button onClick={loginWithGoogle} className="google-login-button">
                 Continue with Google
               </button>
             </div>
