@@ -18,6 +18,9 @@
 }
 
 .main-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 20px 350px 5px 345px;
   text-align: center;
   font-weight: 400;
@@ -25,7 +28,16 @@
   padding-top: 40px;
 }
 
+.container-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .consent-signup-container {
+  display: flex;
+  justify-self: center;
+  align-items: center;
   background-color: white;
   width: 30rem;
   height: 45rem;
@@ -34,12 +46,13 @@
   border-radius: 10px;
 }
 
-.container {
+.container-signup {
   padding: 15px;
 }
 
 .main-subtitle {
-  font-weight: 400;
+  font-weight: 600;
+  font-size: 1.75rem;
 }
 
 .hightlight {
@@ -107,6 +120,7 @@
   font-size: 1rem;
   margin-left: 60px;
   margin-bottom: 20px;
+  cursor: pointer;
 }
 
 .google-login-button--container {

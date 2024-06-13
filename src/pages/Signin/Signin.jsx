@@ -36,8 +36,7 @@ const Signin = () => {
   };
 
   // sign in 버튼 눌렀을 때 핸들
-  const signinClickHandler = async (e) => {
-    e.preventDefault();
+  const signinClickHandler = (e) => {
     // 비밀번호 6자 이하 또는 12자 이상 alert 띄우기
     if (password.trim().length < 6) {
       alert("비밀번호 6자 이상 입력이 필요합니다");
@@ -52,7 +51,6 @@ const Signin = () => {
       email,
       password,
     };
-
     dispatch(postSigninEmailPasswordToServer(signinData)).then((success) => {
       if (success == true) {
         navigate("/home");
@@ -78,12 +76,7 @@ const Signin = () => {
         "http://localhost:8080/firebase/auth/google",
         { idToken }
       );
-
-      // 서버로부터 사용자 정보와 커스텀 토큰을 받아옴
-      const { customToken, userInfo } = response.data;
-
-      // UID를 로컬 스토리지에 저장
-      localStorage.setItem("uid", userInfo.uid);
+      const customToken = response.data;
 
       // 커스텀 토큰으로 firebase에 로그인
       await signInWithCustomToken(auth, customToken);
