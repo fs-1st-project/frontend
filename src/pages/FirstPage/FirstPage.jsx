@@ -54,17 +54,20 @@ const FirstPage = () => {
                   Continue with Google
                 </button>
               </div>
-              <div className="Main-left_body-form">
+              <form className="Main-left_body-form">
                 <div className="Main-bottom_form-input">
-                  <div>email or phone</div>
-                  <input></input>
+                  <div>Email</div>
+                  <input type="email" className="form-email-input"></input>
                 </div>
                 <div className="Main-bottom_form-input">
-                  <div>password</div>
-                  <input></input>
+                  <div>Password</div>
+                  <input
+                    type="password"
+                    className="form-password-input"
+                  ></input>
                 </div>
                 <div className="Main-bottom_form-signin"></div>
-              </div>
+              </form>
             </div>
             <div className="Main-footer">
               <span>New to Linkedin?</span>
