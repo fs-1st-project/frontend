@@ -23,6 +23,7 @@ export const postSigninEmailPasswordToServer = (signinData) => {
 
       // 로그인 성공 시, 로컬 스토리지에 토큰 저장
       const responseData = await response.json();
+      console.log("토큰", responseData.token);
       localStorage.setItem("token", responseData.token);
 
       return true;
