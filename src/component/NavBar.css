@@ -70,3 +70,39 @@
   display: flex;
   order: 3;
 }
+
+.joinnow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.joinnow a {
+  text-decoration: none; /* 링크의 밑줄 제거 */
+  color: #404040; /* 링크의 색상 지정 */
+  font-weight: bold;
+}
+
+.welcom-signin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20px;
+  border: 1px solid #0966c2;
+  border-radius: 25px;
+  width: 100px;
+  height: 48px;
+}
+
+.welcom-signin a {
+  text-decoration: none; /* 링크의 밑줄 제거 */
+  color: #0966c2; /* 링크의 색상 지정 */
+  font-weight: bold;
+}
+
+.verticla-line {
+  margin: 5px 0 5px 0 !important;
+  border-right: 1.3px solid #d8d8d8;
+  margin: 0 auto;
+}

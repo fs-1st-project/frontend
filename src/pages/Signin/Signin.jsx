@@ -61,8 +61,6 @@ const Signin = () => {
     });
   };
 
-  //=======================================================================================
-
   const loginWithGoogle = async (e) => {
     e.preventDefault(); // 기본 동작 막기
 
@@ -93,8 +91,6 @@ const Signin = () => {
       console.error("Error during authentication", error);
     }
   };
-
-  //=======================================================================================
 
   return (
     <div className="signin-page-container">

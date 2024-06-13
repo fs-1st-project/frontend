@@ -48,7 +48,7 @@ const NavBar = () => {
           </div>
         </div>
         <div className="NavBar-menu_click">
-          <div>|</div>
+          <div class="verticla-line"></div>
           <div className="joinnow">
             <Link to="/signup">Join now</Link>
           </div>
