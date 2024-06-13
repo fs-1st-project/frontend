@@ -24,10 +24,7 @@ export const postSigninEmailPasswordToServer = (signinData) => {
       // 로그인 성공 시, 로컬 스토리지에 토큰 저장
       const responseData = await response.json();
 
-      console.log("토큰", responseData.token);
-
       localStorage.setItem("token", responseData.token);
-      console.log("데이터");
       return true;
     } catch (error) {
       console.error("로그인 이메일,패스워드 post 요청 중 에러 발생:", error);
