@@ -61,6 +61,8 @@ const Signin = () => {
     });
   };
 
+  //=======================================================================================
+
   const loginWithGoogle = async (e) => {
     e.preventDefault(); // 기본 동작 막기
 
@@ -76,7 +78,12 @@ const Signin = () => {
         "http://localhost:8080/firebase/auth/google",
         { idToken }
       );
-      const customToken = response.data;
+
+      // 서버로부터 사용자 정보와 커스텀 토큰을 받아옴
+      const { customToken, userInfo } = response.data;
+
+      // UID를 로컬 스토리지에 저장
+      localStorage.setItem("uid", userInfo.uid);
 
       // 커스텀 토큰으로 firebase에 로그인
       await signInWithCustomToken(auth, customToken);
@@ -86,6 +93,8 @@ const Signin = () => {
       console.error("Error during authentication", error);
     }
   };
+
+  //=======================================================================================
 
   return (
     <div className="signin-page-container">
