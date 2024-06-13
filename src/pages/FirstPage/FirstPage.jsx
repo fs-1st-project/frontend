@@ -75,12 +75,7 @@ const FirstPage = () => {
         "http://localhost:8080/firebase/auth/google",
         { idToken }
       );
-
-      // 서버로부터 사용자 정보와 커스텀 토큰을 받아옴
-      const { customToken, userInfo } = response.data;
-
-      // UID를 로컬 스토리지에 저장
-      localStorage.setItem("uid", userInfo.uid);
+      const customToken = response.data;
 
       // 커스텀 토큰으로 firebase에 로그인
       await signInWithCustomToken(auth, customToken);
@@ -90,7 +85,6 @@ const FirstPage = () => {
       console.error("Error during authentication", error);
     }
   };
-
   return (
     <div>
       <NavBar />
@@ -102,12 +96,15 @@ const FirstPage = () => {
             </div>
             <div className="Main-left_body">
               <div className="goole-button">
-                <button className="button-google" onClick={loginWithGoogle}>
+                <button
+                  className="button-google-first"
+                  onClick={loginWithGoogle}
+                >
                   <img src={google} className="google-logo" />
                   Continue with Google
                 </button>
               </div>
-              <div class="container">
+              <div class="container-first">
                 <div class="line"></div>
                 <div class="or-text">or</div>
                 <div class="line"></div>
@@ -135,7 +132,10 @@ const FirstPage = () => {
                 </div>
                 <div class="forgot-pw">Forgot password?</div>
                 <div className="Main-bottom_form-signin"></div>
-                <button className="button-signin" onClick={signinClickHandler}>
+                <button
+                  className="button-signin-first"
+                  onClick={signinClickHandler}
+                >
                   Sign in
                 </button>
               </div>

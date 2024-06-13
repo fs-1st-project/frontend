@@ -88,12 +88,7 @@ const Signup = () => {
         "http://localhost:8080/firebase/auth/google",
         { idToken }
       );
-
-      // 서버로부터 사용자 정보와 커스텀 토큰을 받아옴
-      const { customToken, userInfo } = response.data;
-
-      // UID를 로컬 스토리지에 저장
-      localStorage.setItem("uid", userInfo.uid);
+      const customToken = response.data;
 
       // 커스텀 토큰으로 firebase에 로그인
       await signInWithCustomToken(auth, customToken);
@@ -111,97 +106,103 @@ const Signup = () => {
           <img src="/LinkedIn-logo.png" className="main-logo" />
         </div>
         <h1 className="main-title">Make the most of your professional life</h1>
-        <section className="consent-signup-container">
-          <div className="container">
-            <h2 className="main-subtitle">Join LinkedIn</h2>
-            <p className="consent-understanding">
-              To create a LinkedIn account, you must understand how LinkedIn
-              processes your personal information by selecting learn more for
-              eact item listed.
-            </p>
-            <div>
-              <input
-                type="checkbox"
-                className="agree-all-terms"
-                checked={isChecked}
-                onChange={handleAllAgreeCheck}
-                required
-              />
-              <label for="agree-all-terms" className="agree-all-terms--label">
-                Agree to all terms
-              </label>
-              <div className="term1-term2--container">
-                <div className="agree-term1">
-                  <input type="checkbox" checked={isChecked} />
-                  <label>
-                    We collect and use personal information{" "}
-                    <span className="hightlight">Learn more</span>
-                  </label>
-                </div>
-                <div className="agree-term2">
-                  <input
-                    type="checkbox"
-                    className="agree-term2"
-                    checked={isChecked}
-                  />
-                  <label for="agree-term2">
-                    We share personal infromation with third parties to provide
-                    out services. <span className="hightlight">Learn more</span>
-                  </label>
+        <div className="container-wrap">
+          <section className="consent-signup-container">
+            <div className="container-signup">
+              <h2 className="main-subtitle">Join LinkedIn</h2>
+              <p className="consent-understanding">
+                To create a LinkedIn account, you must understand how LinkedIn
+                processes your personal information by selecting learn more for
+                eact item listed.
+              </p>
+              <div>
+                <input
+                  type="checkbox"
+                  className="agree-all-terms"
+                  checked={isChecked}
+                  onChange={handleAllAgreeCheck}
+                  required
+                />
+                <label for="agree-all-terms" className="agree-all-terms--label">
+                  Agree to all terms
+                </label>
+                <div className="term1-term2--container">
+                  <div className="agree-term1">
+                    <input type="checkbox" checked={isChecked} />
+                    <label>
+                      We collect and use personal information{" "}
+                      <span className="hightlight">Learn more</span>
+                    </label>
+                  </div>
+                  <div className="agree-term2">
+                    <input
+                      type="checkbox"
+                      className="agree-term2"
+                      checked={isChecked}
+                    />
+                    <label for="agree-term2">
+                      We share personal infromation with third parties to
+                      provide out services.{" "}
+                      <span className="hightlight">Learn more</span>
+                    </label>
+                  </div>
                 </div>
               </div>
-            </div>
-            <p className="further-information">
-              Futher information is available in out{" "}
-              <span className="hightlight">Korea Privacy Addendum.</span>
-            </p>
+              <p className="further-information">
+                Futher information is available in out{" "}
+                <span className="hightlight">Korea Privacy Addendum.</span>
+              </p>
 
-            <section className="form-container">
-              <form
-                className="email-password-form"
-                onSubmit={joinSubmitHandler}
-              >
-                <div className="email-container">
-                  <label>Email</label>
-                  <input
-                    type="email"
-                    className="email"
-                    value={email}
-                    onChange={emailInputChangeHandler}
-                    required
-                  ></input>
-                </div>
-                <div className="password-container">
-                  <label>Password(6+ characters)</label>
-                  <input
-                    type="password"
-                    className="password"
-                    value={password}
-                    onChange={passwordInputChangeHandler}
-                    required
-                  ></input>
-                </div>
-                <p className="bottom-agree">
-                  By clicking Agree & Join, you agree to the LinkedIn{" "}
-                  <span className="hightlight">
-                    User Agreement, Privacy Policy, and Cookie Policy
-                  </span>
-                </p>
-                <button className="agree-join--button">Agree & Join</button>
-              </form>
-            </section>
-            <div className="google-login-button--container">
-              <span className="or-span">or</span>
-              <button onClick={loginWithGoogle} className="google-login-button">
-                <img src={google} className="google-logo" />
-                Continue with Google
-              </button>
+              <section className="form-container">
+                <form
+                  className="email-password-form"
+                  onSubmit={joinSubmitHandler}
+                >
+                  <div className="email-container">
+                    <label>Email</label>
+                    <input
+                      type="email"
+                      className="email"
+                      value={email}
+                      onChange={emailInputChangeHandler}
+                      required
+                    ></input>
+                  </div>
+                  <div className="password-container">
+                    <label>Password(6+ characters)</label>
+                    <input
+                      type="password"
+                      className="password"
+                      value={password}
+                      onChange={passwordInputChangeHandler}
+                      required
+                    ></input>
+                  </div>
+                  <p className="bottom-agree">
+                    By clicking Agree & Join, you agree to the LinkedIn{" "}
+                    <span className="hightlight">
+                      User Agreement, Privacy Policy, and Cookie Policy
+                    </span>
+                  </p>
+                  <button className="agree-join--button">Agree & Join</button>
+                </form>
+              </section>
+              <div className="google-login-button--container">
+                <span className="or-span">or</span>
+                <button
+                  onClick={loginWithGoogle}
+                  className="google-login-button"
+                >
+                  <img src={google} className="google-logo" />
+                  Continue with Google
+                </button>
+              </div>
+              <p className="already">
+                Already on LinkedIn? <Link to="/signin">Sign In</Link>
+              </p>
             </div>
-            <p className="already">
-              Already on LinkedIn? <Link to="/signin">Sign In</Link>
-            </p>
-          </div>
-        </section>
+          </section>
+        </div>
         <p className="bottom-get-help">
           Looking to create a page for a business?{" "}
           <span className="hightlight">Get help</span>
