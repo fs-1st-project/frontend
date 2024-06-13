@@ -51,7 +51,8 @@
 }
 
 .main-subtitle {
-  font-weight: 400;
+  font-weight: 600;
+  font-size: 1.75rem;
 }
 
 .hightlight {
@@ -119,6 +120,7 @@
   font-size: 1rem;
   margin-left: 60px;
   margin-bottom: 20px;
+  cursor: pointer;
 }
 
 .google-login-button--container {

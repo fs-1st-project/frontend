@@ -78,6 +78,7 @@
   font-weight: 600;
   font-size: 1rem;
   padding: 5px;
+  cursor: pointer;
 }
 
 .buttons-google-apple-container {
