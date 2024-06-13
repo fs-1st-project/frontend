@@ -25,6 +25,7 @@
   position: relative;
 }
 .Main-left_head {
+  width: 650px;
   vertical-align: inherit;
   font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell,
@@ -52,7 +53,7 @@
   flex-shrink: 1;
 }
 
-.goole-button {
+.google-button {
   width: 400px;
   height: 40px;
   margin-top: 20px;
@@ -66,10 +67,53 @@
   margin-right: auto;
 }
 
-.form-email-input,
-.form-password-input {
-  width: 20rem;
-  height: 2rem;
-  border-radius: 10px;
-  border: 1px solid;
+.Main-bottom_form-input {
+  margin-top: 20px;
+}
+
+.input-large {
+  margin: 10px 0 10px 0;
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 410px;
+  height: 45px;
+}
+
+.button-google {
+  margin-top: 25px;
+  width: 400px !important;
+  height: 40px !important;
+}
+
+.forgot-pw {
+  margin: 10px 0 20px 0;
+  color: #0000ee;
+}
+
+.container {
+  width: 400px;
+  display: flex;
+  align-items: center; /* 세로 중앙 정렬 */
+  margin-top: 30px;
+  padding: 0px !important;
+}
+
+.line {
+  flex: 1; /* 동적으로 너비 조절 */
+  height: 1px;
+  background-color: #d2d2d2; /* 가로줄 색상 */
+}
+
+.or-text {
+  margin: 0 10px; /* or 텍스트 양쪽에 여백 추가 */
+  color: #666; /* 텍스트 색상 */
+}
+
+.button-signin {
+  margin: 5px 0 20px 0 !important;
+  width: 410px !important;
+}
+
+.Main-footer {
+  margin-left: 100px;
 }
