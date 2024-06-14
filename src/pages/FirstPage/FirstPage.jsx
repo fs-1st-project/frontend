@@ -62,7 +62,6 @@ const FirstPage = () => {
     });
   };
 
-  //=====================================================================
   const loginWithGoogle = async (e) => {
     e.preventDefault();
     const provider = new GoogleAuthProvider();
@@ -120,7 +119,6 @@ const FirstPage = () => {
     setInterval(refreshToken, 3600000); // 1시간
   };
 
-  //=========================================================================
   return (
     <div>
       <NavBar />

@@ -3,7 +3,7 @@ import axios from "axios";
 import { auth } from "../firebaseConfig"; // Firebase auth 객체 가져오기
 
 const Home = () => {
-  const [userData, setUserData] = useState(null); // 사용자 데이터를 저장할 상태 변수
+  const [userData, setUserData] = useState(null);
 
   useEffect(() => {
     const fetchUserData = async () => {

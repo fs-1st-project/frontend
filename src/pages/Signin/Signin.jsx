@@ -62,7 +62,6 @@ const Signin = () => {
     });
   };
 
-  //=========================================================================
   const loginWithGoogle = async (e) => {
     e.preventDefault();
 
@@ -121,7 +120,7 @@ const Signin = () => {
     // 1시간마다 새로운 커스텀 토큰을 요청
     setInterval(refreshToken, 3600000); // 1시간
   };
-  //=========================================================================
+
   return (
     <div className="signin-page-container">
       <div className="header_logo-container" onClick={() => navigate("/")}>
