@@ -61,31 +61,64 @@ const FirstPage = () => {
       }
     });
   };
-  const loginWithGoogle = async (e) => {
-    e.preventDefault(); // 기본 동작 막기
 
+  const loginWithGoogle = async (e) => {
+    e.preventDefault();
     const provider = new GoogleAuthProvider();
 
     try {
-      // Firebase로 Google 로그인
       const result = await signInWithPopup(auth, provider);
-      const idToken = await result.user.getIdToken();
 
-      // id 토큰을 백엔드 API로 전달하여 커스텀 토큰을 요청
+      const idToken = await result.user.getIdToken(); // id 토큰을 백엔드 API로 전달하여 커스텀 토큰을 요청
+
       const response = await axios.post(
         "http://localhost:8080/firebase/auth/google",
+
         { idToken }
       );
-      const customToken = response.data;
 
-      // 커스텀 토큰으로 firebase에 로그인
+      const customToken = response.data.customToken; // 커스텀 토큰으로 firebase에 로그인
+
       await signInWithCustomToken(auth, customToken);
+
       console.log("User authenticated successfully");
+
+      setTokenRefreshInterval();
+
       navigate("/home");
     } catch (error) {
       console.error("Error during authentication", error);
     }
   };
+
+  const refreshToken = async () => {
+    try {
+      const user = auth.currentUser;
+
+      if (user) {
+        const idToken = await user.getIdToken(true); // 새로운 idToken을 강제로 가져옴
+
+        const response = await axios.post(
+          "http://localhost:8080/firebase/auth/google",
+
+          { idToken }
+        );
+
+        const customToken = response.data.customToken;
+
+        await signInWithCustomToken(auth, customToken);
+
+        console.log("User authenticated successfully with new custom token");
+      }
+    } catch (error) {
+      console.error("Error during token refresh", error);
+    }
+  };
+
+  const setTokenRefreshInterval = () => {
+    setInterval(refreshToken, 3600000); // 1시간
+  };
+
   return (
     <div>
       <NavBar />
