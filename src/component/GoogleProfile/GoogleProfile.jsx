@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import "./GoogleProfile.css";
 
 const GoogleProfile = () => {
   const googleUserData = useSelector(
@@ -25,25 +26,35 @@ const GoogleProfile = () => {
   }
 
   return (
-    <div>
-      {googleUserData.profileBackgroundPicture ? (
-        <img
-          src={`data:image/jpeg;base64,${googleUserData.profileBackgroundPicture}`}
-          alt="User Background"
-        />
-      ) : (
-        <p>No background picture</p>
-      )}
-      {googleUserData.profilePicture ? (
-        <img
-          src={`data:image/jpeg;base64,${googleUserData.profilePicture}`}
-          alt="User Avatar"
-        />
-      ) : (
-        <p>No profile picture</p>
-      )}
-      <h2> {googleUserData.fullName}</h2>
-      <p>{googleUserData.introduction}</p>
+    <div className="Main">
+      <div className="Main-profile">
+        <div className="user-background-picture">
+          {googleUserData.profileBackgroundPicture ? (
+            <img
+              src={`data:image/jpeg;base64,${googleUserData.profileBackgroundPicture}`}
+              alt="User Background"
+            />
+          ) : (
+            <p>No background picture</p>
+          )}
+        </div>
+
+        <div className="user-picture">
+          {googleUserData.profilePicture ? (
+            <img
+              src={`data:image/jpeg;base64,${googleUserData.profilePicture}`}
+              alt="User Avatar"
+            />
+          ) : (
+            <p>No profile picture</p>
+          )}
+        </div>
+
+        <div className="user-descript-box">
+          <div className="user-name">{googleUserData.fullName}</div>
+          <div className="user-introduction">{googleUserData.introduction}</div>
+        </div>
+      </div>
     </div>
   );
 };
