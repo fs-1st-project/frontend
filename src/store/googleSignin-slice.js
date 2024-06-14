@@ -5,6 +5,7 @@ const googleSigninSlice = createSlice({
   initialState: {
     isGoogleClicked: false,
     googleUserData: null,
+    googleLoading: true,
   },
   reducers: {
     setIsGoogleClicked(state, action) {
@@ -12,6 +13,9 @@ const googleSigninSlice = createSlice({
     },
     setGoogleUserData(state, action) {
       state.googleUserData = action.payload;
+    },
+    setGoogleLoading(state, action) {
+      state.googleLoading = false;
     },
   },
 });

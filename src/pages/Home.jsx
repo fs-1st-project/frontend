@@ -5,6 +5,8 @@ import { googleSigninActions } from "../store/googleSignin-slice";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../firebaseConfig"; // Firebase auth 객체 가져오기
 import { signinActions } from "../store/signin-slice";
+import NormalProfile from "../component/NormalProfile/NormalProfile";
+import GoogleProfile from "../component/GoogleProfile/GoogleProfile";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -27,29 +29,27 @@ const Home = () => {
   // 구글 유저 데이터 가져오기
   const fetchGoogleUserData = async () => {
     try {
-      // 현재 인증된 사용자 가져오기
       const currentUser = auth.currentUser;
 
       if (currentUser) {
-        // 현재 사용자의 새로운 idToken 가져오기 (강제 갱신)
         const idToken = await currentUser.getIdToken(true);
         const uid = currentUser.uid;
 
-        // 서버에 GET 요청을 보냅니다.
         const response = await axios.get(
-          `http://localhost:8080/firebase/auth/user/${uid}`,
+          `http://localhost:8080/api/users/${uid}/profile`,
           {
             headers: {
-              Authorization: `Bearer ${idToken}`, // 헤더에 새로운 토큰 추가
+              Authorization: `Bearer ${idToken}`,
             },
           }
         );
 
-        // 서버에서 받은 사용자 데이터를 상태 변수에 저장합니다.
         dispatch(googleSigninActions.setGoogleUserData(response.data));
       }
     } catch (error) {
       console.error("Error fetching user data:", error);
+    } finally {
+      dispatch(googleSigninActions.setGoogleLoading());
     }
   };
 
@@ -69,7 +69,6 @@ const Home = () => {
 
       // 서버에서 받은 유저 데이터 저장
       dispatch(signinActions.setNormalUserData(response.data));
-      
     } catch (error) {
       console.error("기본 로그인 사용자 정보를 받아오지 못했습니다");
     }
@@ -85,24 +84,17 @@ const Home = () => {
     }
   }, [dispatch]);
 
-  return (
-    <div>
-      <h2>사용자 정보</h2>
-      {googleUserData ? (
-        <div>
-          <p>이름: {googleUserData.displayName}</p>
-          <p>Email: {googleUserData.email}</p>
-          <img src={googleUserData.photoUrl} alt="User Avatar" />
-        </div>
-      ) : normalUserData ? (
-        <div>
-          <p>일반 유저 이메일 {normalUserData.email}</p>
-        </div>
-      ) : (
-        <p>일반 로그인 유저 데이터를 불러오는 중입니다...</p>
-      )}
-    </div>
-  );
+  const showComponentBySigninButton = () => {
+    if (isGoogleClicked) {
+      return <GoogleProfile />;
+    } else if (isNormalLoginClicked) {
+      return <NormalProfile />;
+    } else {
+      return <div>로그인 유저 데이터가 없습니다</div>;
+    }
+  };
+
+  return <div>{showComponentBySigninButton()}</div>;
 };
 
 export default Home;
