@@ -11,26 +11,24 @@ const ProfileComponent = ({ userData, loading }) => {
 
   return (
     <div>
-      <h2>사용자 정보</h2>
-      <p>이름: {userData.fullName}</p>
-      <p>Email: {userData.email}</p>
-      {userData.profilePicture && (
+      {userData.profilePicture ? (
         <img
           src={`data:image/jpeg;base64,${userData.profilePicture}`}
           alt="User Avatar"
         />
+      ) : (
+        <p>No profile picture</p>
       )}
-      {userData.profileBackgroundPicture && (
+      {userData.profileBackgroundPicture ? (
         <img
           src={`data:image/jpeg;base64,${userData.profileBackgroundPicture}`}
           alt="User Background"
         />
+      ) : (
+        <p>No background picture</p>
       )}
-      <p>소개글: {userData.introduction}</p>
-      <p>교육: {userData.education}</p>
-      <p>위치: {userData.location}</p>
-      {userData.bio && <p>소개: {userData.bio}</p>}
-      {userData.certification && <p>인증: {userData.certification}</p>}
+      <h2> {userData.fullName}</h2>
+      <p>{userData.introduction}</p>
     </div>
   );
 };
