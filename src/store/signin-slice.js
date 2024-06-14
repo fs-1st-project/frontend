@@ -51,6 +51,9 @@ const signinSlice = createSlice({
     setIsClicked(state, action) {
       state.isNormalLoginClicked = true;
     },
+    setNormalUserData(state, action) {
+      state.normalUserData = action.payload;
+    },
   },
 });
 

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { googleSigninActions } from "../store/googleSignin-slice";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../firebaseConfig"; // Firebase auth 객체 가져오기
+import { signinActions } from "../store/signin-slice";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -21,6 +22,7 @@ const Home = () => {
   const isNormalLoginClicked = useSelector(
     (state) => state.signin.isNormalLoginClicked
   );
+  const normalUserData = useSelector((state) => state.signin.normalUserData);
 
   // 구글 유저 데이터 가져오기
   const fetchGoogleUserData = async () => {
@@ -58,15 +60,15 @@ const Home = () => {
       const token = localStorage.getItem("token");
 
       // 서버에 GET 요청을 보내기 with token
-      const response = await axios.get(
-        "http://localhost:8080/home/user",
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await axios.get("http://localhost:8080/home/user", {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      // 서버에서 받은 유저 데이터 저장
+      dispatch(signinActions.setNormalUserData(response.data));
     } catch (error) {
       console.error("기본 로그인 사용자 정보를 받아오지 못했습니다");
     }
@@ -90,6 +92,10 @@ const Home = () => {
           <p>이름: {googleUserData.displayName}</p>
           <p>Email: {googleUserData.email}</p>
           <img src={googleUserData.photoUrl} alt="User Avatar" />
+        </div>
+      ) : normalUserData ? (
+        <div>
+          <p>일반 유저 이메일 {normalUserData.email}</p>
         </div>
       ) : (
         <p>일반 로그인 유저 데이터를 불러오는 중입니다...</p>
