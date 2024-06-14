@@ -54,16 +54,23 @@ const Home = () => {
   // 일반 유저 데이터 가져오기
   const fetchNormalUserData = async () => {
     try {
+      // 로컬 스토리지에서 토큰 받기
       const token = localStorage.getItem("token");
-      console.log(token);
+
+      // 서버에 GET 요청을 보내기 with token
+      const response = await axios.get(
+        "http://localhost:8080/home/user",
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
     } catch (error) {
       console.error("기본 로그인 사용자 정보를 받아오지 못했습니다");
     }
   };
-
-  console.log(isNormalLoginClicked);
-
-  console.log(isGoogleClicked);
 
   useEffect(() => {
     if (!isGoogleClicked && !isNormalLoginClicked) {
