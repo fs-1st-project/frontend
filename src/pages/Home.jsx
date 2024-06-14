@@ -55,10 +55,15 @@ const Home = () => {
   const fetchNormalUserData = async () => {
     try {
       const token = localStorage.getItem("token");
+      console.log(token);
     } catch (error) {
       console.error("기본 로그인 사용자 정보를 받아오지 못했습니다");
     }
   };
+
+  console.log(isNormalLoginClicked);
+
+  console.log(isGoogleClicked);
 
   useEffect(() => {
     if (!isGoogleClicked && !isNormalLoginClicked) {
@@ -80,7 +85,7 @@ const Home = () => {
           <img src={googleUserData.photoUrl} alt="User Avatar" />
         </div>
       ) : (
-        <p>데이터를 불러오는 중입니다...</p>
+        <p>일반 로그인 유저 데이터를 불러오는 중입니다...</p>
       )}
     </div>
   );

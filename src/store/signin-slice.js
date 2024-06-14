@@ -38,7 +38,7 @@ const signinSlice = createSlice({
   initialState: {
     email: "",
     password: "",
-    isNormalLoginCliked: false,
+    isNormalLoginClicked: false,
   },
   reducers: {
     setEmail(state, action) {
@@ -48,7 +48,7 @@ const signinSlice = createSlice({
       state.password = action.payload;
     },
     setIsClicked(state, action) {
-      state.isCliked = true;
+      state.isNormalLoginClicked = true;
     },
   },
 });

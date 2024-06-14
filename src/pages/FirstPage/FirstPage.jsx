@@ -25,6 +25,9 @@ const FirstPage = () => {
   const dispatch = useDispatch();
   const email = useSelector((state) => state.signin.email);
   const password = useSelector((state) => state.signin.password);
+  const isNormalLoginClicked = useSelector(
+    (state) => state.signin.isNormalLoginClicked
+  );
 
   // slice의 이메일 상태값 변경하는 함수
   const emailInputChangeHandler = (e) => {
@@ -42,6 +45,7 @@ const FirstPage = () => {
   const signinClickHandler = (e) => {
     e.preventDefault();
     dispatch(signinActions.setIsClicked());
+
     // 비밀번호 6자 이하 또는 12자 이상 alert 띄우기
     if (password.trim().length < 6) {
       alert("비밀번호 6자 이상 입력이 필요합니다");
@@ -69,6 +73,7 @@ const FirstPage = () => {
   const loginWithGoogle = async (e) => {
     e.preventDefault();
     dispatch(googleSigninActions.setIsGoogleClicked());
+
     const provider = new GoogleAuthProvider();
 
     try {

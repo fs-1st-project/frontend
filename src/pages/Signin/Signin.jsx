@@ -40,6 +40,7 @@ const Signin = () => {
   const signinClickHandler = (e) => {
     e.preventDefault();
     dispatch(signinActions.setIsClicked());
+    
     // 비밀번호 6자 이하 또는 12자 이상 alert 띄우기
     if (password.trim().length < 6) {
       alert("비밀번호 6자 이상 입력이 필요합니다");
