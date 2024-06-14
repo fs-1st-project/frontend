@@ -16,6 +16,7 @@ import {
   signInWithCustomToken,
 } from "firebase/auth";
 import { auth } from "../../firebaseConfig";
+import { googleSigninActions } from "../../store/googleSignin-slice";
 
 const Signin = () => {
   const email = useSelector((state) => state.signin.email);
@@ -53,7 +54,7 @@ const Signin = () => {
       password,
     };
     dispatch(postSigninEmailPasswordToServer(signinData)).then((success) => {
-      if (success == true) {
+      if (success === true) {
         navigate("/home");
       } else {
         console.error("Sign in failed");
@@ -63,6 +64,7 @@ const Signin = () => {
   };
 
   const loginWithGoogle = async (e) => {
+    dispatch(googleSigninActions.setIsGoogleClicked());
     e.preventDefault(); // 기본 동작 막기
 
     const provider = new GoogleAuthProvider();
@@ -91,7 +93,7 @@ const Signin = () => {
   return (
     <div className="signin-page-container">
       <div className="header_logo-container" onClick={() => navigate("/")}>
-        <img src="/LinkedIn-logo.png" className="main-logo" />
+        <img src="/LinkedIn-logo.png" className="main-logo" alt="main-logo" />
       </div>
       <main className="signin-main-container">
         <h1 className="signin-title">Sign in</h1>
@@ -123,12 +125,16 @@ const Signin = () => {
         </form>
         <div className="buttons-google-apple-container">
           <button className="button-google" onClick={loginWithGoogle}>
-            <img src={google} className="google-logo" />
+            <img src={google} className="google-logo" alt="google-logo" />
             Continue with Google
           </button>
           <button className="button-apple">
             {" "}
-            <img src="/apple-logo.png" className="apple-logo" />
+            <img
+              src="/apple-logo.png"
+              className="apple-logo"
+              alt="apple-logo"
+            />
             Sign in With Apple
           </button>
         </div>

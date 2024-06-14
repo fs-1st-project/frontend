@@ -2,26 +2,29 @@ import React from "react";
 import NavBar from "../../component/NavBar";
 import "./FirstPage.css";
 import google from "../../component/google-logo.png";
+
 import { Link, useNavigate } from "react-router-dom";
-import "./FirstPage.css";
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
+
+import axios from "axios";
 import {
   signInWithPopup,
   GoogleAuthProvider,
   signInWithCustomToken,
 } from "firebase/auth";
+import { auth } from "../../firebaseConfig";
+
 import {
   postSigninEmailPasswordToServer,
   signinActions,
 } from "../../store/signin-slice";
-import { auth } from "../../firebaseConfig";
+import { googleSigninActions } from "../../store/googleSignin-slice";
 
 const FirstPage = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const email = useSelector((state) => state.signin.email);
   const password = useSelector((state) => state.signin.password);
-  const dispatch = useDispatch();
 
   // slice의 이메일 상태값 변경하는 함수
   const emailInputChangeHandler = (e) => {
@@ -53,7 +56,7 @@ const FirstPage = () => {
       password,
     };
     dispatch(postSigninEmailPasswordToServer(signinData)).then((success) => {
-      if (success == true) {
+      if (success === true) {
         navigate("/home");
       } else {
         console.error("Sign in failed");
@@ -61,8 +64,11 @@ const FirstPage = () => {
       }
     });
   };
+
+  // 구글 로그인 버튼 핸들
   const loginWithGoogle = async (e) => {
-    e.preventDefault(); // 기본 동작 막기
+    e.preventDefault();
+    dispatch(googleSigninActions.setIsGoogleClicked());
 
     const provider = new GoogleAuthProvider();
 
@@ -101,7 +107,7 @@ const FirstPage = () => {
                   className="button-google-first"
                   onClick={loginWithGoogle}
                 >
-                  <img src={google} className="google-logo" />
+                  <img src={google} className="google-logo" alt="google-logo" />
                   Continue with Google
                 </button>
               </div>

@@ -1,8 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { googleSigninActions } from "../store/googleSignin-slice";
 
 const Home = () => {
-  const [userData, setUserData] = useState(null); // 사용자 데이터를 저장할 상태 변수
+  const dispatch = useDispatch();
+  const googleUserData = useSelector(
+    (state) => state.googleSignin.googleUserData
+  );
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -16,7 +21,7 @@ const Home = () => {
             `http://localhost:8080/firebase/auth/user/${uid}`
           );
           // 서버에서 받은 사용자 데이터를 상태 변수에 저장합니다.
-          setUserData(response.data);
+          dispatch(googleSigninActions.setGoogleUserData(response.data));
         }
       } catch (error) {
         console.error("Error fetching user data:", error);
@@ -24,16 +29,16 @@ const Home = () => {
     };
 
     fetchUserData();
-  }, []);
+  }, [dispatch]);
 
   return (
     <div>
       <h2>사용자 정보</h2>
-      {userData ? (
+      {googleUserData ? (
         <div>
-          <p>이름: {userData.displayName}</p>
-          <p>Email: {userData.email}</p>
-          <img src={userData.photoUrl} alt="User Avatar" />
+          <p>이름: {googleUserData.displayName}</p>
+          <p>Email: {googleUserData.email}</p>
+          <img src={googleUserData.photoUrl} alt="User Avatar" />
         </div>
       ) : (
         <p>데이터를 불러오는 중입니다...</p>
