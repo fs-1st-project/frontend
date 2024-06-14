@@ -4,7 +4,7 @@ import FirstPage from "./pages/FirstPage/FirstPage";
 import Signup from "./pages/Signup/Signup";
 import WelcomeSignin from "./pages/WelcomeSignin/WelcomeSignin";
 import Signin from "./pages/Signin/Signin";
-import Home from "./pages/Home";
+import Home from "./pages/Home/Home";
 
 function App() {
   return (
