@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import LoginNav from "./LoginNav.css";
 import axios from "axios";
 
 const Home = () => {
@@ -28,6 +29,7 @@ const Home = () => {
 
   return (
     <div>
+      <LoginNav />
       <h2>사용자 정보</h2>
       {userData ? (
         <div>
