@@ -4,7 +4,7 @@ export const postRegisterEmailPasswordToServer = (registrationData) => {
   return async (dispatch) => {
     try {
       // 데이터를 서버에 보낼 엔드포인트 URL
-      const url = "http://localhost:8080/users/register";
+      const url = "http://localhost:8080/register";
 
       // 서버로 전송할 데이터와 요청 옵션 설정
       const requestOptions = {
