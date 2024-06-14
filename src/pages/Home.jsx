@@ -16,15 +16,11 @@ const Home = () => {
   const isGoogleClicked = useSelector(
     (state) => state.googleSignin.isGoogleClicked
   );
-  const googleUserData = useSelector(
-    (state) => state.googleSignin.googleUserData
-  );
 
   // 일반 로그인 state
   const isNormalLoginClicked = useSelector(
     (state) => state.signin.isNormalLoginClicked
   );
-  const normalUserData = useSelector((state) => state.signin.normalUserData);
 
   // 구글 유저 데이터 가져오기
   const fetchGoogleUserData = async () => {
@@ -66,11 +62,12 @@ const Home = () => {
           Authorization: `Bearer ${token}`,
         },
       });
-
       // 서버에서 받은 유저 데이터 저장
       dispatch(signinActions.setNormalUserData(response.data));
     } catch (error) {
       console.error("기본 로그인 사용자 정보를 받아오지 못했습니다");
+    } finally {
+      dispatch(signinActions.setIsLoading());
     }
   };
 
