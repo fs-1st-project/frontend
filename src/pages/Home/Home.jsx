@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import LoginNav from "./LoginNav.css";
 import axios from "axios";
 import { auth } from "../firebaseConfig"; // Firebase auth 객체 가져오기
 
@@ -40,7 +39,6 @@ const Home = () => {
 
   return (
     <div>
-      <LoginNav />
       <h2>사용자 정보</h2>
       {userData ? (
         <div>
