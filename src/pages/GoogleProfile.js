@@ -11,14 +11,6 @@ const ProfileComponent = ({ userData, loading }) => {
 
   return (
     <div>
-      {userData.profilePicture ? (
-        <img
-          src={`data:image/jpeg;base64,${userData.profilePicture}`}
-          alt="User Avatar"
-        />
-      ) : (
-        <p>No profile picture</p>
-      )}
       {userData.profileBackgroundPicture ? (
         <img
           src={`data:image/jpeg;base64,${userData.profileBackgroundPicture}`}
@@ -26,6 +18,14 @@ const ProfileComponent = ({ userData, loading }) => {
         />
       ) : (
         <p>No background picture</p>
+      )}
+      {userData.profilePicture ? (
+        <img
+          src={`data:image/jpeg;base64,${userData.profilePicture}`}
+          alt="User Avatar"
+        />
+      ) : (
+        <p>No profile picture</p>
       )}
       <h2> {userData.fullName}</h2>
       <p>{userData.introduction}</p>
