@@ -5,8 +5,18 @@ import { googleSigninActions } from "../store/googleSignin-slice";
 
 const Home = () => {
   const dispatch = useDispatch();
+
+  // 구글 로그인 state
+  const isGoogleClicked = useSelector(
+    (state) => state.googleSignin.isGoogleClicked
+  );
   const googleUserData = useSelector(
     (state) => state.googleSignin.googleUserData
+  );
+
+  // 일반 로그인 state
+  const isNormalLoginClicked = useSelector(
+    (state) => state.signin.isNormalLoginClicked
   );
 
   useEffect(() => {
