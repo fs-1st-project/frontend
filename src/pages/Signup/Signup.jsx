@@ -16,6 +16,7 @@ import {
   signInWithCustomToken,
 } from "firebase/auth";
 import { auth } from "../../firebaseConfig";
+import { googleSigninActions } from "../../store/googleSignin-slice";
 
 const Signup = () => {
   const [isChecked, setIsChecked] = useState(false);
@@ -63,7 +64,7 @@ const Signup = () => {
     // POST 호출 함수 후 성공 시 signin 페이지로 redirect
     dispatch(postRegisterEmailPasswordToServer(registrationData)).then(
       (success) => {
-        if (success == true) {
+        if (success === true) {
           navigate("/signin");
         } else {
           console.error("Registration failed");
@@ -75,6 +76,7 @@ const Signup = () => {
 
   const loginWithGoogle = async (e) => {
     e.preventDefault();
+    dispatch(googleSigninActions.setIsGoogleClicked());
 
     const provider = new GoogleAuthProvider();
 
@@ -136,7 +138,7 @@ const Signup = () => {
     <div className="signup-container">
       <main className="main-container">
         <div className="main-logo--container" onClick={() => navigate("/")}>
-          <img src="/LinkedIn-logo.png" className="main-logo" />
+          <img src="/LinkedIn-logo.png" className="main-logo" alt="main-logo" />
         </div>
         <h1 className="main-title">Make the most of your professional life</h1>
         <div className="container-wrap">
@@ -226,7 +228,7 @@ const Signup = () => {
                   onClick={loginWithGoogle}
                   className="google-login-button"
                 >
-                  <img src={google} className="google-logo" />
+                  <img src={google} className="google-logo" alt="google-logo" />
                   Continue with Google
                 </button>
               </div>
