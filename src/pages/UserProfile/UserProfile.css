@@ -78,9 +78,9 @@
 }
 
 .profile-introduce-card {
-  border: 1px solid #ffcc00;
   width: 756px;
   height: 119.5px;
+  padding: 14px 0px;
 }
 
 .userprofile-name-edu-box {
@@ -90,15 +90,13 @@
 }
 
 .userprofile-name {
-  border: 1px solid #ffcc00;
   width: 300px;
   height: 31.99px;
   font-size: 24px; /* 예시 폰트 크기 */
-  font-weight: bold;
+  font-weight: bolder;
 }
 
 .userprofile-edu-layout {
-  border: 1px solid #ffcc00;
   width: 232px;
   height: 32px;
   display: flex;
@@ -118,15 +116,17 @@
 }
 
 .userprofile-one-line-introduce {
-  border: 1px solid #ffcc00;
   width: 500px;
   height: 20px;
   font-size: 16px; /* 예시 폰트 크기 */
+  font-weight: bold;
+  padding: 3px 0px;
 }
 
 .userprofile-location-contact-box {
   display: flex; /* 가로로 요소들을 배열 */
   align-items: center;
+  padding: 10px 0px;
 }
 
 .userprofile-location,
@@ -142,10 +142,10 @@
 .userprofile-contact {
   font-size: 14px;
   color: #116ac3;
+  font-weight: bold;
 }
 
 .button-box {
-  border: 1px solid #ffcc00;
   display: flex;
   gap: 10px; /* 버튼 사이의 간격 설정 */
   padding: 10px 0px;
@@ -161,19 +161,25 @@
   display: inline-block;
   text-align: center;
   white-space: nowrap; /* 텍스트가 넘치면 줄바꿈 방지 */
+  font-size: 16px;
+  font-weight: bold;
+  padding: 6px 16px;
 }
 
 .first-button {
-  background-color: #f44336;
+  background-color: #0a66c2;
   color: white;
+  border: 1px solid #0a66c2;
 }
 
 .second-button {
-  background-color: #4caf50;
-  color: white;
+  background-color: white;
+  color: #0a66c2;
+  border: 1px solid #0a66c2;
 }
 
 .third-button {
-  background-color: #2196f3;
-  color: white;
+  background-color: white;
+  color: #000000bf;
+  border: 1px solid #000000bf;
 }

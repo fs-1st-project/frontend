@@ -45,8 +45,8 @@ const UserProfile = () => (
                     안녕하세요 어쩌구저쩌구입니다 잘부탁드립니다
                   </div>
                   <div className="userprofile-location-contact-box">
-                    <div className="userprofile-location">지역</div>
-                    <div className="userprofile-contact">contact</div>
+                    <div className="userprofile-location">South Korea</div>
+                    <div className="userprofile-contact">Contact info</div>
                   </div>
                   {/*버튼 만들기 */}
                   <div className="button-box">
