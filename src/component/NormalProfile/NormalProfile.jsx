@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import "../../pages/Home/Home.css";
 
 const NormalProfile = () => {
   const normalUserData = useSelector((state) => state.signin.normalUserData);
@@ -14,7 +15,7 @@ const NormalProfile = () => {
   }
 
   return (
-    <div>
+    <div className="home-body_profile">
       {normalUserData.profileBackgroundPicture ? (
         <img
           src={`data:image/jpeg;base64,${normalUserData.profileBackgroundPicture}`}

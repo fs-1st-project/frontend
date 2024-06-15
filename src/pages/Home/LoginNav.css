@@ -1,0 +1,102 @@
+.LoginNav {
+  height: 80px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 10px;
+  border-bottom: 1px solid #f4f4f2;
+  border-top: 1px solid #f4f4f2;
+}
+
+.LoginNav-menu_left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.LoginNav-logo img {
+  width: 40px;
+  margin-right: 10px;
+}
+
+.search_input {
+  width: 250px;
+  height: 30px;
+  border: 0px;
+  background-color: #edf3f9;
+}
+
+.LoginNav-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.LoginNav-menu_pages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.LoginNav-menu_click {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.LoginNav-menu_pages-icons {
+  width: 80px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.LoginNav-menu_pages-icons-click {
+  width: 30px;
+  height: 30px;
+  margin: 0 20px 0 20px;
+}
+
+.LoginNav-menu_pages-icons-click img {
+  width: 27px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.LoginNav-menu_font {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell,
+    "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+  text-align: center;
+}
+
+.verticla-loginLine-login {
+  margin: 10px 10px 0 10px;
+  height: 70px;
+  border-right: 1.3px solid #d8d8d8;
+}
+
+.LoginNav-menu_click {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 10px 0 10px;
+}
+
+.LoginNav-menu_click-font {
+  font-size: 13px;
+}
+
+.LoginNav-menu_click img {
+  width: 30px;
+  height: 30px;
+}

@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import "../../pages/Home/Home.css";
 
 const GoogleProfile = () => {
   const googleUserData = useSelector(
@@ -18,7 +19,7 @@ const GoogleProfile = () => {
   }
 
   return (
-    <div>
+    <div className="home-body_profile">
       {googleUserData.profileBackgroundPicture ? (
         <img
           src={`data:image/jpeg;base64,${googleUserData.profileBackgroundPicture}`}
