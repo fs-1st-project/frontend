@@ -26,7 +26,7 @@ const GoogleProfile = () => {
   }
 
   return (
-    <div className="Main">
+    <div>
       <div className="Main-profile">
         <div className="user-background-picture">
           {googleUserData.profileBackgroundPicture ? (
