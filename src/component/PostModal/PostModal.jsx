@@ -24,8 +24,13 @@ const PostModal = () => {
     <div className="overlays-post">
       <div className="post-modal-container">
         <div className="modal-top">
-          <div className="top-profile-picture"></div>
-          <div className="top-name">Jeongmin Choi</div>
+          <div className="top-picture-name-anyone">
+            <div className="top-profile-picture"></div>
+            <div className="name-anyone">
+              <div className="top-name">Jeongmin Choi</div>
+              <div className="top-anyone">Post to Anyone</div>
+            </div>
+          </div>
           <img
             className="top-exit-icon"
             src="exit.png"
