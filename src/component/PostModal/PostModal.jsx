@@ -34,15 +34,23 @@ const PostModal = () => {
           />
         </div>
         <div className="modal-middle--content">
-          <input
-            className="content-input"
+          <textarea
+            className="content-text"
             placeholder="What do you want to talk about?"
           />
         </div>
-        <div className="modal-bottom--content-icons"></div>
+        <img className="smile-icon" src="smile.png" alt="smile" />
+        <div className="modal-bottom--content-icons">
+          <img className="picture-icon" src="picture.png" alt="picture" />
+          <img className="calendar-icon" src="calendar.png" alt="calendar" />
+          <img className="plus-icon" src="plus.png" alt="plus" />
+        </div>
+        <div className="bottom-line-container">
+          <div className="bottom-line"></div>
+        </div>
         <div className="modal-bottom--footer">
-          <img />
-          <button>Post</button>
+          <img className="clock-icon" src="clock.png" alt="clock" />
+          <button className="post-button">Post</button>
         </div>
       </div>
     </div>,
