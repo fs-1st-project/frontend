@@ -33,6 +33,11 @@
   border-radius: 15px;
 }
 
+.update-write {
+  font-weight: 500;
+  color: rgb(86, 86, 86);
+}
+
 .container-first {
   width: 33rem;
   display: flex;

@@ -8,11 +8,10 @@ import NormalProfile from "../../component/NormalProfile/NormalProfile";
 import GoogleProfile from "../../component/GoogleProfile/GoogleProfile";
 import { auth } from "../../firebaseConfig"; // Firebase auth 객체 가져오기
 import "./Home.css";
-import media from "../../component/svg/media.svg";
-import event from "../../component/svg/event.svg";
-import write from "../../component/svg/write.svg";
 import vijay from "../../component/svg/vijay.jpeg";
 import LoginNav from "./LoginNav";
+import StartPost from "./StartPost";
+import PostModal from "../../component/PostModal/PostModal";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -99,38 +98,11 @@ const Home = () => {
 
   return (
     <div>
+      <PostModal />
       <LoginNav />
       <div className="home-body">
         {showComponentBySigninButton()}
-        <div className="home-body_middle">
-          <div className="home-body_middle_write">
-            <div className="home-body_middle_write-top">
-              <div className="home-body_middle_write-top-profile"></div>
-              <div className="home-body_middle_write-top-update">
-                <p className="update-write">Start a post</p>
-              </div>
-            </div>
-            <div className="home-body-middle_write-bottom">
-              <div className="home-body-middle_write-bottom-icons">
-                <img src={media} alt="media" />
-                <div className="middle-font">media</div>
-              </div>
-              <div className="home-body-middle_write-bottom-icons">
-                <img src={event} alt="event" />
-                <div className="middle-font">event</div>
-              </div>
-              <div className="home-body-middle_write-bottom-icons">
-                <img src={write} alt="write" />
-                <div className="middle-font">writing</div>
-              </div>
-            </div>
-          </div>
-          <div class="container-first">
-            <div class="line"></div>
-            <div class="or-text">Sort By: Top</div>
-          </div>
-          <div className="home-body_middle_post"></div>
-        </div>
+        <StartPost />
         <div className="followers">
           <div className="followers-title">Add to LinkedIn Home</div>
           <div className="followers-person">

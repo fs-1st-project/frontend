@@ -2,7 +2,7 @@ import React from "react";
 import "./Signin.css";
 import google from "../../component/svg/google-logo.png";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   postSigninEmailPasswordToServer,
@@ -40,7 +40,7 @@ const Signin = () => {
   const signinClickHandler = (e) => {
     e.preventDefault();
     dispatch(signinActions.setIsClicked());
-    
+
     // 비밀번호 6자 이하 또는 12자 이상 alert 띄우기
     if (password.trim().length < 6) {
       alert("비밀번호 6자 이상 입력이 필요합니다");
@@ -57,7 +57,7 @@ const Signin = () => {
     };
     dispatch(postSigninEmailPasswordToServer(signinData)).then((success) => {
       if (success === true) {
-        navigate("/home");
+        history.push("/home");
       } else {
         console.error("Sign in failed");
         alert("아이디나 패스워드가 일치하지 않습니다.");
@@ -90,7 +90,7 @@ const Signin = () => {
 
       setTokenRefreshInterval();
 
-      navigate("/home");
+      history.push("/home");
     } catch (error) {
       console.error("Error during authentication", error);
     }
