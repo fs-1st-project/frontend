@@ -3,6 +3,7 @@ import React from "react";
 import LoginNav from "../Home/LoginNav";
 import "./UserProfile.css";
 import education from "./education.svg";
+import pencil from "./pencil.svg";
 
 const UserProfile = () => (
   <div>
@@ -31,6 +32,12 @@ const UserProfile = () => (
               </div>
               {/*이름/한줄소개 등*/}
               <div className="profile-layout-introduce">
+                <div className="profile-artdeco-button">
+                  <button>
+                    <img src={pencil} alt="Edit" />
+                  </button>
+                </div>
+
                 <div className="profile-introduce-card">
                   <div className="userprofile-name-edu-box">
                     <div className="userprofile-name">김연희</div>
@@ -38,7 +45,7 @@ const UserProfile = () => (
                       <div className="userprofile-edu-icon">
                         <img src={education} alt="education" />
                       </div>
-                      <div className="userprofile-edu-text">에듀케이션</div>
+                      <div className="userprofile-edu-text">education</div>
                     </div>
                   </div>
                   <div className="userprofile-one-line-introduce">
@@ -56,6 +63,78 @@ const UserProfile = () => (
                     </button>
                     <button className="third-button">More</button>
                   </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="suggest-for-you">
+              <div className="suggest-box-1">
+                <div className="suggest-box-1-text">suggest for you</div>
+                <div className="suggest-box-1-private">private to you</div>
+              </div>
+              <div className="suggest-box-2">
+                <div className="suggest-box-2-text">Intermediate</div>
+                <div className="suggest-box-line"></div>
+                <div className="suggest-box-2-allstar">
+                  Complete 3 steps to achieve All-star
+                </div>
+              </div>
+              <div className="suggest-box-first-and-two">
+                <div className="suggest-box-first">
+                  <div className="suggest-box-first-text-1">
+                    Where are you located?
+                  </div>
+
+                  <div className="suggest-box-first-text-2">
+                    Members who include a postal code location receive up to 70%
+                    as many profile views.
+                  </div>
+                  <button className="third-button button-default">
+                    Add Location
+                  </button>
+                </div>
+                <div className="suggest-box-two">
+                  <div className="suggest-box-two-text-1">
+                    Write a summary to highlight your personality or work
+                    experience
+                  </div>
+
+                  <div className="suggest-box-two-text-2">
+                    Members who include a summary receive up to 3.9 times as
+                    many profile views.
+                  </div>
+                  <button className="third-button button-default">
+                    Add a summary
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="suggest-for-you Analytics">
+              <div className="suggest-box-1 Analytics-box-1">
+                <div className="suggest-box-1-text Analytics-box-1-text">
+                  Analytics
+                </div>
+                <div className="suggest-box-1-private Analytics-box-1-private">
+                  private to you
+                </div>
+              </div>
+              <div className="Analytics-box-first-and-two"></div>
+            </div>
+            <div className="suggest-for-you Resources">
+              <div className="suggest-box-1 Resources-box-1">
+                <div className="suggest-box-1-text Resources-box-1-text">
+                  Resources
+                </div>
+                <div className="suggest-box-1-private Resources-box-1-private">
+                  private to you
+                </div>
+              </div>
+            </div>
+            <div className="suggest-for-you Activity">
+              <div className="suggest-box-1 Activity-box-1">
+                <div className="suggest-box-1-text Activity-box-1-text">
+                  Activity
                 </div>
               </div>
             </div>
