@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   postRegisterEmailPasswordToServer,
   signupActions,
-} from "../../store/signup-slice";
+} from "../../store/reducer/signup-slice";
 
 import axios from "axios";
 import {
@@ -16,7 +16,7 @@ import {
   signInWithCustomToken,
 } from "firebase/auth";
 import { auth } from "../../firebaseConfig";
-import { googleSigninActions } from "../../store/googleSignin-slice";
+import { googleSigninActions } from "../../store/reducer/googleSignin-slice";
 
 const Signup = () => {
   const [isChecked, setIsChecked] = useState(false);

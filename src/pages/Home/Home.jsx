@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { googleSigninActions } from "../../store/googleSignin-slice";
+import { googleSigninActions } from "../../store/reducer/googleSignin-slice";
 import { useNavigate } from "react-router-dom";
-import { signinActions } from "../../store/signin-slice";
+import { signinActions } from "../../store/reducer/signin-slice";
 import NormalProfile from "../../component/NormalProfile/NormalProfile";
 import GoogleProfile from "../../component/GoogleProfile/GoogleProfile";
 import { auth } from "../../firebaseConfig"; // Firebase auth 객체 가져오기

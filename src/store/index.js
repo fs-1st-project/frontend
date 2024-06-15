@@ -1,16 +1,26 @@
 import { configureStore } from "@reduxjs/toolkit";
-import signupSlice from "./signup-slice";
-import signinSlice from "./signin-slice";
-import googleSigninSlice from "./googleSignin-slice";
-import postModalSlice from "./postModal-slice";
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
-const store = configureStore({
-  reducer: {
-    signup: signupSlice.reducer,
-    signin: signinSlice.reducer,
-    googleSignin: googleSigninSlice.reducer,
-    postModal: postModalSlice.reducer,
-  },
+import rootReducer from "./reducer";
+
+const persistConfig = {
+  key: "root",
+  storage,
+};
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+export const store = configureStore({
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: ["persist/PERSIST", "persist/REHYDRATE"],
+        ignoredActionPaths: ["register", "rehydrate"],
+        ignoredPaths: ["_persist"],
+      },
+    }),
 });
 
-export default store;
+export const persistor = persistStore(store);

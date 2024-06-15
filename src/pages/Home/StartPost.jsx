@@ -6,7 +6,7 @@ import write from "../../component/svg/write.svg";
 
 import "./Home.css";
 import { useDispatch } from "react-redux";
-import { postModalActions } from "../../store/postModal-slice";
+import { postModalActions } from "../../store/reducer/postModal-slice";
 
 const StartPost = () => {
   const dispatch = useDispatch();

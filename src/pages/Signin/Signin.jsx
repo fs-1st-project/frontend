@@ -2,12 +2,12 @@ import React from "react";
 import "./Signin.css";
 import google from "../../component/svg/google-logo.png";
 
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   postSigninEmailPasswordToServer,
   signinActions,
-} from "../../store/signin-slice";
+} from "../../store/reducer/signin-slice";
 
 import axios from "axios";
 import {
@@ -16,7 +16,7 @@ import {
   signInWithCustomToken,
 } from "firebase/auth";
 import { auth } from "../../firebaseConfig";
-import { googleSigninActions } from "../../store/googleSignin-slice";
+import { googleSigninActions } from "../../store/reducer/googleSignin-slice";
 
 const Signin = () => {
   const email = useSelector((state) => state.signin.email);
@@ -57,7 +57,7 @@ const Signin = () => {
     };
     dispatch(postSigninEmailPasswordToServer(signinData)).then((success) => {
       if (success === true) {
-        history.push("/home");
+        navigate("/home");
       } else {
         console.error("Sign in failed");
         alert("아이디나 패스워드가 일치하지 않습니다.");
@@ -90,7 +90,7 @@ const Signin = () => {
 
       setTokenRefreshInterval();
 
-      history.push("/home");
+      navigate("/home");
     } catch (error) {
       console.error("Error during authentication", error);
     }

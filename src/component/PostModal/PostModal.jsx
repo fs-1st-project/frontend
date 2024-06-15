@@ -3,7 +3,7 @@ import { createPortal } from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import "./PostModal.css";
-import { postModalActions } from "../../store/postModal-slice";
+import { postModalActions } from "../../store/reducer/postModal-slice";
 
 const PostModal = () => {
   const isStartPostOpen = useSelector(

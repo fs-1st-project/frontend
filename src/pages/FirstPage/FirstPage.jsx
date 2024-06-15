@@ -17,8 +17,8 @@ import { auth } from "../../firebaseConfig";
 import {
   postSigninEmailPasswordToServer,
   signinActions,
-} from "../../store/signin-slice";
-import { googleSigninActions } from "../../store/googleSignin-slice";
+} from "../../store/reducer/signin-slice";
+import { googleSigninActions } from "../../store/reducer/googleSignin-slice";
 
 const FirstPage = () => {
   const navigate = useNavigate();
