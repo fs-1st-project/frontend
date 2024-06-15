@@ -1,0 +1,378 @@
+.home-body {
+  width: 100vw;
+  height: auto;
+  background-color: #f4f2ee;
+  display: flex;
+  justify-content: center;
+}
+
+.user-content-layout {
+  width: 1262.4px;
+  height: 1955.5px;
+}
+.user-content-body {
+  width: 1128px;
+  height: 1955.5px;
+}
+
+.user-content-body-align {
+  display: flex;
+  gap: 20px; /* main과 aside 사이의 간격 설정 */
+}
+.scaffold-layout-main {
+  width: 804px;
+  height: 1955.5px;
+  padding: 20px 0px;
+}
+
+/*여기 보더라인 크기 좀 !!!!!!!!!!1*/
+.profile-layout {
+  border: 1px solid #e6e5e1;
+  width: 804px;
+  height: auto;
+  position: relative;
+  border-radius: 10px;
+}
+
+.profile-layout-background-picture {
+  width: 804px;
+  height: 201px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.profile-layout-background-picture .userprofile-background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-layout-user-picture {
+  position: absolute;
+  border: 4px solid rgb(255, 255, 255);
+  border-radius: 50%;
+  width: 152px;
+  height: 152px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -36px;
+  left: 24px;
+  top: 130px;
+  z-index: 2;
+}
+
+.profile-layout-user-picture .userprofile-picture-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.profile-layout-introduce {
+  width: 756px;
+  height: 180.49px;
+  background-color: white;
+  position: relative;
+  z-index: 1;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 30px 24px 24px;
+}
+
+.profile-artdeco-button {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.profile-artdeco-button button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-right: 8px;
+}
+
+.profile-artdeco-button button img {
+  width: 24px;
+  height: 24px;
+}
+
+.profile-introduce-card {
+  width: 756px;
+  height: 119.5px;
+  padding: 14px 0px;
+}
+
+.userprofile-name-edu-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.userprofile-name {
+  width: 300px;
+  height: 31.99px;
+  font-size: 24px;
+  font-weight: bolder;
+}
+
+.userprofile-edu-layout {
+  width: 232px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+}
+
+.userprofile-edu-icon {
+  margin-right: 8px;
+}
+
+.userprofile-edu-icon img {
+  width: 32px;
+  height: 32px;
+}
+.userprofile-edu-text {
+  font-size: 14px;
+}
+
+.userprofile-one-line-introduce {
+  width: 500px;
+  height: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 3px 0px;
+}
+
+.userprofile-location-contact-box {
+  display: flex;
+  align-items: center;
+  padding: 10px 0px;
+}
+
+.userprofile-location,
+.userprofile-contact {
+  margin-right: 16px;
+}
+
+.userprofile-location {
+  font-size: 14px;
+  color: #00000099;
+}
+
+.userprofile-contact {
+  font-size: 14px;
+  color: #116ac3;
+  font-weight: bold;
+}
+
+.button-box {
+  display: flex;
+  gap: 10px;
+  padding: 10px 0px;
+}
+
+.first-button,
+.second-button,
+.third-button {
+  border-radius: 20px;
+  min-width: 94px;
+  height: 32px;
+  padding: 0 12px;
+  display: inline-block;
+  text-align: center;
+  white-space: nowrap;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 6px 16px;
+  cursor: pointer;
+}
+
+.first-button {
+  background-color: #0a66c2;
+  color: white;
+  border: 1px solid #0a66c2;
+}
+
+.second-button {
+  background-color: white;
+  color: #0a66c2;
+  border: 1px solid #0a66c2;
+}
+
+.third-button {
+  background-color: white;
+  color: #000000bf;
+  border: 1px solid #000000bf;
+}
+
+.suggest-for-you {
+  border: 1px solid #e6e5e1;
+  width: 804px;
+  height: auto;
+  border-radius: 10px;
+  margin-top: 10px;
+  background-color: white;
+}
+
+.suggest-box-1,
+.suggest-box-2 {
+  padding: 12px 12px 0px;
+}
+
+.suggest-box-1-text,
+.suggest-box-2-text {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.suggest-box-line {
+  border: 1px solid #e6e5e1;
+  background-color: rgb(160, 160, 160);
+  padding: 5px 0px;
+  border-radius: 10px;
+  width: 731px;
+}
+
+.suggest-box-first-and-two {
+  padding: 12px 25px 20px;
+  display: flex;
+  gap: 16px;
+}
+
+.suggest-box-first,
+.suggest-box-two {
+  border: 1px solid #e6e5e1;
+  background-color: #f8fafd;
+  padding: 12px 32px 12px 12px;
+  border-radius: 10px;
+  width: 320px;
+  height: 191.18px;
+}
+
+.suggest-box-first-text-1,
+.suggest-box-two-text-1 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.suggest-box-first-text-2,
+.suggest-box-two-text-2 {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.suggest-box-first-text-2 {
+  margin-bottom: 80px;
+}
+
+.suggest-box-two-text-2 {
+  margin-bottom: 60px;
+}
+
+.activity-box-align {
+  display: flex;
+  align-items: center; /* 수직 가운데 정렬 */
+  gap: 450px; /* 요소들 사이의 간격 설정 */
+}
+
+.Activity-parent-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.Activity-box-2 {
+  display: flex;
+  align-items: center;
+  padding: 12px 12px 0px;
+  margin-left: 8px;
+}
+
+.Activity-button-default {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  white-space: nowrap;
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 10px;
+  border-radius: 20px;
+  min-width: 94px;
+  height: 32px;
+  padding: 6px 16px;
+  cursor: pointer;
+  background-color: white;
+  color: #0a66c2;
+  border: 1px solid #0a66c2;
+}
+
+.Activity-pencil-default {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.Activity-pencil-default button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.Activity-pencil-default button img {
+  width: 24px;
+  height: 24px;
+}
+
+.Activity-written-post {
+  margin-top: 20px;
+  padding: 0px 24px 10px;
+}
+.Activity-written-post-user {
+  display: flex;
+  align-items: center; /* 수직 가운데 정렬 */
+  gap: 8px; /* 요소들 사이의 간격 설정 */
+}
+
+.Activity-written-post-user-name,
+.Activity-written-post-user-createdAt {
+  /* 스타일을 추가할 수 있음 */
+  font-size: 12px;
+}
+
+.Activity-written-post-content {
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.scaffold-layout-aside {
+  width: 300px;
+  height: 161.78px;
+}
+
+.profile-info-section {
+  margin-top: 20px;
+}
+.aside-box {
+  border: 1px solid #e6e5e1;
+  background-color: white;
+  margin: 0px 0px 8px 10px;
+  padding: 16px;
+  border-radius: 10px;
+  width: 320px;
+  height: 550.78px;
+}
+
+.followers-person {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  width: 15rem;
+  height: 25rem;
+  margin-top: 10px;
+}
+
+.new-user-add {
+  width: 300px;
+  height: 120px;
+}
