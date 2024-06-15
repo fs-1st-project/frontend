@@ -62,21 +62,19 @@ const PostModal = () => {
   // post 버튼 눌렀을 때
   const clickPostHandler = (e) => {
     e.preventDefault();
-    console.log(imgContent, "이미지 컨텐츠 내용이다!");
-    console.log(postContent, "포스트컨텐츠 내용!");
     dispatch(createPostToServer(postContent, imgContent));
   };
 
   // post textarea에 쓰여진 글씨가 1글자 이상일 때와 아닐 때 구분
   const postButton = () => {
     if (postContent.trim().length > 1) {
-      return <button className="post-button-able">Post</button>;
-    } else {
       return (
-        <button className="post-button-disable" onClick={clickPostHandler}>
+        <button className="post-button-able" onClick={clickPostHandler}>
           Post
         </button>
       );
+    } else {
+      return <button className="post-button-disable">Post</button>;
     }
   };
 
