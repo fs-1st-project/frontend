@@ -33,9 +33,14 @@ const GoogleProfile = () => {
             <img
               src={`data:image/jpeg;base64,${googleUserData.profileBackgroundPicture}`}
               alt="User Background"
+              className="background-image"
             />
           ) : (
-            <p>No background picture</p>
+            <img
+              src="https://th.bing.com/th/id/R.482217a0290b9a99687f84df3bc52dcf?rik=bzq1HZD3Qi1EOA&riu=http%3a%2f%2fdata.1freewallpapers.com%2fdownload%2fdream-house.jpg&ehk=JNLcBFl%2fLmMeKee508BFM6WcARgKV1MO4dIkrJsmasQ%3d&risl=&pid=ImgRaw&r=0"
+              alt="Default Background"
+              className="background-image"
+            />
           )}
         </div>
 
@@ -46,7 +51,11 @@ const GoogleProfile = () => {
               alt="User Avatar"
             />
           ) : (
-            <p>No profile picture</p>
+            <img
+              src="https://cdn-lostark.game.onstove.com/uploadfiles/user/2021/04/06/637533445557572173.png"
+              alt="Default user-picture"
+              className="picture-image"
+            />
           )}
         </div>
 

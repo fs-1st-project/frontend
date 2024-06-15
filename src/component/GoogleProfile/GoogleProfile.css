@@ -1,27 +1,49 @@
+.Main {
+  background-color: antiquewhite;
+}
+
 .Main-profile {
-  border: 1px solid black;
+  background-color: white;
   width: 225px;
   height: 220px;
   margin: 0px 0px 8px;
   padding: 0px 0px 16px;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .user-background-picture {
-  border: 1px solid black;
   width: 225px;
   height: 58px;
-  border-radius: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  overflow: hidden;
+}
+
+.user-background-picture .background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .user-picture {
-  border: 1px solid black;
+  border: 2px solid rgb(255, 255, 255);
   width: 72px;
   height: 72px;
   border-radius: 50%;
   display: flex;
-  justify-content: center; /* 수평 가운데 정렬 */
-  align-items: center; /* 수직 가운데 정렬 */
+  justify-content: center;
+  align-items: center;
+  margin-top: -36px;
+}
+
+.user-picture .picture-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .user-descript-box {
@@ -29,18 +51,23 @@
   height: 59px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
+  align-items: center; /* 수평 중앙 정렬 */
+  justify-content: center; /* 수직 중앙 정렬 */
 }
 
 .user-name {
   width: 193px;
   height: 26px;
   font-size: 20px;
+  font-weight: bolder;
+  text-align: center;
+  margin: 20px 0px 0px;
 }
 
 .user-introduction {
   width: 193px;
   height: 23px;
   font-size: 17px;
+  text-align: center;
+  margin: 10px 0px 0px;
 }
