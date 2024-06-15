@@ -1,5 +1,39 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+export const createPostToServer = (postContent) => {
+  return async (dispatch) => {
+    try {
+      const url = "http://localhost:8080/post/create";
+
+      const token = localStorage.getItem("token");
+
+      const requestOptions = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          content: postContent,
+          image: null,
+          created_at: new Date(),
+        }),
+      };
+
+      const response = await fetch(url, requestOptions);
+
+      if (!response.ok) {
+        throw new Error("새 게시글 작성 POST 서버 응답 실패");
+      }
+
+      return true;
+    } catch (error) {
+      console.error("새 게시글 POST 요청 중 에러 발생:", error);
+      return false;
+    }
+  };
+};
+
 const postModalSlice = createSlice({
   name: "postModal",
   initialState: {

@@ -1,21 +1,32 @@
-import React from "react";
+import React, { useRef } from "react";
 import { createPortal } from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import "./PostModal.css";
-import { postModalActions } from "../../store/reducer/postModal-slice";
+import {
+  createPostToServer,
+  postModalActions,
+} from "../../store/reducer/postModal-slice";
 
 const PostModal = () => {
   const dispatch = useDispatch();
+  const imgFileInputRef = useRef(null);
+
+  // modal slice states
   const isStartPostOpen = useSelector(
     (state) => state.postModal.isStartPostOpen
   );
   const postContent = useSelector((state) => state.postModal.postContent);
+
+  // 구글 유저 데이터
   const googleUserData = useSelector(
     (state) => state.googleSignin.googleUserData
   );
+
+  // 일반 유저 데이터
   const normalUserData = useSelector((state) => state.signin.normalUserData);
 
+// X 아이콘 눌렀을 때
   const clickExitHandler = (e) => {
     e.preventDefault();
 
@@ -23,16 +34,41 @@ const PostModal = () => {
     dispatch(postModalActions.setIsStartPostOpen());
   };
 
+  // 게시글 content를 쓰는 textarea에 변화가 생겼을 때
   const writePostContentHandler = (e) => {
     const postContent = e.target.value;
     dispatch(postModalActions.setPostContent(postContent));
   };
 
+  // 이미지 파일을 업로드 하기 위해 사진 모양의 아이콘 눌렀을 때
+  const imgFileUploadClickHandler = () => {
+    imgFileInputRef.current.click();
+  };
+
+  // 이미지 파일을 올렸을 때
+  const handleImgFileChange = (e) => {
+    const imgFile = e.target.files[0];
+    if (imgFile) {
+      console.log(imgFile, "이미지 파일 올라왔다");
+    }
+  };
+
+  // post 버튼 눌렀을 때
+  const clickPostHandler = (e) => {
+    e.preventDefault();
+    dispatch(createPostToServer(postContent));
+  };
+
+  // post textarea에 쓰여진 글씨가 1글자 이상일 때와 아닐 때 구분
   const postButton = () => {
     if (postContent.trim().length > 1) {
       return <button className="post-button-able">Post</button>;
     } else {
-      return <button className="post-button-disable">Post</button>;
+      return (
+        <button className="post-button-disable" onClick={clickPostHandler}>
+          Post
+        </button>
+      );
     }
   };
 
@@ -79,7 +115,22 @@ const PostModal = () => {
         </div>
         <img className="smile-icon" src="smile.png" alt="smile" />
         <div className="modal-bottom--content-icons">
-          <img className="picture-icon" src="picture.png" alt="picture" />
+          <div className="upload-imgContent-container">
+            <label
+              htmlFor="img-file-input"
+              className="picture-icon"
+              onClick={imgFileUploadClickHandler}
+            >
+              <img src="picture.png" alt="picture" />
+            </label>
+            <input
+              className="img-file-input"
+              type="file"
+              style={{ display: "none" }}
+              ref={imgFileInputRef}
+              onChange={handleImgFileChange}
+            />
+          </div>
           <img className="calendar-icon" src="calendar.png" alt="calendar" />
           <img className="plus-icon" src="plus.png" alt="plus" />
         </div>

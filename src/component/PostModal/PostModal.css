@@ -127,6 +127,10 @@
   cursor: pointer;
 }
 
+.upload-imgContent-container {
+  margin-top: 5px;
+}
+
 .bottom-line-container {
   height: 1px;
 }
