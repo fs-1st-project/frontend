@@ -6,10 +6,14 @@ import "./PostModal.css";
 import { postModalActions } from "../../store/reducer/postModal-slice";
 
 const PostModal = () => {
+  const dispatch = useDispatch();
   const isStartPostOpen = useSelector(
     (state) => state.postModal.isStartPostOpen
   );
-  const dispatch = useDispatch();
+  const googleUserData = useSelector(
+    (state) => state.googleSignin.googleUserData
+  );
+  const normalUserData = useSelector((state) => state.signin.normalUserData);
 
   const clickExitHandler = (e) => {
     e.preventDefault();
@@ -25,9 +29,23 @@ const PostModal = () => {
       <div className="post-modal-container">
         <div className="modal-top">
           <div className="top-picture-name-anyone">
-            <div className="top-profile-picture"></div>
+            <div className="top-profile-picture">
+              {googleUserData ? (
+                <img
+                  src={`data:image/jpeg;base64,${googleUserData.profilePicture}`}
+                />
+              ) : (
+                <img
+                  src={`data:image/jpeg;base64,${normalUserData.profilePicture}`}
+                />
+              )}
+            </div>
             <div className="name-anyone">
-              <div className="top-name">Jeongmin Choi</div>
+              <div className="top-name">
+                {googleUserData
+                  ? googleUserData.fullName
+                  : normalUserData.fullName}
+              </div>
               <div className="top-anyone">Post to Anyone</div>
             </div>
           </div>
