@@ -23,8 +23,8 @@ export const postSigninEmailPasswordToServer = (signinData) => {
 
       // 로그인 성공 시, 로컬 스토리지에 토큰 저장
       const responseData = await response.json();
-
       localStorage.setItem("token", responseData.token);
+
       return true;
     } catch (error) {
       console.error("로그인 이메일,패스워드 post 요청 중 에러 발생:", error);
@@ -38,6 +38,9 @@ const signinSlice = createSlice({
   initialState: {
     email: "",
     password: "",
+    isNormalLoginClicked: false,
+    normalUserData: null,
+    isLoading: true,
   },
   reducers: {
     setEmail(state, action) {
@@ -45,6 +48,15 @@ const signinSlice = createSlice({
     },
     setPassword(state, action) {
       state.password = action.payload;
+    },
+    setIsClicked(state, action) {
+      state.isNormalLoginClicked = true;
+    },
+    setNormalUserData(state, action) {
+      state.normalUserData = action.payload;
+    },
+    setIsLoading(state, action) {
+      state.isLoading = false;
     },
   },
 });

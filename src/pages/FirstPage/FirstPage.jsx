@@ -2,26 +2,32 @@ import React from "react";
 import NavBar from "../../component/NavBar";
 import "./FirstPage.css";
 import google from "../../component/google-logo.png";
+
 import { Link, useNavigate } from "react-router-dom";
-import "./FirstPage.css";
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
+
+import axios from "axios";
 import {
   signInWithPopup,
   GoogleAuthProvider,
   signInWithCustomToken,
 } from "firebase/auth";
+import { auth } from "../../firebaseConfig";
+
 import {
   postSigninEmailPasswordToServer,
   signinActions,
 } from "../../store/signin-slice";
-import { auth } from "../../firebaseConfig";
+import { googleSigninActions } from "../../store/googleSignin-slice";
 
 const FirstPage = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const email = useSelector((state) => state.signin.email);
   const password = useSelector((state) => state.signin.password);
-  const dispatch = useDispatch();
+  const isNormalLoginClicked = useSelector(
+    (state) => state.signin.isNormalLoginClicked
+  );
 
   // slice의 이메일 상태값 변경하는 함수
   const emailInputChangeHandler = (e) => {
@@ -38,6 +44,8 @@ const FirstPage = () => {
   // sign in 버튼 눌렀을 때 핸들
   const signinClickHandler = (e) => {
     e.preventDefault();
+    dispatch(signinActions.setIsClicked());
+
     // 비밀번호 6자 이하 또는 12자 이상 alert 띄우기
     if (password.trim().length < 6) {
       alert("비밀번호 6자 이상 입력이 필요합니다");
@@ -53,7 +61,7 @@ const FirstPage = () => {
       password,
     };
     dispatch(postSigninEmailPasswordToServer(signinData)).then((success) => {
-      if (success == true) {
+      if (success === true) {
         navigate("/home");
       } else {
         console.error("Sign in failed");
@@ -64,6 +72,8 @@ const FirstPage = () => {
 
   const loginWithGoogle = async (e) => {
     e.preventDefault();
+    dispatch(googleSigninActions.setIsGoogleClicked());
+
     const provider = new GoogleAuthProvider();
 
     try {
@@ -134,7 +144,7 @@ const FirstPage = () => {
                   className="button-google-first"
                   onClick={loginWithGoogle}
                 >
-                  <img src={google} className="google-logo" />
+                  <img src={google} className="google-logo" alt="google-logo" />
                   Continue with Google
                 </button>
               </div>
