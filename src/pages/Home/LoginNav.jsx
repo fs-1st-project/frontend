@@ -1,11 +1,11 @@
 import React from "react";
-import home from "../../component/home.svg";
-import person from "../../component/person.svg";
-import Recruitmentnotice from "../../component/Recruitmentnotice.svg";
-import alarm from "../../component/alarm.svg";
-import message from "../../component/message.svg";
-import menu from "../../component/menu.svg";
-import logo from "../../component/LinkedIn_login_logo.png";
+import home from "../../component/svg/home.svg";
+import person from "../../component/svg/person.svg";
+import Recruitmentnotice from "../../component/svg/Recruitmentnotice.svg";
+import alarm from "../../component/svg/alarm.svg";
+import message from "../../component/svg/message.svg"
+import menu from "../../component/svg/menu.svg";
+import logo from "../../component/svg/LinkedIn_login_logo.png";
 
 import "./LoginNav.css";
 

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import "./Signup.css";
-import google from "../../component/google-logo.png";
+import google from "../../component/svg/google-logo.png";
 import { useDispatch, useSelector } from "react-redux";
 import {
   postRegisterEmailPasswordToServer,

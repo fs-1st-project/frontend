@@ -8,10 +8,10 @@ import NormalProfile from "../../component/NormalProfile/NormalProfile";
 import GoogleProfile from "../../component/GoogleProfile/GoogleProfile";
 import { auth } from "../../firebaseConfig"; // Firebase auth 객체 가져오기
 import "./Home.css";
-import media from "../../component/media.svg";
-import event from "../../component/event.svg";
-import write from "../../component/write.svg";
-import vijay from "../../component/vijay.jpeg";
+import media from "../../component/svg/media.svg";
+import event from "../../component/svg/event.svg";
+import write from "../../component/svg/write.svg";
+import vijay from "../../component/svg/vijay.jpeg";
 import LoginNav from "./LoginNav";
 
 const Home = () => {
@@ -106,11 +106,9 @@ const Home = () => {
           <div className="home-body_middle_write">
             <div className="home-body_middle_write-top">
               <div className="home-body_middle_write-top-profile"></div>
-              <input
-                className="home-body_middle_write-top-update"
-                type="input"
-                placeholder="Update Write"
-              />
+              <div className="home-body_middle_write-top-update">
+                <p className="update-write">업데이트 쓰기</p>
+              </div>
             </div>
             <div className="home-body-middle_write-bottom">
               <div className="home-body-middle_write-bottom-icons">

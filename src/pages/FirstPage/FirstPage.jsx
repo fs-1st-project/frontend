@@ -1,7 +1,7 @@
 import React from "react";
 import NavBar from "../../component/NavBar";
 import "./FirstPage.css";
-import google from "../../component/google-logo.png";
+import google from "../../component/svg/google-logo.png";
 
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
