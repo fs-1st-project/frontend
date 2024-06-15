@@ -40,6 +40,7 @@ const signinSlice = createSlice({
     password: "",
     isNormalLoginClicked: false,
     normalUserData: null,
+    isLoading: true,
   },
   reducers: {
     setEmail(state, action) {
@@ -53,6 +54,9 @@ const signinSlice = createSlice({
     },
     setNormalUserData(state, action) {
       state.normalUserData = action.payload;
+    },
+    setIsLoading(state, action) {
+      state.isLoading = false;
     },
   },
 });

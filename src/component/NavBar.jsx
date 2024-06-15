@@ -5,6 +5,7 @@ import person from "./person.svg";
 import onlineclass from "./onlineclass.svg";
 import Recruitmentnotice from "./Recruitmentnotice.svg";
 import game from "./game.svg";
+
 import "./NavBar.css";
 
 const NavBar = () => {
