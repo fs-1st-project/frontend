@@ -2,7 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import "../../pages/Home/Home.css";
 import "./GoogleProfile.css";
-import { Link } from "react-router-dom";
+import UserProfile from "../../pages/UserProfile/UserProfile";
+import { Route, Link } from "react-router-dom";
 
 const GoogleProfile = () => {
   const googleUserData = useSelector(

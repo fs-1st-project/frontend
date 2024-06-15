@@ -1,0 +1,179 @@
+.home-body {
+  width: 100vw;
+  height: 100vh;
+  background-color: #f4f2ee;
+  display: flex;
+  justify-content: center;
+}
+
+.user-content-layout {
+  width: 1262.4px;
+  height: 1955.5px;
+}
+.user-content-body {
+  width: 1128px;
+  height: 1955.5px;
+}
+
+.scaffold-layout-main {
+  width: 804px;
+  height: 1955.5px;
+}
+
+.profile-layout {
+  border: 1px solid #e6e5e1;
+  width: 804px;
+  height: 414.49px;
+  position: relative;
+  border-radius: 10px;
+}
+
+.profile-layout-background-picture {
+  width: 804px;
+  height: 201px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.profile-layout-background-picture .userprofile-background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-layout-user-picture {
+  position: absolute;
+  border: 4px solid rgb(255, 255, 255);
+  border-radius: 50%;
+  width: 152px;
+  height: 152px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -36px;
+  left: 24px;
+  top: 125px;
+  z-index: 2;
+}
+
+.profile-layout-user-picture .userprofile-picture-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.profile-layout-introduce {
+  width: 756px;
+  height: 163.49px;
+  background-color: white;
+  position: relative;
+  z-index: 1;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 50px 24px 24px;
+}
+
+.profile-introduce-card {
+  border: 1px solid #ffcc00;
+  width: 756px;
+  height: 119.5px;
+}
+
+.userprofile-name-edu-box {
+  display: flex;
+  align-items: center; /* 수직 가운데 정렬 */
+  justify-content: space-between;
+}
+
+.userprofile-name {
+  border: 1px solid #ffcc00;
+  width: 300px;
+  height: 31.99px;
+  font-size: 24px; /* 예시 폰트 크기 */
+  font-weight: bold;
+}
+
+.userprofile-edu-layout {
+  border: 1px solid #ffcc00;
+  width: 232px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+}
+
+.userprofile-edu-icon {
+  margin-right: 8px;
+}
+
+.userprofile-edu-icon img {
+  width: 32px;
+  height: 32px;
+}
+.userprofile-edu-text {
+  font-size: 14px;
+}
+
+.userprofile-one-line-introduce {
+  border: 1px solid #ffcc00;
+  width: 500px;
+  height: 20px;
+  font-size: 16px; /* 예시 폰트 크기 */
+}
+
+.userprofile-location-contact-box {
+  display: flex; /* 가로로 요소들을 배열 */
+  align-items: center;
+}
+
+.userprofile-location,
+.userprofile-contact {
+  margin-right: 16px; /* 요소들 사이의 간격 설정 */
+}
+
+.userprofile-location {
+  font-size: 14px;
+  color: #00000099;
+}
+
+.userprofile-contact {
+  font-size: 14px;
+  color: #116ac3;
+}
+
+.button-box {
+  border: 1px solid #ffcc00;
+  display: flex;
+  gap: 10px; /* 버튼 사이의 간격 설정 */
+  padding: 10px 0px;
+}
+
+.first-button,
+.second-button,
+.third-button {
+  border-radius: 20px;
+  min-width: 94px;
+  height: 32px;
+  padding: 0 12px;
+  display: inline-block;
+  text-align: center;
+  white-space: nowrap; /* 텍스트가 넘치면 줄바꿈 방지 */
+}
+
+.first-button {
+  background-color: #f44336;
+  color: white;
+}
+
+.second-button {
+  background-color: #4caf50;
+  color: white;
+}
+
+.third-button {
+  background-color: #2196f3;
+  color: white;
+}
