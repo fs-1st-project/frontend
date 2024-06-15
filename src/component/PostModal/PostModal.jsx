@@ -12,11 +12,12 @@ const PostModal = () => {
   const dispatch = useDispatch();
   const imgFileInputRef = useRef(null);
 
-  // modal slice states
+  // 모달 상태들
   const isStartPostOpen = useSelector(
     (state) => state.postModal.isStartPostOpen
   );
   const postContent = useSelector((state) => state.postModal.postContent);
+  const imgContent = useSelector((state) => state.postModal.imgContent);
 
   // 구글 유저 데이터
   const googleUserData = useSelector(
@@ -26,7 +27,7 @@ const PostModal = () => {
   // 일반 유저 데이터
   const normalUserData = useSelector((state) => state.signin.normalUserData);
 
-// X 아이콘 눌렀을 때
+  // X 아이콘 눌렀을 때
   const clickExitHandler = (e) => {
     e.preventDefault();
 
@@ -49,14 +50,21 @@ const PostModal = () => {
   const handleImgFileChange = (e) => {
     const imgFile = e.target.files[0];
     if (imgFile) {
-      console.log(imgFile, "이미지 파일 올라왔다");
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const base64Url = reader.result;
+        dispatch(postModalActions.setImgContent(base64Url));
+      };
+      reader.readAsDataURL(imgFile);
     }
   };
 
   // post 버튼 눌렀을 때
   const clickPostHandler = (e) => {
     e.preventDefault();
-    dispatch(createPostToServer(postContent));
+    console.log(imgContent, "이미지 컨텐츠 내용이다!");
+    console.log(postContent, "포스트컨텐츠 내용!");
+    dispatch(createPostToServer(postContent, imgContent));
   };
 
   // post textarea에 쓰여진 글씨가 1글자 이상일 때와 아닐 때 구분

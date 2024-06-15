@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const createPostToServer = (postContent) => {
+export const createPostToServer = (postContent, imgContent) => {
   return async (dispatch) => {
     try {
       const url = "http://localhost:8080/post/create";
@@ -15,7 +15,7 @@ export const createPostToServer = (postContent) => {
         },
         body: JSON.stringify({
           content: postContent,
-          image: null,
+          image: imgContent,
           created_at: new Date(),
         }),
       };
@@ -39,6 +39,7 @@ const postModalSlice = createSlice({
   initialState: {
     isStartPostOpen: false,
     postContent: "",
+    imgContent: null,
   },
   reducers: {
     setIsStartPostOpen(state, action) {
@@ -46,6 +47,9 @@ const postModalSlice = createSlice({
     },
     setPostContent(state, action) {
       state.postContent = action.payload;
+    },
+    setImgContent(state, action) {
+      state.imgContent = action.payload;
     },
   },
 });
