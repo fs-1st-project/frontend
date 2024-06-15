@@ -1,7 +1,7 @@
 import React from "react";
-import NavBar from "../../component/NavBar";
+import NavBar from "../../component/NavBar/NavBar";
 import "./FirstPage.css";
-import google from "../../component/google-logo.png";
+import google from "../../component/svg/google-logo.png";
 
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -17,8 +17,8 @@ import { auth } from "../../firebaseConfig";
 import {
   postSigninEmailPasswordToServer,
   signinActions,
-} from "../../store/signin-slice";
-import { googleSigninActions } from "../../store/googleSignin-slice";
+} from "../../store/reducer/signin-slice";
+import { googleSigninActions } from "../../store/reducer/googleSignin-slice";
 
 const FirstPage = () => {
   const navigate = useNavigate();

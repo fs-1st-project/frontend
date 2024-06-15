@@ -1,13 +1,13 @@
 import React from "react";
 import "./Signin.css";
-import google from "../../component/google-logo.png";
+import google from "../../component/svg/google-logo.png";
 
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   postSigninEmailPasswordToServer,
   signinActions,
-} from "../../store/signin-slice";
+} from "../../store/reducer/signin-slice";
 
 import axios from "axios";
 import {
@@ -16,7 +16,7 @@ import {
   signInWithCustomToken,
 } from "firebase/auth";
 import { auth } from "../../firebaseConfig";
-import { googleSigninActions } from "../../store/googleSignin-slice";
+import { googleSigninActions } from "../../store/reducer/googleSignin-slice";
 
 const Signin = () => {
   const email = useSelector((state) => state.signin.email);
@@ -40,7 +40,7 @@ const Signin = () => {
   const signinClickHandler = (e) => {
     e.preventDefault();
     dispatch(signinActions.setIsClicked());
-    
+
     // 비밀번호 6자 이하 또는 12자 이상 alert 띄우기
     if (password.trim().length < 6) {
       alert("비밀번호 6자 이상 입력이 필요합니다");
