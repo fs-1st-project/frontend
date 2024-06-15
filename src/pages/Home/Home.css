@@ -1,0 +1,162 @@
+.home-body {
+  width: 100vw;
+  height: 100vh;
+  background-color: #f4f2ee;
+  display: flex;
+  justify-content: center;
+}
+
+.home-body_profile {
+  margin-left: 50px;
+  margin-top: 20px;
+  width: 17rem;
+  height: 30rem;
+  background-color: white;
+  border: 2px solid #eeece8;
+  border-radius: 15px;
+}
+
+.home-body_middle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 25px 0 25px;
+  margin-top: 20px;
+  border-radius: 15px;
+}
+
+.home-body_middle_write {
+  width: 33rem;
+  height: 9rem;
+  background-color: white;
+  border: 2px solid #eeece8;
+  border-radius: 15px;
+}
+
+.container-first {
+  width: 33rem;
+  display: flex;
+  align-items: center; /* 세로 중앙 정렬 */
+  margin: 5px 0 5px 0;
+}
+
+.line {
+  flex: 1; /* 동적으로 너비 조절 */
+  height: 1px;
+  background-color: #d2d2d2; /* 가로줄 색상 */
+}
+
+.or-text {
+  margin: 0 10px; /* or 텍스트 양쪽에 여백 추가 */
+  color: #666; /* 텍스트 색상 */
+}
+
+.home-body_middle_write {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-body_middle_write-top {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 10px;
+  width: 33rem;
+}
+
+.home-body_middle_write-top-profile {
+  width: 3.7rem;
+  height: 3.7rem;
+  background-color: gray;
+  border-radius: 10rem;
+}
+
+.home-body_middle_write-top-update {
+  padding-left: 15px;
+  width: 26rem;
+  height: 3.7rem;
+  border: 2px solid #e6e6e6;
+  border-radius: 40px;
+}
+
+.home-body-middle_write-bottom {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 5px;
+  width: 33rem;
+}
+
+.home-body-middle_write-bottom img {
+  width: 3.7rem;
+  height: 1.7rem;
+}
+
+.home-body-middle_write-bottom-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+}
+
+.home-body_middle_post {
+  width: 33rem;
+  height: 30rem;
+  background-color: white;
+  border: 2px solid #eeece8;
+  border-radius: 15px;
+}
+
+.followers {
+  margin-right: 50px;
+  margin-top: 20px;
+  width: 15rem;
+  height: 25rem;
+  background-color: white;
+  border: 2px solid #eeece8;
+  border-radius: 15px;
+}
+
+.followers-title {
+  padding: 15px 0 0 15px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.followers-person {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  width: 15rem;
+  height: 25rem;
+  margin-top: 10px;
+}
+
+.followers-person img {
+  width: 3.7rem;
+  height: 3.7rem;
+  margin: 0 10px 0 10px;
+  border-radius: 30px;
+}
+
+.followers-person-info-name {
+  font-weight: bold;
+  font-size: 17px;
+  margin-bottom: 5px;
+}
+
+.followers-perosn-info-intro {
+  font-size: 13px;
+}
+
+.followers-person-info-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90px;
+  height: 30px;
+  border: 1px solid black;
+  border-radius: 15px;
+  margin-top: 5px;
+}
