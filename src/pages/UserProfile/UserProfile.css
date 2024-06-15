@@ -15,6 +15,10 @@
   height: 1955.5px;
 }
 
+.user-content-body-align {
+  display: flex;
+  gap: 20px; /* main과 aside 사이의 간격 설정 */
+}
 .scaffold-layout-main {
   width: 804px;
   height: 1955.5px;
@@ -104,14 +108,14 @@
 
 .userprofile-name-edu-box {
   display: flex;
-  align-items: center; /* 수직 가운데 정렬 */
+  align-items: center;
   justify-content: space-between;
 }
 
 .userprofile-name {
   width: 300px;
   height: 31.99px;
-  font-size: 24px; /* 예시 폰트 크기 */
+  font-size: 24px;
   font-weight: bolder;
 }
 
@@ -137,20 +141,20 @@
 .userprofile-one-line-introduce {
   width: 500px;
   height: 20px;
-  font-size: 16px; /* 예시 폰트 크기 */
+  font-size: 16px;
   font-weight: bold;
   padding: 3px 0px;
 }
 
 .userprofile-location-contact-box {
-  display: flex; /* 가로로 요소들을 배열 */
+  display: flex;
   align-items: center;
   padding: 10px 0px;
 }
 
 .userprofile-location,
 .userprofile-contact {
-  margin-right: 16px; /* 요소들 사이의 간격 설정 */
+  margin-right: 16px;
 }
 
 .userprofile-location {
@@ -166,7 +170,7 @@
 
 .button-box {
   display: flex;
-  gap: 10px; /* 버튼 사이의 간격 설정 */
+  gap: 10px;
   padding: 10px 0px;
 }
 
@@ -179,7 +183,7 @@
   padding: 0 12px;
   display: inline-block;
   text-align: center;
-  white-space: nowrap; /* 텍스트가 넘치면 줄바꿈 방지 */
+  white-space: nowrap;
   font-size: 16px;
   font-weight: bold;
   padding: 6px 16px;
@@ -268,10 +272,107 @@
   margin-bottom: 60px;
 }
 
-/*third-button 상속해서 사용중*/
-.button-default {
-  background-color: rgba(255, 255, 255, 0);
-  color: #000000bf;
-  border: 1px solid #000000bf;
-  /* 다른 공통적인 스타일들도 추가할 수 있음 */
+.activity-box-align {
+  display: flex;
+  align-items: center; /* 수직 가운데 정렬 */
+  gap: 450px; /* 요소들 사이의 간격 설정 */
+}
+
+.Activity-parent-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.Activity-box-2 {
+  display: flex;
+  align-items: center;
+  padding: 12px 12px 0px;
+  margin-left: 8px;
+}
+
+.Activity-button-default {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  white-space: nowrap;
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 10px;
+  border-radius: 20px;
+  min-width: 94px;
+  height: 32px;
+  padding: 6px 16px;
+  cursor: pointer;
+  background-color: white;
+  color: #0a66c2;
+  border: 1px solid #0a66c2;
+}
+
+.Activity-pencil-default {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.Activity-pencil-default button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.Activity-pencil-default button img {
+  width: 24px;
+  height: 24px;
+}
+
+.Activity-written-post {
+  margin-top: 20px;
+  padding: 0px 24px 10px;
+}
+.Activity-written-post-user {
+  display: flex;
+  align-items: center; /* 수직 가운데 정렬 */
+  gap: 8px; /* 요소들 사이의 간격 설정 */
+}
+
+.Activity-written-post-user-name,
+.Activity-written-post-user-createdAt {
+  /* 스타일을 추가할 수 있음 */
+  font-size: 12px;
+}
+
+.Activity-written-post-content {
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.scaffold-layout-aside {
+  width: 300px;
+  height: 161.78px;
+}
+
+.profile-info-section {
+  margin-top: 20px;
+}
+.aside-box {
+  border: 1px solid #e6e5e1;
+  background-color: white;
+  margin: 0px 0px 8px 10px;
+  padding: 16px;
+  border-radius: 10px;
+  width: 320px;
+  height: 550.78px;
+}
+
+.followers-person {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  width: 15rem;
+  height: 25rem;
+  margin-top: 10px;
+}
+
+.new-user-add {
+  width: 300px;
+  height: 120px;
 }
