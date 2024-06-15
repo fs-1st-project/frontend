@@ -107,7 +107,7 @@ const Home = () => {
             <div className="home-body_middle_write-top">
               <div className="home-body_middle_write-top-profile"></div>
               <div className="home-body_middle_write-top-update">
-                <p className="update-write">업데이트 쓰기</p>
+                <p className="update-write">Start a post</p>
               </div>
             </div>
             <div className="home-body-middle_write-bottom">

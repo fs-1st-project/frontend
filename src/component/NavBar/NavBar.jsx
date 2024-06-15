@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import writing from "./svg/writing.svg";
-import person from "./svg/person.svg";
-import onlineclass from "./svg/onlineclass.svg";
-import Recruitmentnotice from "./svg/Recruitmentnotice.svg";
-import game from "./svg/game.svg";
+import writing from "../svg/writing.svg";
+import person from "../svg/person.svg";
+import onlineclass from "../svg/onlineclass.svg";
+import Recruitmentnotice from "../svg/Recruitmentnotice.svg";
+import game from "../svg/game.svg";
 
 import "./NavBar.css";
 

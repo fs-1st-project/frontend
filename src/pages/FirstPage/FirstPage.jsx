@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from "../../component/NavBar";
+import NavBar from "../../component/NavBar/NavBar";
 import "./FirstPage.css";
 import google from "../../component/svg/google-logo.png";
 

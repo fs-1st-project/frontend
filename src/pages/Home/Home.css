@@ -78,6 +78,13 @@
   height: 3.7rem;
   border: 2px solid #e6e6e6;
   border-radius: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.home-body_middle_write-top-update:hover {
+  background-color: rgb(236, 236, 236);
+  cursor: pointer;
 }
 
 .home-body-middle_write-bottom {
