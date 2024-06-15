@@ -10,6 +10,7 @@ const PostModal = () => {
   const isStartPostOpen = useSelector(
     (state) => state.postModal.isStartPostOpen
   );
+  const postContent = useSelector((state) => state.postModal.postContent);
   const googleUserData = useSelector(
     (state) => state.googleSignin.googleUserData
   );
@@ -20,6 +21,19 @@ const PostModal = () => {
 
     // start a post 클릭한 state를 false로 만들어줌
     dispatch(postModalActions.setIsStartPostOpen());
+  };
+
+  const writePostContentHandler = (e) => {
+    const postContent = e.target.value;
+    dispatch(postModalActions.setPostContent(postContent));
+  };
+
+  const postButton = () => {
+    if (postContent.trim().length > 1) {
+      return <button className="post-button-able">Post</button>;
+    } else {
+      return <button className="post-button-disable">Post</button>;
+    }
   };
 
   if (!isStartPostOpen) return null;
@@ -60,6 +74,7 @@ const PostModal = () => {
           <textarea
             className="content-text"
             placeholder="What do you want to talk about?"
+            onChange={writePostContentHandler}
           />
         </div>
         <img className="smile-icon" src="smile.png" alt="smile" />
@@ -73,7 +88,7 @@ const PostModal = () => {
         </div>
         <div className="modal-bottom--footer">
           <img className="clock-icon" src="clock.png" alt="clock" />
-          <button className="post-button">Post</button>
+          {postButton()}
         </div>
       </div>
     </div>,
