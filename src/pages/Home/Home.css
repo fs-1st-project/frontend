@@ -33,6 +33,11 @@
   border-radius: 15px;
 }
 
+.update-write {
+  font-weight: 500;
+  color: rgb(86, 86, 86);
+}
+
 .container-first {
   width: 33rem;
   display: flex;
@@ -78,6 +83,13 @@
   height: 3.7rem;
   border: 2px solid #e6e6e6;
   border-radius: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.home-body_middle_write-top-update:hover {
+  background-color: rgb(236, 236, 236);
+  cursor: pointer;
 }
 
 .home-body-middle_write-bottom {
