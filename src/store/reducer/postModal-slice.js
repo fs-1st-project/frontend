@@ -20,6 +20,12 @@ export const createPostToServer = (postContent, imgContent) => {
         }),
       };
 
+      const body = {
+        content: postContent,
+        image: imgContent,
+        created_at: new Date(),
+      };
+
       const response = await fetch(url, requestOptions);
 
       if (!response.ok) {
