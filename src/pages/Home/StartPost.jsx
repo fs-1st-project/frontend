@@ -14,9 +14,8 @@ const StartPost = () => {
     e.preventDefault();
     dispatch(postModalActions.setIsStartPostOpen());
   };
-
   return (
-    <div className="home-body_middle">
+    <>
       <div className="home-body_middle_write">
         <div className="home-body_middle_write-top">
           <div className="home-body_middle_write-top-profile"></div>
@@ -46,8 +45,7 @@ const StartPost = () => {
         <div class="line"></div>
         <div class="or-text">Sort By: Top</div>
       </div>
-      <div className="home-body_middle_post"></div>
-    </div>
+    </>
   );
 };
 
