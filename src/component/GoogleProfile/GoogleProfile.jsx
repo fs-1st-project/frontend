@@ -57,6 +57,7 @@ const GoogleProfile = () => {
           <div className="user-name">
             <Link
               to={`/profile/${encodeURIComponent(googleUserData.fullName)}`}
+              className="link-no-underline"
             >
               {googleUserData.fullName}
             </Link>
