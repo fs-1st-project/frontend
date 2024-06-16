@@ -13,6 +13,8 @@ const GoogleProfile = () => {
     (state) => state.googleSignin.googleLoading
   );
 
+  console.log(googleUserData);
+
   if (googleLoading) {
     return <p>데이터를 불러오는 중입니다...</p>;
   }

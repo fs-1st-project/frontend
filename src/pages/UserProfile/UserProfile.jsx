@@ -4,14 +4,22 @@ import "./UserProfile.css";
 import education from "./education.svg";
 import pencil from "./pencil.svg";
 import vijay from "../../component/svg/vijay.jpeg";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { profileModalActions } from "../../store/reducer/profileModal-slice";
+import UserProfileModal from "../../component/UserProfileModal/UserProfileModal";
 
 const UserProfile = () => {
+  const dispatch = useDispatch();
+  //구글유저
   const googleUserData = useSelector(
     (state) => state.googleSignin.googleUserData
   );
-
+  //일반유저
   const normalUserData = useSelector((state) => state.signin.normalUserData);
+
+  const isProfileModalOpen = useSelector(
+    (state) => state.profileModal.isProfileModalOpen
+  );
 
   const isGoogleUser = googleUserData !== null;
   const isNormalUser = normalUserData !== null;
@@ -22,8 +30,18 @@ const UserProfile = () => {
     ? normalUserData
     : {};
 
+  const openProfileModal = (e) => {
+    e.preventDefault();
+
+    // dispatch(profileModalActions.setIsProfileModalOpen());
+  };
+
+  console.log(isProfileModalOpen, "모달 오픈 상태");
+  console.log("유저 프로필 홈페이지다아아아아앙아ㅏ");
+
   return (
     <div>
+      <UserProfileModal />
       <LoginNav />
       <div className="home-body">
         <div className="user-content-layout">
@@ -67,7 +85,7 @@ const UserProfile = () => {
                   {/* 이름/한줄소개 등 */}
                   <div className="profile-layout-introduce">
                     <div className="profile-artdeco-button">
-                      <button>
+                      <button onClick={openProfileModal}>
                         <img src={pencil} alt="Edit" />
                       </button>
                     </div>
