@@ -77,6 +77,7 @@ const Home = () => {
     }
   };
 
+  // 구글이나 일반 유저 로그인 후, home 왼쪽에 유저 간단 프로필 띄우기
   useEffect(() => {
     if (!isGoogleClicked && !isNormalLoginClicked) {
       navigate("/");
@@ -96,6 +97,11 @@ const Home = () => {
       return <div>로그인 유저 데이터가 없습니다</div>;
     }
   };
+
+  // 홈 가운데 전체 게시글 띄우기 요청
+  useEffect(() => {
+    
+  });
 
   return (
     <div>

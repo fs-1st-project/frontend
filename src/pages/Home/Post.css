@@ -1,0 +1,7 @@
+.post-container {
+  width: 33rem;
+  height: 30rem;
+  background-color: white;
+  border: 2px solid #eeece8;
+  border-radius: 15px;
+}
