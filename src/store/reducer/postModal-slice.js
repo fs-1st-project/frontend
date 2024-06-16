@@ -15,15 +15,9 @@ export const createPostToServer = (postContent, imgContent) => {
         },
         body: JSON.stringify({
           content: postContent,
-          image: imgContent,
+          image: imgContent ? imgContent : "",
           created_at: new Date(),
         }),
-      };
-
-      const body = {
-        content: postContent,
-        image: imgContent,
-        created_at: new Date(),
       };
 
       const response = await fetch(url, requestOptions);
@@ -45,7 +39,7 @@ const postModalSlice = createSlice({
   initialState: {
     isStartPostOpen: false,
     postContent: "",
-    imgContent: null,
+    imgContent: "",
   },
   reducers: {
     setIsStartPostOpen(state, action) {
