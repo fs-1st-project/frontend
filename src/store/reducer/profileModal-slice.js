@@ -43,8 +43,9 @@ const profileModalSlice = createSlice({
   },
 
   reducers: {
+    //이게 모달 오픈
     setIsProfileModalOpen(state, action) {
-      // state.isProfileModalOpen = true;
+      state.isProfileModalOpen = !state.isProfileModalOpen;
     },
     setProfileFullName(state, action) {
       state.profileFullName = action.payload;

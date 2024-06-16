@@ -32,8 +32,7 @@ const UserProfile = () => {
 
   const openProfileModal = (e) => {
     e.preventDefault();
-
-    // dispatch(profileModalActions.setIsProfileModalOpen());
+    dispatch(profileModalActions.setIsProfileModalOpen());
   };
 
   console.log(isProfileModalOpen, "모달 오픈 상태");

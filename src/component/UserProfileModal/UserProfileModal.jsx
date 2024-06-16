@@ -4,11 +4,15 @@ import { createPortal } from "react-dom";
 import { googleSigninActions } from "../../store/reducer/googleSignin-slice";
 
 import "./UserProfileModal.css"; // 모달 창 스타일링을 위한 CSS
+import { profileModalActions } from "../../store/reducer/profileModal-slice";
 
 const UserProfileModal = () => {
   const dispatch = useDispatch();
-
   const imgFileInputRef = useRef(null);
+
+  const isProfileModalOpen = useSelector(
+    (state) => state.profileModal.isProfileModalOpen
+  );
 
   const profileFullName = useSelector(
     (state) => state.googleSignin.googleUserData.fullName
@@ -16,10 +20,6 @@ const UserProfileModal = () => {
 
   const profileImg = useSelector(
     (state) => state.googleSignin.googleUserData.profilePicture
-  );
-
-  const isProfileModalOpen = useSelector(
-    (state) => state.profileModal.isProfileModalOpen
   );
 
   const handleProfilePictureChange = () => {
@@ -44,8 +44,10 @@ const UserProfileModal = () => {
     dispatch(googleSigninActions.setProfileFullName(newName));
   };
 
-  const closeModal = () => {
-    dispatch(googleSigninActions.setIsUserProfileModalOpen(false));
+  //닫는 모달
+  const closeModal = (e) => {
+    e.preventDefault();
+    dispatch(profileModalActions.setIsProfileModalOpen());
   };
 
   if (!isProfileModalOpen) {
