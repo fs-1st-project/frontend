@@ -6,7 +6,10 @@ import education from "./education.svg";
 import pencil from "./pencil.svg";
 import vijay from "../../component/svg/vijay.jpeg";
 
-const UserProfile = () => (
+const UserProfile = () => {
+  const googleUserData = useSelector(
+    (state) => state.googleSignin.googleUserData
+  );
   <div>
     <LoginNav />
     <div className="home-body">
@@ -235,7 +238,7 @@ const UserProfile = () => (
         </div>
       </div>
     </div>
-  </div>
-);
+  </div>;
+};
 
 export default UserProfile;
