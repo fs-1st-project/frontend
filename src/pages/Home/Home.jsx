@@ -10,8 +10,9 @@ import { auth } from "../../firebaseConfig"; // Firebase auth 객체 가져오�
 import "./Home.css";
 import vijay from "../../component/svg/vijay.jpeg";
 import LoginNav from "./LoginNav";
-import StartPost from "./StartPost";
+import StartPost from "./HomeMiddle";
 import PostModal from "../../component/PostModal/PostModal";
+import HomeMiddle from "./HomeMiddle";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -102,7 +103,7 @@ const Home = () => {
       <LoginNav />
       <div className="home-body">
         {showComponentBySigninButton()}
-        <StartPost />
+        <HomeMiddle />
         <div className="followers">
           <div className="followers-title">Add to LinkedIn Home</div>
           <div className="followers-person">
