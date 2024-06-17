@@ -3,11 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 const postSlice = createSlice({
   name: "post",
   initialState: {
-    postData: null,
+    postData: [],
   },
   reducers: {
-    setEmail(state, action) {
-      state.email = action.payload;
+    setPostData(state, action) {
+      state.postData = action.payload;
     },
   },
 });

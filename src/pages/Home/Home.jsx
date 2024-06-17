@@ -10,7 +10,6 @@ import { auth } from "../../firebaseConfig"; // Firebase auth 객체 가져오�
 import "./Home.css";
 import vijay from "../../component/svg/vijay.jpeg";
 import LoginNav from "./LoginNav";
-import StartPost from "./HomeMiddle";
 import PostModal from "../../component/PostModal/PostModal";
 import HomeMiddle from "./HomeMiddle";
 
@@ -97,11 +96,6 @@ const Home = () => {
       return <div>로그인 유저 데이터가 없습니다</div>;
     }
   };
-
-  // 홈 가운데 전체 게시글 띄우기 요청
-  useEffect(() => {
-    
-  });
 
   return (
     <div>

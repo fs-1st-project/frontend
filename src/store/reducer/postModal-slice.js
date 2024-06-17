@@ -20,6 +20,7 @@ export const createPostToServer = (postContent, imgContent) => {
         }),
       };
 
+      console.log(imgContent, "이미지 컨텐츠까지 게시글 생성");
       const response = await fetch(url, requestOptions);
 
       if (!response.ok) {
