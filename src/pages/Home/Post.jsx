@@ -8,19 +8,19 @@ import { postActions } from "../../store/reducer/post-slice";
 const Post = () => {
   const postData = useSelector((state) => state.post.postData);
 
-  // 홈 가운데 전체 게시글 띄우기 요청
-  useEffect(() => {
-    const getAllpost = async () => {
-      const response = await axios.get("http://localhost:8080/home/post", {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      dispatchEvent(postActions.setPostData(response));
-    };
+  // // 홈 가운데 전체 게시글 띄우기 요청
+  // useEffect(() => {
+  //   const getAllpost = async () => {
+  //     const response = await axios.get("http://localhost:8080/home/post", {
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //     });
+  //     dispatchEvent(postActions.setPostData(response));
+  //   };
 
-    getAllpost();
-  }, [postData]);
+  //   getAllpost();
+  // }, [postData]);
 
   return (
     <>
