@@ -1,21 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const googleSigninSlice = createSlice({
-  name: "goolgeSignin",
+  name: "googleSignin",
   initialState: {
     isGoogleClicked: false,
     googleUserData: null,
     googleLoading: true,
   },
   reducers: {
-    setIsGoogleClicked(state, action) {
+    setIsGoogleClicked(state) {
       state.isGoogleClicked = true;
     },
     setGoogleUserData(state, action) {
       state.googleUserData = action.payload;
     },
     setGoogleLoading(state, action) {
-      state.googleLoading = false;
+      state.googleLoading = action.payload;
     },
   },
 });

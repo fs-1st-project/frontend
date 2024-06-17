@@ -4,6 +4,7 @@ import signupSlice from "./signup-slice";
 import signinSlice from "./signin-slice";
 import googleSigninSlice from "./googleSignin-slice";
 import postModalSlice from "./postModal-slice";
+import profileModalSlice from "./profileModal-slice";
 import postSlice from "./post-slice";
 
 const rootReducer = combineReducers({
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   signin: signinSlice.reducer,
   googleSignin: googleSigninSlice.reducer,
   postModal: postModalSlice.reducer,
+  profileModal: profileModalSlice.reducer,
   post: postSlice.reducer,
 });
 

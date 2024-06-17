@@ -44,6 +44,8 @@ const Home = () => {
             },
           }
         );
+        console.log(response.data);
+        console.log(response.data.fullName);
 
         dispatch(googleSigninActions.setGoogleUserData(response.data));
       }

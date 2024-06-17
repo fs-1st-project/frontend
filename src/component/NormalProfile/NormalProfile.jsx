@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import "../../pages/Home/Home.css";
-import "./NormalProfile.css";
+import "../GoogleProfile/GoogleProfile.css";
 import { Route, Link } from "react-router-dom";
 
 const NormalProfile = () => {
@@ -52,12 +52,18 @@ const NormalProfile = () => {
           <div className="user-name">
             <Link
               to={`/profile/${encodeURIComponent(normalUserData.fullName)}`}
+              className="link-no-underline"
             >
               {normalUserData.fullName}
             </Link>
           </div>
           <div className="user-introduction">{normalUserData.introduction}</div>
         </div>
+      </div>
+
+      <div className="Main-profile profile-state-feed">
+        <div className="headline-text-1">Find customers with Sales Nav</div>
+        <div className="headline-text-2">Try for ₩0</div>
       </div>
     </div>
   );

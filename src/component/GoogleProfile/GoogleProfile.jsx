@@ -57,12 +57,18 @@ const GoogleProfile = () => {
           <div className="user-name">
             <Link
               to={`/profile/${encodeURIComponent(googleUserData.fullName)}`}
+              className="link-no-underline"
             >
               {googleUserData.fullName}
             </Link>
           </div>
           <div className="user-introduction">{googleUserData.introduction}</div>
         </div>
+      </div>
+
+      <div className="Main-profile profile-state-feed">
+        <div className="headline-text-1">Find customers with Sales Nav</div>
+        <div className="headline-text-2">Try for ₩0</div>
       </div>
     </div>
   );
