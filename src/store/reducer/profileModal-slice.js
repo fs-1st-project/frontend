@@ -38,7 +38,11 @@ const profileModalSlice = createSlice({
   initialState: {
     isProfileModalOpen: false,
     profileFullName: "",
+    profileIntroduce: "",
     profileImg: "",
+    profileBackgroundImg: "",
+    profileEducation: "",
+    profileLocation: "",
     error: null,
   },
 
@@ -47,18 +51,50 @@ const profileModalSlice = createSlice({
     setIsProfileModalOpen(state, action) {
       state.isProfileModalOpen = !state.isProfileModalOpen;
     },
+    //풀네임
     setProfileFullName(state, action) {
       state.profileFullName = action.payload;
     },
+    //소개
+    setProfileIntroduce(state, action) {
+      state.profileIntroduce = action.payload;
+    },
+    //프로필이미지
     setProfileImg(state, action) {
       state.profileImg = action.payload;
     },
+    //백그라운드이미지
+    setProfileBackgroundImg(state, action) {
+      state.profileBackgroundImg = action.payload;
+    },
+    //교육
+    setProfileEducation(state, action) {
+      state.profileEducation = action.payload;
+    },
+    //지역
+    setProfileLocation(state, action) {
+      state.profileLocation = action.payload;
+    },
     updateProfileInfo: async (state, action) => {
-      const { fullName, profileImage } = action.payload;
+      const {
+        fullName,
+        introduction,
+        profilePicture,
+        profileBackgroundPicture,
+        education,
+        location,
+      } = action.payload;
 
       try {
         // 서버에 프로필 정보 업데이트 요청
-        const success = await updateProfileInfoToServer(fullName, profileImage);
+        const success = await updateProfileInfoToServer(
+          fullName,
+          introduction,
+          profilePicture,
+          profileBackgroundPicture,
+          education,
+          location
+        );
         if (success) {
           console.log("프로필 정보 업데이트 성공");
           state.error = null; // 에러 초기화
