@@ -1,38 +1,53 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
+import { auth } from "../../firebaseConfig";
 
-// 서버에 프로필 정보 업데이트 요청하는 함수
+// 서버에 프로필 정보 업데이트 요청하는 비동기 액션 생성자 함수
+export const updateProfileInfoToServer = createAsyncThunk(
+  "profileModal/updateProfileInfoToServer",
+  async (payload, thunkAPI) => {
+    const {
+      fullName,
+      introduction,
+      profilePicture,
+      profileBackgroundPicture,
+      education,
+      location,
+    } = payload;
 
-export const updateProfileInfoToServer = async (newName, base64Url) => {
-  try {
-    const url = "http://localhost:8080/profile/update";
-    const token = localStorage.getItem("token");
-    const requestBody = {
-      fullName: newName,
-      profileImage: base64Url,
-    };
-    const requestOptions = {
-      method: "PUT",
-      headers: {
+    try {
+      const currentUser = auth.currentUser;
+      const idToken = await currentUser.getIdToken(true);
+      const uid = currentUser.uid;
+      const url = `http://localhost:8080/api/users/${uid}/profile`;
+
+      const token = localStorage.getItem("token");
+
+      const requestBody = {
+        fullName,
+        profileImage: profilePicture,
+      };
+
+      const headers = {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(requestBody),
-    };
+      };
 
-    const response = await fetch(url, requestOptions);
+      const response = await axios.put(url, requestBody, { headers });
 
-    if (!response.ok) {
-      throw new Error("프로필 정보 업데이트 서버 응답 실패");
+      if (!response.data) {
+        throw new Error("프로필 정보 업데이트 서버 응답 실패");
+      }
+
+      return response.data; // 서버에서 반환된 데이터를 payload로 사용할 수 있음
+    } catch (error) {
+      console.error("프로필 정보 업데이트 요청 중 에러 발생:", error);
+      throw error;
     }
-
-    return true;
-  } catch (error) {
-    console.error("프로필 정보 업데이트 요청 중 에러 발생:", error);
-
-    throw error;
   }
-};
+);
 
+// 프로필 모달 슬라이스 정의
 const profileModalSlice = createSlice({
   name: "profileModal",
   initialState: {
@@ -45,67 +60,38 @@ const profileModalSlice = createSlice({
     profileLocation: "",
     error: null,
   },
-
   reducers: {
-    //이게 모달 오픈
     setIsProfileModalOpen(state, action) {
       state.isProfileModalOpen = !state.isProfileModalOpen;
     },
-    //풀네임
     setProfileFullName(state, action) {
       state.profileFullName = action.payload;
     },
-    //소개
     setProfileIntroduce(state, action) {
       state.profileIntroduce = action.payload;
     },
-    //프로필이미지
     setProfileImg(state, action) {
       state.profileImg = action.payload;
     },
-    //백그라운드이미지
     setProfileBackgroundImg(state, action) {
       state.profileBackgroundImg = action.payload;
     },
-    //교육
     setProfileEducation(state, action) {
       state.profileEducation = action.payload;
     },
-    //지역
     setProfileLocation(state, action) {
       state.profileLocation = action.payload;
     },
-    updateProfileInfo: async (state, action) => {
-      const {
-        fullName,
-        introduction,
-        profilePicture,
-        profileBackgroundPicture,
-        education,
-        location,
-      } = action.payload;
-
-      try {
-        // 서버에 프로필 정보 업데이트 요청
-        const success = await updateProfileInfoToServer(
-          fullName,
-          introduction,
-          profilePicture,
-          profileBackgroundPicture,
-          education,
-          location
-        );
-        if (success) {
-          console.log("프로필 정보 업데이트 성공");
-          state.error = null; // 에러 초기화
-        } else {
-          console.error("프로필 정보 업데이트 실패");
-        }
-      } catch (error) {
-        console.error("프로필 정보 업데이트 요청 중 에러 발생:", error);
-        state.error = error.message; // 에러 상태 업데이트
-      }
-    },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(updateProfileInfoToServer.fulfilled, (state, action) => {
+      console.log("프로필 정보 업데이트 성공");
+      state.error = null; // 에러 초기화
+    });
+    builder.addCase(updateProfileInfoToServer.rejected, (state, action) => {
+      console.error("프로필 정보 업데이트 실패:", action.error.message);
+      state.error = action.error.message; // 에러 상태 업데이트
+    });
   },
 });
 

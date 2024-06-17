@@ -1,6 +1,7 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import { thunk } from "redux-thunk"; // thunk 함수를 import
 
 import rootReducer from "./reducer";
 
@@ -21,7 +22,7 @@ export const store = configureStore({
         ignoredActionPaths: ["register", "rehydrate"],
         ignoredPaths: ["_persist"],
       },
-    }),
+    }).concat(thunk), // thunk 미들웨어 추가
 });
 
 export const persistor = persistStore(store);
