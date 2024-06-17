@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { createPortal } from "react-dom";
 import {
+  updateGoogleProfileInfoToServer,
   updateProfileInfoToServer,
   profileModalActions,
 } from "../../store/reducer/profileModal-slice";
@@ -13,6 +14,16 @@ const UserProfileModal = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const imgFileInputRef = useRef(null);
+
+  // 구글 로그인 state
+  const isGoogleClicked = useSelector(
+    (state) => state.googleSignin.isGoogleClicked
+  );
+
+  // 일반 로그인 state
+  const isNormalLoginClicked = useSelector(
+    (state) => state.signin.isNormalLoginClicked
+  );
 
   // 모달 상태와 프로필 정보 가져오기
   const {
@@ -71,15 +82,27 @@ const UserProfileModal = () => {
   const clickSaveHandler = async (e) => {
     e.preventDefault();
     try {
-      await dispatch(
-        updateProfileInfoToServer({
-          fullName: profileFullName,
-          introduction: profileIntroduce,
-          profilePicture: profileImg,
-          education: profileEducation,
-          location: profileLocation,
-        })
-      );
+      if (isGoogleClicked) {
+        await dispatch(
+          updateGoogleProfileInfoToServer({
+            fullName: profileFullName,
+            introduction: profileIntroduce,
+            profilePicture: profileImg,
+            education: profileEducation,
+            location: profileLocation,
+          })
+        );
+      } else {
+        await dispatch(
+          updateProfileInfoToServer({
+            fullName: profileFullName,
+            introduction: profileIntroduce,
+            profilePicture: profileImg,
+            education: profileEducation,
+            location: profileLocation,
+          })
+        );
+      }
       dispatch(profileModalActions.setIsProfileModalOpen(false));
       navigate("/home");
       console.log("프로필 업데이트 성공");
