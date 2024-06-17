@@ -26,7 +26,13 @@ export const updateProfileInfoToServer = createAsyncThunk(
       const requestBody = {
         fullName,
         profileImage: profilePicture,
+        introduction,
+        education,
+        location,
       };
+
+      // 콘솔에 requestBody 출력
+      console.log("Request Body:", requestBody);
 
       const headers = {
         "Content-Type": "application/json",

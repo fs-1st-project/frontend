@@ -97,7 +97,9 @@ const UserProfile = () => {
                           <div className="userprofile-edu-icon">
                             <img src={education} alt="education" />
                           </div>
-                          <div className="userprofile-edu-text">education</div>
+                          <div className="userprofile-edu-text">
+                            {userData.education || "Default Education"}
+                          </div>
                         </div>
                       </div>
                       <div className="userprofile-one-line-introduce">
@@ -105,7 +107,9 @@ const UserProfile = () => {
                         {/* 소개 */}
                       </div>
                       <div className="userprofile-location-contact-box">
-                        <div className="userprofile-location">South Korea</div>
+                        <div className="userprofile-location">
+                          {userData.location || "Default Locatiom"}
+                        </div>
                         <div className="userprofile-contact">Contact info</div>
                       </div>
                       {/* 버튼 만들기 */}
