@@ -3,7 +3,7 @@ import { formatDistance } from "date-fns";
 import { ko } from "date-fns/locale";
 import "./Post.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllPost } from "../../store/reducer/post-slice";
+import { getAllPost, postActions } from "../../store/reducer/post-slice";
 
 import like from "../../component/svg/like.svg";
 import comment from "../../component/svg/comment.svg";
@@ -11,20 +11,25 @@ import repost from "../../component/svg/repost.svg";
 import send from "../../component/svg/send.svg";
 import edit from "../../component/svg/edit.svg";
 import deleteicon from "../../component/svg/delete.svg";
+import EditPostModal from "../../component/EditPostModal/EditPostModal";
+import { editPostModalActions } from "../../store/reducer/editPostModal-slice";
 
 const Post = () => {
   const dispatch = useDispatch();
-  const [showMenu, setShowMenu] = useState(false);
+
   const [menuIndex, setMenuIndex] = useState(null);
+
+  // post Slice 전역 상태들
   const postData = useSelector((state) => state.post.postData);
+  const isMenuOpen = useSelector((state) => state.post.isMenuOpen);
+
+  // 각 포스트의 댓글 상태를 관리하기 위한 state
+  const [openComments, setOpenComments] = useState({});
 
   // 홈 가운데 전체 게시글 띄우기 요청
   useEffect(() => {
     dispatch(getAllPost());
   }, [dispatch]);
-
-  // 각 포스트의 댓글 상태를 관리하기 위한 state
-  const [openComments, setOpenComments] = useState({});
 
   const handleToggle = (postId) => {
     setOpenComments((prevState) => ({
@@ -36,18 +41,25 @@ const Post = () => {
   // 팝업 메뉴
   const toggleMenu = (index) => {
     if (menuIndex === index) {
-      setShowMenu(false);
+      dispatch(postActions.setIsMenuOpen(false));
       setMenuIndex(null);
     } else {
-      setShowMenu(true);
+      dispatch(postActions.setIsMenuOpen(true));
       setMenuIndex(index);
     }
   };
 
+  // edit post 눌렀을 때
+  const editPostClickHandler = (postId) => {
+    dispatch(editPostModalActions.setEditPostId(postId));
+    dispatch(editPostModalActions.setIsEditPostOpen());
+  };
+
   return (
     <>
+      <EditPostModal />
       {postData.map((post, index) => (
-        <div className="post-container" key={post.userId}>
+        <div className="post-container" key={post.id}>
           <div className="post-top">
             <div className="post-owner">
               {/* post owner 정보 */}
@@ -72,9 +84,12 @@ const Post = () => {
               >
                 ∙∙∙
               </button>
-              {showMenu && menuIndex === index && (
+              {isMenuOpen && menuIndex === index && (
                 <div className="popup-menu show">
-                  <div className="popup-menu-item_edit">
+                  <div
+                    className="popup-menu-item_edit"
+                    onClick={() => editPostClickHandler(post.id)}
+                  >
                     <img src={edit} alt="edit" />
                     <div>Edit post</div>
                   </div>

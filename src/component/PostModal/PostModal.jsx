@@ -7,12 +7,10 @@ import {
   createPostToServer,
   postModalActions,
 } from "../../store/reducer/postModal-slice";
-import { useNavigate } from "react-router-dom";
 import { getAllPost } from "../../store/reducer/post-slice";
 
 const PostModal = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const imgFileInputRef = useRef(null);
 
   // 모달 상태들
@@ -21,7 +19,6 @@ const PostModal = () => {
   );
   const postContent = useSelector((state) => state.postModal.postContent);
   const imgContent = useSelector((state) => state.postModal.imgContent);
-  const postData = useSelector((state) => state.post.postData);
 
   // 구글 유저 데이터
   const googleUserData = useSelector(
