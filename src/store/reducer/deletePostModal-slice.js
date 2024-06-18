@@ -1,33 +1,27 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// export const deletePostToServer = (editPostId) => {
-//   return async (dispatch) => {
-//     try {
-//       const url = `http://localhost:8080/post/update/${editPostId}`;
+export const deletePostToServer = (deletePostId) => {
+  return async (dispatch) => {
+    try {
+      const url = `http://localhost:8080/post/delete/${deletePostId}`;
 
-//       const requestOptions = {
-//         method: "PUT",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify({
-//           content: editPostContent,
-//         }),
-//       };
+      const requestOptions = {
+        method: "DELETE",
+      };
 
-//       const response = await fetch(url, requestOptions);
+      const response = await fetch(url, requestOptions);
 
-//       if (!response.ok) {
-//         throw new Error("게시글 수정 POST 서버 응답 실패");
-//       }
+      if (!response.ok) {
+        throw new Error("게시글 삭제 요청 서버 응답 실패");
+      }
 
-//       return true;
-//     } catch (error) {
-//       console.error("게시글 수정 POST 요청 중 에러 발생:", error);
-//       return false;
-//     }
-//   };
-// };
+      return true;
+    } catch (error) {
+      console.error("게시글 삭제 요청 중 에러 발생:", error);
+      return false;
+    }
+  };
+};
 
 const deletePostModalSlice = createSlice({
   name: "deletePostModal",
@@ -43,7 +37,7 @@ const deletePostModalSlice = createSlice({
       state.deletePostId = action.payload;
     },
     reset(state, action) {
-      state.isDeletePostOpen = false;
+      state.isDeletePostOpen = !state.isDeletePostOpen;
       state.deletePostId = null;
     },
   },

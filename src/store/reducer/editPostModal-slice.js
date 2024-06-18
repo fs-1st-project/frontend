@@ -18,12 +18,12 @@ export const updatePostToServer = (editPostId, editPostContent) => {
       const response = await fetch(url, requestOptions);
 
       if (!response.ok) {
-        throw new Error("게시글 수정 POST 서버 응답 실패");
+        throw new Error("게시글 수정 요청 중 서버 응답 실패");
       }
 
       return true;
     } catch (error) {
-      console.error("게시글 수정 POST 요청 중 에러 발생:", error);
+      console.error("게시글 수정 요청 중 에러 발생:", error);
       return false;
     }
   };

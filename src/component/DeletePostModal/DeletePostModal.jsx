@@ -3,11 +3,17 @@ import { createPortal } from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import "./DeletePostModal.css";
-import { deletePostModalActions } from "../../store/reducer/deletePostModal-slice";
-import { postActions } from "../../store/reducer/post-slice";
+import {
+  deletePostModalActions,
+  deletePostToServer,
+} from "../../store/reducer/deletePostModal-slice";
+import { getAllPost, postActions } from "../../store/reducer/post-slice";
 
 const DeletePostModal = () => {
   const dispatch = useDispatch();
+  const deletePostId = useSelector(
+    (state) => state.deletePostModal.deletePostId
+  );
 
   const isDeletePostOpen = useSelector(
     (state) => state.deletePostModal.isDeletePostOpen
@@ -17,6 +23,18 @@ const DeletePostModal = () => {
     e.preventDefault();
     dispatch(deletePostModalActions.setIsDeletePostOpen());
     dispatch(postActions.setIsMenuOpen(false));
+  };
+
+  const deleteClickHandler = (e) => {
+    e.preventDefault();
+
+    dispatch(deletePostToServer(deletePostId)).then((success) => {
+      if (success === true) {
+        dispatch(deletePostModalActions.reset());
+        dispatch(postActions.setIsMenuOpen(false));
+        dispatch(getAllPost());
+      }
+    });
   };
 
   if (!isDeletePostOpen) return null;
@@ -36,7 +54,9 @@ const DeletePostModal = () => {
           <button className="button-cancel" onClick={cancelClickHandler}>
             Cancel
           </button>
-          <button className="button-delete">Delete</button>
+          <button className="button-delete" onClick={deleteClickHandler}>
+            Delete
+          </button>
         </div>
       </div>
     </div>,
