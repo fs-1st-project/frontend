@@ -14,6 +14,7 @@ const UserProfileModal = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const imgFileInputRef = useRef(null);
+  const backimgFileInputRef = useRef(null);
 
   // 구글 로그인 state
   const isGoogleClicked = useSelector(
@@ -33,7 +34,21 @@ const UserProfileModal = () => {
     profileEducation,
     profileLocation,
     profileImg,
+    profileBackgroundImg,
   } = useSelector((state) => state.profileModal);
+
+  // 배경 이미지 파일 선택 시
+  const handleBackgroungImgFileChange = (e) => {
+    const imgFile = e.target.files[0];
+    if (imgFile) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const base64Url = reader.result;
+        dispatch(profileModalActions.setProfileBackgroundImg(base64Url));
+      };
+      reader.readAsDataURL(imgFile);
+    }
+  };
 
   // 프로필 이미지 파일 선택 시
   const handleImgFileChange = (e) => {
@@ -88,6 +103,7 @@ const UserProfileModal = () => {
             fullName: profileFullName,
             introduction: profileIntroduce,
             profilePicture: profileImg,
+            profileBackgroundPicture: profileBackgroundImg,
             education: profileEducation,
             location: profileLocation,
           })
@@ -98,13 +114,14 @@ const UserProfileModal = () => {
             fullName: profileFullName,
             introduction: profileIntroduce,
             profilePicture: profileImg,
+            profileBackgroundPicture: profileBackgroundImg,
             education: profileEducation,
             location: profileLocation,
           })
         );
       }
       dispatch(profileModalActions.setIsProfileModalOpen(false));
-      navigate("/home");
+      //navigate("/home");
       console.log("프로필 업데이트 성공");
     } catch (error) {
       console.error("프로필 업데이트 실패:", error);
@@ -146,6 +163,21 @@ const UserProfileModal = () => {
             onClick={clickExitHandler}
           />
         </div>
+
+        {/* 배경 사진 변경 버튼 */}
+        <button
+          onClick={() => backimgFileInputRef.current.click()}
+          className="btn-img"
+        >
+          Change BackgroundImg
+        </button>
+        <input
+          type="file"
+          accept="image/*"
+          ref={backimgFileInputRef}
+          style={{ display: "none" }}
+          onChange={handleBackgroungImgFileChange}
+        />
 
         {/* 프로필 사진 변경 버튼 */}
         <button

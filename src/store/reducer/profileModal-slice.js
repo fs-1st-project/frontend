@@ -25,7 +25,8 @@ export const updateGoogleProfileInfoToServer = createAsyncThunk(
 
       const requestBody = {
         fullName,
-        profileImage: profilePicture,
+        profileBackgroundPicture,
+        profilePicture,
         introduction,
         education,
         location,
@@ -76,7 +77,8 @@ export const updateProfileInfoToServer = createAsyncThunk(
 
       const requestBody = {
         fullName,
-        profileImage: profilePicture,
+        profileBackgroundPicture,
+        profilePicture,
         introduction,
         education,
         location,
