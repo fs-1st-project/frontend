@@ -41,9 +41,9 @@ const StartPost = () => {
           </div>
         </div>
       </div>
-      <div class="container-first">
-        <div class="line"></div>
-        <div class="or-text">Sort By: Top</div>
+      <div className="container-first">
+        <div className="line"></div>
+        <div className="or-text">Sort By: Top</div>
       </div>
     </>
   );

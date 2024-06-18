@@ -3,7 +3,7 @@ import home from "../../component/svg/home.svg";
 import person from "../../component/svg/person.svg";
 import Recruitmentnotice from "../../component/svg/Recruitmentnotice.svg";
 import alarm from "../../component/svg/alarm.svg";
-import message from "../../component/svg/message.svg"
+import message from "../../component/svg/message.svg";
 import menu from "../../component/svg/menu.svg";
 import logo from "../../component/svg/LinkedIn_login_logo.png";
 
@@ -25,7 +25,7 @@ const LoginNav = () => {
           <div className="LoginNav-menu_pages-icons">
             <div className="LoginNav-menu_pages-icons-click">
               <img src={home} alt="home" />
-              <div className="LoginNav-menu_font">Writing</div>
+              <div className="LoginNav-menu_font">Home</div>
             </div>
           </div>
           <div className="LoginNav-menu_pages-icons">
@@ -52,20 +52,20 @@ const LoginNav = () => {
               <div className="LoginNav-menu_font">Notifications</div>
             </div>
           </div>
-          <div classname="LoginNav-menu_pages-icons">
+          <div className="LoginNav-menu_pages-icons">
             <div className="">{/* user information */}</div>
           </div>
-          <div class="verticla-loginLine-login"></div>
+          <div className="verticla-loginLine-login"></div>
         </div>
         <div>
           <div className="LoginNav-menu_click">
-            <div class="LoginNav-menu_click-icons">
+            <div className="LoginNav-menu_click-icons">
               <img src={menu} art="menu" />
-              <div class="LoginNav-menu_click-font">Business</div>
+              <div className="LoginNav-menu_click-font">Business</div>
             </div>
-            <div class="LoginNav-menu_click-icons">
+            <div className="LoginNav-menu_click-icons">
               <img src={menu} art="menu" />
-              <div class="LoginNav-menu_click-font">aaaa</div>
+              <div className="LoginNav-menu_click-font">aaaa</div>
             </div>
           </div>
         </div>

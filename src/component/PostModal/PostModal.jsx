@@ -7,11 +7,10 @@ import {
   createPostToServer,
   postModalActions,
 } from "../../store/reducer/postModal-slice";
-import { useNavigate } from "react-router-dom";
+import { getAllPost } from "../../store/reducer/post-slice";
 
 const PostModal = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const imgFileInputRef = useRef(null);
 
   // 모달 상태들
@@ -64,12 +63,13 @@ const PostModal = () => {
   // post 버튼 눌렀을 때
   const clickPostHandler = (e) => {
     e.preventDefault();
+    const currentUserId = localStorage.getItem("userId");
 
-    dispatch(createPostToServer(postContent, imgContent))
+    dispatch(createPostToServer(postContent, imgContent, currentUserId))
       .then((success) => {
         if (success === true) {
-          dispatch(postModalActions.setIsStartPostOpen());
-          navigate("/home");
+          dispatch(postModalActions.reset());
+          dispatch(getAllPost());
         }
       })
       .catch((e) => alert("게시글 작성에 실패했습니다."));

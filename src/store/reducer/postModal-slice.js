@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const createPostToServer = (postContent, imgContent) => {
+export const createPostToServer = (postContent, imgContent, currentUserId) => {
   return async (dispatch) => {
     try {
       const url = "http://localhost:8080/post/create";
@@ -16,11 +16,11 @@ export const createPostToServer = (postContent, imgContent) => {
         body: JSON.stringify({
           content: postContent,
           image: imgContent ? imgContent : "",
-          created_at: new Date(),
+          createdAt: new Date(),
+          userId: currentUserId,
         }),
       };
 
-      console.log(imgContent, "이미지 컨텐츠까지 게시글 생성");
       const response = await fetch(url, requestOptions);
 
       if (!response.ok) {
@@ -51,6 +51,11 @@ const postModalSlice = createSlice({
     },
     setImgContent(state, action) {
       state.imgContent = action.payload;
+    },
+    reset(state, action) {
+      state.isStartPostOpen = false;
+      state.postContent = "";
+      state.imgContent = "";
     },
   },
 });
