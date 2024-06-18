@@ -8,7 +8,7 @@ import rootReducer from "./reducer";
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["signup", "signin", "googleSignin", "postModal", "profileModal"],
+  whitelist: ["signup", "signin", "googleSignin", "profileModal"],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
