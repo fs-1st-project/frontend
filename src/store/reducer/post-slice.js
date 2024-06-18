@@ -26,10 +26,14 @@ const postSlice = createSlice({
   name: "post",
   initialState: {
     postData: [],
+    isMenuOpen: false,
   },
   reducers: {
     setPostData(state, action) {
       state.postData = action.payload;
+    },
+    setIsMenuOpen(state, action) {
+      state.isMenuOpen = action.payload;
     },
   },
 });
