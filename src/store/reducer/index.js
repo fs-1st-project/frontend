@@ -6,14 +6,16 @@ import googleSigninSlice from "./googleSignin-slice";
 import postModalSlice from "./postModal-slice";
 import profileModalSlice from "./profileModal-slice";
 import postSlice from "./post-slice";
+import editPostModalSlice from "./editPostModal-slice";
 
 const rootReducer = combineReducers({
   signup: signupSlice.reducer,
   signin: signinSlice.reducer,
   googleSignin: googleSigninSlice.reducer,
-  postModal: postModalSlice.reducer,
-  profileModal: profileModalSlice.reducer,
   post: postSlice.reducer,
+  postModal: postModalSlice.reducer,
+  editPostModal: editPostModalSlice.reducer,
+  profileModal: profileModalSlice.reducer,
 });
 
 export default rootReducer;
