@@ -68,7 +68,7 @@ const PostModal = () => {
     dispatch(createPostToServer(postContent, imgContent))
       .then((success) => {
         if (success === true) {
-          dispatch(postModalActions.setIsStartPostOpen());
+          dispatch(postModalActions.reset());
           navigate("/home");
         }
       })
