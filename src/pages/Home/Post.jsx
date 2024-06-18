@@ -13,6 +13,8 @@ import edit from "../../component/svg/edit.svg";
 import deleteicon from "../../component/svg/delete.svg";
 import EditPostModal from "../../component/EditPostModal/EditPostModal";
 import { editPostModalActions } from "../../store/reducer/editPostModal-slice";
+import { deletePostModalActions } from "../../store/reducer/deletePostModal-slice";
+import DeletePostModal from "../../component/DeletePostModal/DeletePostModal";
 
 const Post = () => {
   const dispatch = useDispatch();
@@ -55,9 +57,15 @@ const Post = () => {
     dispatch(editPostModalActions.setIsEditPostOpen());
   };
 
+  const deletePostClickHandler = (postId) => {
+    dispatch(deletePostModalActions.setDeletePostId(postId));
+    dispatch(deletePostModalActions.setIsDeletePostOpen());
+  };
+
   return (
     <>
       <EditPostModal />
+      <DeletePostModal />
       {postData.map((post, index) => (
         <div className="post-container" key={post.id}>
           <div className="post-top">
@@ -95,7 +103,9 @@ const Post = () => {
                   </div>
                   <div className="popup-menu-item_delete">
                     <img src={deleteicon} alt="delete" />
-                    <div>Delete post</div>
+                    <div onClick={() => deletePostClickHandler(post.id)}>
+                      Delete post
+                    </div>
                   </div>
                 </div>
               )}

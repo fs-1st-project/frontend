@@ -7,6 +7,7 @@ import postModalSlice from "./postModal-slice";
 import profileModalSlice from "./profileModal-slice";
 import postSlice from "./post-slice";
 import editPostModalSlice from "./editPostModal-slice";
+import deletePostModalSlice from "./deletePostModal-slice";
 
 const rootReducer = combineReducers({
   signup: signupSlice.reducer,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   post: postSlice.reducer,
   postModal: postModalSlice.reducer,
   editPostModal: editPostModalSlice.reducer,
+  deletePostModal: deletePostModalSlice.reducer,
   profileModal: profileModalSlice.reducer,
 });
 
