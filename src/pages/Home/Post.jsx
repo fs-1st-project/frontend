@@ -17,6 +17,7 @@ const Post = () => {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const [menuIndex, setMenuIndex] = useState(null);
+  const [showCommentPopup, setShowCommentPopup] = useState({}); // 댓글 팝업 메뉴 상태
   const postData = useSelector((state) => state.post.postData);
 
   // 홈 가운데 전체 게시글 띄우기 요청
@@ -41,7 +42,7 @@ const Post = () => {
     }));
   };
 
-  // 팝업 메뉴
+  // post 팝업 메뉴
   const toggleMenu = (index) => {
     if (menuIndex === index) {
       setShowMenu(false);
@@ -50,6 +51,14 @@ const Post = () => {
       setShowMenu(true);
       setMenuIndex(index);
     }
+  };
+
+  // 댓글 팝업 메뉴 토글 함수
+  const toggleCommentPopup = (commentId) => {
+    setShowCommentPopup((prevState) => ({
+      ...prevState,
+      [commentId]: !prevState[commentId],
+    }));
   };
 
   return (
@@ -141,9 +150,45 @@ const Post = () => {
                   ></input>
                 </div>
                 {/* 예시 댓글들 */}
-                <div className="comment">Comment 1</div>
-                <div className="comment">Comment 2</div>
-                <div className="comment">Comment 3</div>
+                <div className="comment-container">
+                  <img src={post.profilePicture} alt="profilePicture" />
+                  <div className="comment-container-top">
+                    <div className="comment-container-top_intro">
+                      <div className="comment-container-top_intro-info">
+                        <div className="comment-container-top_intro-name">
+                          Kim
+                        </div>
+                        <div className="comment-container-top_intro-job">
+                          engineer
+                        </div>
+                      </div>
+                      <div className="comment-container-top_intro-menu">
+                        <div className="comment-container-top_intro-time">
+                          1h
+                        </div>
+                        <button
+                          className="comment-container-top-intro-btn"
+                          onClick={() => toggleCommentPopup(index)} // 댓글 팝업 메뉴 토글 함수 연결
+                        >
+                          ∙∙∙
+                        </button>
+                        {showCommentPopup[index] && (
+                          <div className="comment-popup-menu show">
+                            <div className="comment-popup-menu-item_edit">
+                              <img src={edit} alt="edit" />
+                              <div>Edit comment</div>
+                            </div>
+                            <div className="comment-popup-menu-item_delete">
+                              <img src={deleteicon} alt="delete" />
+                              <div>Delete comment</div>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                    <div className="comment-container-text">test</div>
+                  </div>
+                </div>
               </div>
             )}
           </div>

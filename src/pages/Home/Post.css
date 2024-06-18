@@ -220,9 +220,12 @@
 }
 
 .comments-top_text {
-  width: 20rem;
+  width: 21.5rem;
   height: 35px;
   margin-left: 10px;
+  padding-left: 10px;
+  border: 1px solid #676767;
+  border-radius: 20px;
 }
 
 .comments {
@@ -235,10 +238,51 @@
 
 .comment {
   padding: 5px 0;
-  border-bottom: 1px solid #ddd;
 }
 
-/* 여기까지 */
+.comment-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.comment-container-top {
+  width: 22rem;
+  height: auto;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  padding: 10px 10px 10px 10px;
+}
+
+.comment-container-top_intro {
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment-container-top_intro-name {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.comment-container-top_intro-job {
+  font-size: 13px;
+  color: #7a7a7a;
+}
+
+.comment-container-top_intro-menu {
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment-container-top_intro-time {
+  font-size: 13px;
+  font-size: #7a7a7a;
+  margin-right: 5px;
+}
+
+.comment-container-text {
+  margin-top: 10px;
+}
 
 .post-bottom-buttons_comment_container {
   margin-top: 10px;
@@ -334,5 +378,69 @@
 }
 
 .popup-menu-item_edit:hover {
+  background-color: #f0f0f0;
+}
+
+/* 댓글 팝업 */
+.comment-container-top-intro-btn {
+  height: 10px;
+  position: relative;
+  font-weight: bold;
+  color: #7a7a7a;
+  cursor: pointer;
+  border: 0px;
+}
+
+.comment-popup-menu {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  border-radius: 8px;
+  z-index: 1000;
+  margin-top: 25px;
+  margin-left: -150px;
+}
+
+.comment-popup-menu.show {
+  display: block;
+}
+
+.comment-popup-menu-item_edit {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.comment-popup-menu-item_edit img {
+  width: 20px;
+  height: 20px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.comment-popup-menu-item_edit:hover {
+  background-color: #f0f0f0;
+}
+
+.comment-popup-menu-item_delete {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.comment-popup-menu-item_delete img {
+  width: 20px;
+  height: 20px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.comment-popup-menu-item_delete:hover {
   background-color: #f0f0f0;
 }
