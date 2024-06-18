@@ -3,8 +3,7 @@ import { formatDistance } from "date-fns";
 import { ko } from "date-fns/locale";
 import "./Post.css";
 import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
-import { postActions } from "../../store/reducer/post-slice";
+import { getAllPost } from "../../store/reducer/post-slice";
 
 import like from "../../component/svg/like.svg";
 import comment from "../../component/svg/comment.svg";
@@ -21,14 +20,7 @@ const Post = () => {
 
   // 홈 가운데 전체 게시글 띄우기 요청
   useEffect(() => {
-    const getAllpost = async () => {
-      const response = await axios.get("http://localhost:8080/post/read");
-
-      console.log(response);
-      dispatch(postActions.setPostData(response.data));
-    };
-
-    getAllpost();
+    dispatch(getAllPost());
   }, [dispatch]);
 
   // 각 포스트의 댓글 상태를 관리하기 위한 state

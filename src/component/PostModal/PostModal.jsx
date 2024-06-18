@@ -8,6 +8,7 @@ import {
   postModalActions,
 } from "../../store/reducer/postModal-slice";
 import { useNavigate } from "react-router-dom";
+import { getAllPost } from "../../store/reducer/post-slice";
 
 const PostModal = () => {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ const PostModal = () => {
   );
   const postContent = useSelector((state) => state.postModal.postContent);
   const imgContent = useSelector((state) => state.postModal.imgContent);
+  const postData = useSelector((state) => state.post.postData);
 
   // 구글 유저 데이터
   const googleUserData = useSelector(
@@ -64,12 +66,13 @@ const PostModal = () => {
   // post 버튼 눌렀을 때
   const clickPostHandler = (e) => {
     e.preventDefault();
+    const currentUserId = localStorage.getItem("userId");
 
-    dispatch(createPostToServer(postContent, imgContent))
+    dispatch(createPostToServer(postContent, imgContent, currentUserId))
       .then((success) => {
         if (success === true) {
           dispatch(postModalActions.reset());
-          navigate("/home");
+          dispatch(getAllPost());
         }
       })
       .catch((e) => alert("게시글 작성에 실패했습니다."));
