@@ -13,6 +13,7 @@
   margin: 10px 10px 10px 10px;
   width: 31.5rem;
   height: 5rem;
+  position: relative;
 }
 
 .post-owner {
@@ -20,10 +21,11 @@
   justify-content: center;
   align-items: center;
 }
+
 .post-owner-picture {
   width: 4rem;
   height: 4rem;
-  background-color: black;
+  /* background-color: black; */
   margin-left: 5px;
   border-radius: 35px;
 }
@@ -48,6 +50,11 @@
   color: #828282;
 }
 
+.follow-icons {
+  width: 100px;
+  height: 60px;
+}
+
 .follow-icon {
   display: flex;
   justify-content: center;
@@ -62,6 +69,20 @@
   font-weight: bold;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.follow-icon-menu {
+  margin-left: 70px;
+  width: 30px;
+  height: 30px;
+  border: 0px;
+  border-radius: 15px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.follow-icon-menu:hover {
+  background-color: #eaeaea;
 }
 
 .follow-icon:hover {
@@ -127,7 +148,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* padding: 0 60px 0 60px; */
   width: 200px;
   height: 50px;
   font-size: 17px;
@@ -159,6 +179,80 @@
   background-color: white;
 }
 
+/* 댓글 창 스타일 */
+.post-bottom-buttons_comment_container {
+  width: 31.5rem;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+  display: none;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+/* 댓글 창이 열렸을 때 스타일 */
+.post-bottom-buttons_comment_container.open {
+  display: block;
+}
+
+.post-bottom-buttons_comment_container {
+  margin-top: 10px;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+  display: none;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.post-bottom-buttons_comment_container.open {
+  display: block;
+  height: auto; /* 최대 높이를 설정, 댓글 수에 따라 조정 */
+}
+
+.comments-top_userPicture {
+  width: 50px;
+  height: 50px;
+  border: 1px solid black;
+}
+
+.comments-top_userPicture img {
+  width: 40px;
+  height: 40px;
+}
+
+.comments-top_text {
+  width: 20rem;
+  height: 35px;
+  margin-left: 10px;
+}
+
+.comments {
+  padding: 10px;
+}
+
+.comments-top {
+  height: auto;
+}
+
+.comment {
+  padding: 5px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+/* 여기까지 */
+
+.post-bottom-buttons_comment_container {
+  margin-top: 10px;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+  display: none;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.post-bottom-buttons_comment_container.open {
+  display: block;
+  max-height: 500px; /* 최대 높이를 설정, 댓글 수에 따라 조정 */
+}
 .post-bottom-buttons_repost:hover {
   background-color: #eaeaea;
 }
@@ -187,4 +281,58 @@
 .post-bottom-buttons-send img {
   width: 30px;
   margin-right: 5px;
+}
+
+.popup-menu {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  border-radius: 8px;
+  z-index: 1000;
+  top: 30px; /* 버튼 바로 아래에 위치하도록 설정 */
+  right: 0; /* 버튼의 오른쪽 정렬 */
+}
+
+.popup-menu.show {
+  display: block;
+}
+
+.popup-menu-item_delete {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.popup-menu-item_delete img {
+  width: 20px;
+  height: 20px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.popup-menu-item_delete:hover {
+  background-color: #f0f0f0;
+}
+
+.popup-menu-item_edit {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.popup-menu-item_edit img {
+  width: 20px;
+  height: 20px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.popup-menu-item_edit:hover {
+  background-color: #f0f0f0;
 }

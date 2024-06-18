@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
-
+import React, { useEffect, useState } from "react";
+import { formatDistance } from "date-fns";
+import { ko } from "date-fns/locale";
 import "./Post.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { postActions } from "../../store/reducer/post-slice";
 
@@ -9,53 +10,105 @@ import like from "../../component/svg/like.svg";
 import comment from "../../component/svg/comment.svg";
 import repost from "../../component/svg/repost.svg";
 import send from "../../component/svg/send.svg";
+import edit from "../../component/svg/edit.svg";
+import deleteicon from "../../component/svg/delete.svg";
 
 const Post = () => {
+  const dispatch = useDispatch();
+  const [showMenu, setShowMenu] = useState(false);
+  const [menuIndex, setMenuIndex] = useState(null);
   const postData = useSelector((state) => state.post.postData);
 
   // 홈 가운데 전체 게시글 띄우기 요청
   useEffect(() => {
     const getAllpost = async () => {
-      const response = await axios.get("http://localhost:8080/post/read", {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      dispatchEvent(postActions.setPostData(response));
+      const response = await axios.get("http://localhost:8080/post/read");
+
+      console.log(response);
+      dispatch(postActions.setPostData(response.data));
     };
 
     getAllpost();
-  }, [postData]);
+  }, [dispatch]);
+
+  // 각 포스트의 댓글 상태를 관리하기 위한 state
+  const [openComments, setOpenComments] = useState({});
+
+  const handleToggle = (postId) => {
+    setOpenComments((prevState) => ({
+      ...prevState,
+      [postId]: !prevState[postId],
+    }));
+  };
+
+  // 팝업 메뉴
+  const toggleMenu = (index) => {
+    if (menuIndex === index) {
+      setShowMenu(false);
+      setMenuIndex(null);
+    } else {
+      setShowMenu(true);
+      setMenuIndex(index);
+    }
+  };
 
   return (
     <>
-      {postData.map((post) => (
-        <div className="post-container" Key={post.id}>
+      {postData.map((post, index) => (
+        <div className="post-container" key={post.userId}>
           <div className="post-top">
             <div className="post-owner">
               {/* post owner 정보 */}
-              <div className="post-owner-picture"></div>
+              <div className="post-owner-picture">
+                <img src={post.profilePicture} alt="ProfilePicture" />
+              </div>
               <div className="post-owner-info">
-                <div className="post-owner-info_name">{post.full_name}</div>
-                <div className="post-owner-info_intro">kim's intro</div>
-                <div className="post-owner-info_time">2w</div>
+                <div className="post-owner-info_name">{post.fullName}</div>
+                <div className="post-owner-info_intro">{post.introduction}</div>
+                <div className="post-owner-info_time">
+                  {formatDistance(new Date(post.createdAt), new Date(), {
+                    addSuffix: true,
+                    locale: ko,
+                  })}
+                </div>
               </div>
             </div>
             <div className="post-top-icons">
-              {/* <div className="more-icon">more-icon</div> */}
+              <button
+                className="follow-icon-menu"
+                onClick={() => toggleMenu(index)}
+              >
+                ∙∙∙
+              </button>
+              {showMenu && menuIndex === index && (
+                <div className="popup-menu show">
+                  <div className="popup-menu-item_edit">
+                    <img src={edit} alt="edit" />
+                    <div>Edit post</div>
+                  </div>
+                  <div className="popup-menu-item_delete">
+                    <img src={deleteicon} alt="delete" />
+                    <div>Delete post</div>
+                  </div>
+                </div>
+              )}
               <button className="follow-icon">+ Follow</button>
             </div>
           </div>
-          <div className="post-contents">contents{/* post 내용 */}</div>
-          <div className="post-comments-count">
-            commentscount{/* 댓글 수 */}
-          </div>
+          <div className="post-contents">{post.content}</div>
+          <div className="post-comments-count">{/* */}</div>
           <div className="post-bottom-buttons">
             <button type="button" className="post-bottom-buttons_like">
               <img src={like} alt="like" />
               Like
             </button>
-            <button type="button" className="post-bottom-buttons_comment">
+            <button
+              type="button"
+              className={`post-bottom-buttons_comment ${
+                openComments[post.userId] ? "open" : ""
+              }`}
+              onClick={() => handleToggle(post.userId)}
+            >
               <img src={comment} alt="comment" />
               Comment
             </button>
@@ -67,6 +120,32 @@ const Post = () => {
               <img src={send} alt="send" />
               send
             </button>
+          </div>
+          <div
+            className={`post-bottom-buttons_comment_container ${
+              openComments[post.userId] ? "open" : ""
+            }`}
+          >
+            {openComments[post.userId] && (
+              <div className="comments">
+                <div className="comments-top">
+                  <img
+                    src={post.profilePicture}
+                    alt="profilePicture"
+                    className="comments-top_userPicture"
+                  />
+                  <input
+                    type="text"
+                    className="comments-top_text"
+                    placeholder="Add a comment…"
+                  ></input>
+                </div>
+                {/* 예시 댓글들 */}
+                <div className="comment">Comment 1</div>
+                <div className="comment">Comment 2</div>
+                <div className="comment">Comment 3</div>
+              </div>
+            )}
           </div>
         </div>
       ))}
