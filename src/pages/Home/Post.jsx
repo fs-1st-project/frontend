@@ -3,7 +3,8 @@ import { formatDistance } from "date-fns";
 import { ko } from "date-fns/locale";
 import "./Post.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllPost } from "../../store/reducer/post-slice";
+import axios from "axios";
+import { postActions } from "../../store/reducer/post-slice";
 
 import like from "../../component/svg/like.svg";
 import comment from "../../component/svg/comment.svg";
@@ -11,18 +12,35 @@ import repost from "../../component/svg/repost.svg";
 import send from "../../component/svg/send.svg";
 import edit from "../../component/svg/edit.svg";
 import deleteicon from "../../component/svg/delete.svg";
+import UserProfile from "../UserProfile/UserProfile";
 
 const Post = () => {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const [menuIndex, setMenuIndex] = useState(null);
   const [showCommentPopup, setShowCommentPopup] = useState({}); // 댓글 팝업 메뉴 상태
+  const [commentText, setCommentText] = useState(""); // 댓글 텍스트 상태 추가(입력 시 포스트버튼 나오게)
+  const [loggedInUserId, setLoggedInUserId] = useState(null); // 로그인한 사용자의 userId
   const postData = useSelector((state) => state.post.postData);
 
   // 홈 가운데 전체 게시글 띄우기 요청
   useEffect(() => {
-    dispatch(getAllPost());
+    const getAllpost = async () => {
+      const response = await axios.get("http://localhost:8080/post/read");
+
+      console.log(response);
+      dispatch(postActions.setPostData(response.data));
+    };
+
+    getAllpost();
   }, [dispatch]);
+
+  console.log("UserProfile: ", localStorage.getItem(UserProfile));
+  useEffect(() => {
+    const userId = localStorage.getItem("userId");
+    setLoggedInUserId(userId);
+    console.log("local_userId: ", userId);
+  }, []);
 
   // 각 포스트의 댓글 상태를 관리하기 위한 state
   const [openComments, setOpenComments] = useState({});
@@ -45,12 +63,26 @@ const Post = () => {
     }
   };
 
-  // 댓글 팝업 메뉴 토글 함수
+  // comment 팝업 메뉴 토글 함수
   const toggleCommentPopup = (commentId) => {
     setShowCommentPopup((prevState) => ({
       ...prevState,
       [commentId]: !prevState[commentId],
     }));
+  };
+
+  // 댓글 입력 핸들러
+  const handleCommentChange = (e) => {
+    setCommentText(e.target.value);
+  };
+
+  // 댓글 추가 핸들러
+  const handleAddComment = (postId) => {
+    // 여기서 서버로 댓글을 보내고 처리하는 로직을 추가해야 합니다.
+    console.log(`Adding comment "${commentText}" to post ${postId}`);
+
+    // post 후 초기화
+    setCommentText("");
   };
 
   return (
@@ -93,7 +125,9 @@ const Post = () => {
                   </div>
                 </div>
               )}
-              <button className="follow-icon">+ Follow</button>
+              {loggedInUserId != post.userId && ( // 작성자와 로그인한 사용자의 userId 비교
+                <button className="follow-icon">+ Follow</button>
+              )}
             </div>
           </div>
           <div className="post-contents">{post.content}</div>
@@ -130,16 +164,22 @@ const Post = () => {
             {openComments[post.userId] && (
               <div className="comments">
                 <div className="comments-top">
-                  <img
-                    src={post.profilePicture}
-                    alt="profilePicture"
-                    className="comments-top_userPicture"
-                  />
+                  <img src={post.profilePicture} alt="profilePicture" />
                   <input
                     type="text"
                     className="comments-top_text"
                     placeholder="Add a comment…"
-                  ></input>
+                    value={commentText}
+                    onChange={handleCommentChange}
+                  />
+                  {commentText && (
+                    <button
+                      className="comments-post-button"
+                      onClick={() => handleAddComment(post.userId)}
+                    >
+                      Post
+                    </button>
+                  )}
                 </div>
                 {/* 예시 댓글들 */}
                 <div className="comment-container">

@@ -25,8 +25,8 @@
 .post-owner-picture {
   width: 4rem;
   height: 4rem;
-  /* background-color: black; */
   margin-left: 5px;
+  border: 1px solid black;
   border-radius: 35px;
 }
 
@@ -49,7 +49,9 @@
   font-size: 13px;
   color: #828282;
 }
-
+.post-top-icons {
+  height: 100px;
+}
 .follow-icons {
   width: 100px;
   height: 60px;
@@ -207,16 +209,15 @@
   display: block;
   height: auto; /* 최대 높이를 설정, 댓글 수에 따라 조정 */
 }
-
-.comments-top_userPicture {
-  width: 50px;
-  height: 50px;
-  border: 1px solid black;
+.comments-top {
+  height: auto;
 }
 
-.comments-top_userPicture img {
-  width: 40px;
-  height: 40px;
+.comments-top img {
+  width: 4rem;
+  height: 4rem;
+  border: 1px solid black;
+  border-radius: 35px;
 }
 
 .comments-top_text {
@@ -229,11 +230,21 @@
 }
 
 .comments {
+  height: auto;
   padding: 10px;
 }
 
-.comments-top {
-  height: auto;
+.comments-post-button {
+  width: 60px;
+  height: 25px;
+  background-color: #0966c2;
+  margin-left: 7.5rem;
+  margin-top: 10px;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  border: 0px;
+  border-radius: 15px;
 }
 
 .comment {
@@ -246,8 +257,15 @@
   margin-top: 10px;
 }
 
+.comment-container img {
+  width: 4rem;
+  height: 4rem;
+  border: 1px solid black;
+  border-radius: 35px;
+}
+
 .comment-container-top {
-  width: 22rem;
+  width: 24rem;
   height: auto;
   background-color: #f2f2f2;
   border-radius: 5px;
