@@ -28,10 +28,8 @@ const Post = () => {
 
   const [menuIndex, setMenuIndex] = useState(null);
   const [loggedInUserId, setLoggedInUserId] = useState(null); // 로그인한 사용자의 userId
-  
+
   const isCommentOpen = useSelector((state) => state.comment.isCommentOpen);
-  const commentData = useSelector((state) => state.comment.commentData);
-  console.log(commentData, "댓글 데이터!!");
 
   // post Slice 전역 상태들
   const postData = useSelector((state) => state.post.postData);

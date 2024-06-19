@@ -13,8 +13,12 @@ export const getAllComment = (postId) => {
 
       const responseData = await response.json();
 
-      dispatch(commentActions.setCommentData(responseData));
-      console.log(responseData);
+      dispatch(
+        commentActions.setCommentData({
+          postId: postId,
+          commentData: responseData,
+        })
+      );
       return true;
     } catch (error) {
       console.error("모든 게시물 조회 중 에러 발생");
@@ -63,7 +67,7 @@ const commentSlice = createSlice({
     isCommentPopupOpen: false,
     commentContent: "",
     isCommentOpen: {},
-    commentData: [],
+    commentData: {},
   },
   reducers: {
     setIsCommentPopupOpen(state, action) {
@@ -77,7 +81,9 @@ const commentSlice = createSlice({
       state.isCommentOpen[postId] = !state.isCommentOpen[postId];
     },
     setCommentData(state, action) {
-      state.commentData = action.payload;
+      const { postId } = action.payload;
+      const { commentData } = action.payload;
+      state.commentData[postId] = commentData;
     },
     setCommentContentReset(state, action) {
       state.commentContent = "";
