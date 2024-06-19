@@ -183,6 +183,7 @@
 
 /* 댓글 창 스타일 */
 .post-bottom-buttons_comment_container {
+  margin-top: 10px;
   width: 31.5rem;
   padding: 10px;
   border-top: 1px solid #ddd;
@@ -194,21 +195,9 @@
 /* 댓글 창이 열렸을 때 스타일 */
 .post-bottom-buttons_comment_container.open {
   display: block;
+  height: auto;
 }
 
-.post-bottom-buttons_comment_container {
-  margin-top: 10px;
-  padding: 10px;
-  border-top: 1px solid #ddd;
-  display: none;
-  overflow: hidden;
-  transition: max-height 0.3s ease-out;
-}
-
-.post-bottom-buttons_comment_container.open {
-  display: block;
-  height: auto; /* 최대 높이를 설정, 댓글 수에 따라 조정 */
-}
 .comments-top {
   height: auto;
 }
