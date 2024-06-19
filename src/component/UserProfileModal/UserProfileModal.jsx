@@ -37,17 +37,16 @@ const UserProfileModal = () => {
     profileIntroduce,
     profileEducation,
     profileLocation,
+    profileFullName,
   } = useSelector((state) => state.profileModal);
 
-  const profileModalStates = useSelector((state) => state.profileModal);
-  console.log(profileModalStates);
-  const profileFullName = useSelector(
-    (state) => state.profileModal.profileFullName
-  );
-  const profileBio = useSelector((state) => state.profileModal.profileBio);
+  //const profileModalStates = useSelector((state) => state.profileModal);
 
-  console.log(profileBio, "바이오");
-  console.log(profileFullName, "이름");
+  //console.log(profileModalStates);
+
+  // const profileFullName = useSelector(
+  //   (state) => state.profileModal.profileFullName
+  // );
 
   // 배경 이미지 파일 선택 시
   const handleBackgroungImgFileChange = (e) => {
@@ -144,19 +143,11 @@ const UserProfileModal = () => {
 
   // Save 버튼 활성화 여부 체크
   const SaveButton = () => {
-    if (profileFullName.trim().length > 0) {
-      return (
-        <button className="post-button-able" onClick={clickSaveHandler}>
-          Save
-        </button>
-      );
-    } else {
-      return (
-        <button className="post-button-disable" disabled>
-          Save
-        </button>
-      );
-    }
+    return (
+      <button className="post-button-able" onClick={clickSaveHandler}>
+        Save
+      </button>
+    );
   };
 
   // 모달 열려있지 않으면 null 반환

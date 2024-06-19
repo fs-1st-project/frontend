@@ -39,7 +39,7 @@ export const fetchGoogleUserData = () => {
 };
 
 // 일반 유저 데이터 가져오기
-export const fetchNormalUserData = async () => {
+export const fetchNormalUserData = () => {
   return async (dispatch) => {
     try {
       // 로컬 스토리지에서 토큰 받기
@@ -53,15 +53,17 @@ export const fetchNormalUserData = async () => {
         },
       });
 
-      dispatch(profileActions.setPostData(response.data));
+      const responseData = response.data;
+      console.log(responseData, "구글 유저 데이터 확인");
+
+      //dispatch(profileActions.setPostData(response.data));
       // 서버에서 받은 유저 데이터 저장
-      //dispatch(signinActions.setNormalUserData(response.data));
+      dispatch(signinActions.setNormalUserData(responseData));
     } catch (error) {
       console.error("기본 로그인 사용자 정보를 받아오지 못했습니다");
+    } finally {
+      dispatch(signinActions.setIsLoading());
     }
-    // } finally {
-    //   dispatch(signinActions.setIsLoading());
-    // }
   };
 };
 

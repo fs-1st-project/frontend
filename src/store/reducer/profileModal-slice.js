@@ -38,58 +38,35 @@ export const updateGoogleProfileInfoToServer = (
 };
 
 // 서버에 프로필 정보 업데이트 요청하는 비동기 액션 생성자 함수
-export const updateProfileInfoToServer = (payload) => {
+export const updateProfileInfoToServer = (updateNormalUserProfileData) => {
   return async (dispatch, getState) => {
-    const {
-      fullName,
-      introduction,
-      profilePicture,
-      profileBackgroundPicture,
-      education,
-      location,
-    } = payload;
-
     try {
       // 로컬 스토리지에서 이메일 가져오기
       const state = getState();
       const { email } = state.signin.normalUserData; // 이곳에서 이메일 가져오기
-      const url = `http://localhost:8080/home/${email}/profile`;
+      const url = `http://localhost:8080/home/update/${email}/profile`;
 
-      const token = localStorage.getItem("token");
-
-      const requestBody = {
-        fullName,
-        profileBackgroundPicture,
-        profilePicture,
-        introduction,
-        education,
-        location,
-      };
+      console.log("첫번째 콘솔로그");
+      //const token = localStorage.getItem("token");
 
       const requestOptions = {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify(requestBody),
+        body: JSON.stringify(updateNormalUserProfileData),
       };
 
-      // 콘솔에 requestBody 출력
-      console.log("Request Body:", requestBody);
-
+      console.log("두번째콘솔로그");
       const response = await fetch(url, requestOptions);
-      const responseData = await response.json();
+      console.log("세번째콘솔로그", response);
 
-      if (!responseData) {
+      if (!response.ok) {
         throw new Error("프로필 정보 업데이트 서버 응답 실패");
       }
-
-      dispatch(profileModalActions.updateProfileInfoSuccess(responseData));
       return true;
     } catch (error) {
       console.error("프로필 정보 업데이트 요청 중 에러 발생:", error);
-      dispatch(profileModalActions.updateProfileInfoFailure(error.message));
       return false;
     }
   };
