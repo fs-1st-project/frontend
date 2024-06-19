@@ -6,41 +6,56 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllPost, postActions } from "../../store/reducer/post-slice";
 
 import like from "../../component/svg/like.svg";
-import comment from "../../component/svg/comment.svg";
+import commenticon from "../../component/svg/comment.svg";
 import repost from "../../component/svg/repost.svg";
 import send from "../../component/svg/send.svg";
 import edit from "../../component/svg/edit.svg";
 import deleteicon from "../../component/svg/delete.svg";
 import EditPostModal from "../../component/EditPostModal/EditPostModal";
 import { editPostModalActions } from "../../store/reducer/editPostModal-slice";
+
 import { deletePostModalActions } from "../../store/reducer/deletePostModal-slice";
 import DeletePostModal from "../../component/DeletePostModal/DeletePostModal";
+
+import {
+  commentActions,
+  getAllComment,
+} from "../../store/reducer/comment-slice";
 
 const Post = () => {
   const dispatch = useDispatch();
 
   const [menuIndex, setMenuIndex] = useState(null);
+  const [loggedInUserId, setLoggedInUserId] = useState(null); // 로그인한 사용자의 userId
+  const isCommentPopupOpen = useSelector(
+    (state) => state.comment.isCommentPopupOpen
+  );
+  const commentContent = useSelector((state) => state.comment.commentContent);
+  const isCommentOpen = useSelector((state) => state.comment.isCommentOpen);
 
   // post Slice 전역 상태들
   const postData = useSelector((state) => state.post.postData);
   const isMenuOpen = useSelector((state) => state.post.isMenuOpen);
 
-  // 각 포스트의 댓글 상태를 관리하기 위한 state
-  const [openComments, setOpenComments] = useState({});
+  const commentData = useSelector((state) => state.comment.commentData);
+  console.log(commentData);
 
   // 홈 가운데 전체 게시글 띄우기 요청
   useEffect(() => {
     dispatch(getAllPost());
   }, [dispatch]);
 
+  useEffect(() => {
+    const userId = localStorage.getItem("userId");
+    setLoggedInUserId(userId);
+  }, []);
+
   const handleToggle = (postId) => {
-    setOpenComments((prevState) => ({
-      ...prevState,
-      [postId]: !prevState[postId],
-    }));
+    dispatch(getAllComment(postId));
+    dispatch(commentActions.toggleIsCommentOpen(postId));
   };
 
-  // 팝업 메뉴
+  // post 팝업 메뉴
   const toggleMenu = (index) => {
     if (menuIndex === index) {
       dispatch(postActions.setIsMenuOpen(false));
@@ -49,6 +64,23 @@ const Post = () => {
       dispatch(postActions.setIsMenuOpen(true));
       setMenuIndex(index);
     }
+  };
+
+  // comment 팝업 메뉴 토글 함수
+  const toggleCommentPopup = (commentId) => {
+    dispatch(commentActions.setIsCommentPopupOpen());
+  };
+
+  // 댓글 입력 핸들러
+  const handleCommentChange = (e) => {
+    dispatch(commentActions.setCommentContent);
+  };
+
+  // 댓글 추가 핸들러
+  const handleAddComment = (postId) => {
+    // 여기서 서버로 댓글을 보내고 처리하는 로직을 추가해야 합니다.
+    // post 후 초기화
+    // setCommentText("");
   };
 
   // edit post 눌렀을 때
@@ -109,7 +141,9 @@ const Post = () => {
                   </div>
                 </div>
               )}
-              <button className="follow-icon">+ Follow</button>
+              {loggedInUserId != post.userId && ( // 작성자와 로그인한 사용자의 userId 비교
+                <button className="follow-icon">+ Follow</button>
+              )}
             </div>
           </div>
           <div className="post-contents">{post.content}</div>
@@ -122,11 +156,11 @@ const Post = () => {
             <button
               type="button"
               className={`post-bottom-buttons_comment ${
-                openComments[post.userId] ? "open" : ""
+                isCommentOpen[post.id] ? "open" : ""
               }`}
-              onClick={() => handleToggle(post.userId)}
+              onClick={() => handleToggle(post.id)}
             >
-              <img src={comment} alt="comment" />
+              <img src={commenticon} alt="comment" />
               Comment
             </button>
             <button type="button" className="post-bottom-buttons_repost">
@@ -140,27 +174,69 @@ const Post = () => {
           </div>
           <div
             className={`post-bottom-buttons_comment_container ${
-              openComments[post.userId] ? "open" : ""
+              isCommentOpen[post.id] ? "open" : ""
             }`}
           >
-            {openComments[post.userId] && (
+            {isCommentOpen[post.userId] && (
               <div className="comments">
                 <div className="comments-top">
-                  <img
-                    src={post.profilePicture}
-                    alt="profilePicture"
-                    className="comments-top_userPicture"
-                  />
+                  <img src={post.profilePicture} alt="profilePicture" />
                   <input
                     type="text"
                     className="comments-top_text"
                     placeholder="Add a comment…"
-                  ></input>
+                    value={commentContent}
+                    onChange={handleCommentChange}
+                  />
+                  {commentContent && (
+                    <button
+                      className="comments-post-button"
+                      onClick={() => handleAddComment(post.userId)}
+                    >
+                      Post
+                    </button>
+                  )}
                 </div>
                 {/* 예시 댓글들 */}
-                <div className="comment">Comment 1</div>
-                <div className="comment">Comment 2</div>
-                <div className="comment">Comment 3</div>
+                <div className="comment-container">
+                  <img src={post.profilePicture} alt="profilePicture" />
+                  <div className="comment-container-top">
+                    <div className="comment-container-top_intro">
+                      <div className="comment-container-top_intro-info">
+                        <div className="comment-container-top_intro-name">
+                          Kim
+                        </div>
+                        <div className="comment-container-top_intro-job">
+                          engineer
+                        </div>
+                      </div>
+                      <div className="comment-container-top_intro-menu">
+                        <div className="comment-container-top_intro-time">
+                          1h
+                        </div>
+                        <button
+                          className="comment-container-top-intro-btn"
+                          onClick={() => toggleCommentPopup(index)} // 댓글 팝업 메뉴 토글 함수 연결
+                        >
+                          ∙∙∙
+                        </button>
+                        {isCommentPopupOpen && (
+                          <div className="comment-popup-menu show">
+                            <div className="comment-popup-menu-item_edit">
+                              <img src={edit} alt="edit" />
+                              <div>Edit comment</div>
+                            </div>
+                            <div className="comment-popup-menu-item_delete">
+                              <img src={deleteicon} alt="delete" />
+                              <div>Delete comment</div>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                    <div className="comment-container-text">test</div>
+                  </div>
+                </div>
               </div>
             )}
           </div>
@@ -169,5 +245,4 @@ const Post = () => {
     </>
   );
 };
-
 export default Post;

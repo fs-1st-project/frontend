@@ -25,8 +25,8 @@
 .post-owner-picture {
   width: 4rem;
   height: 4rem;
-  /* background-color: black; */
   margin-left: 5px;
+  border: 1px solid black;
   border-radius: 35px;
 }
 
@@ -49,7 +49,9 @@
   font-size: 13px;
   color: #828282;
 }
-
+.post-top-icons {
+  height: 100px;
+}
 .follow-icons {
   width: 100px;
   height: 60px;
@@ -181,6 +183,7 @@
 
 /* 댓글 창 스타일 */
 .post-bottom-buttons_comment_container {
+  margin-top: 10px;
   width: 31.5rem;
   padding: 10px;
   border-top: 1px solid #ddd;
@@ -192,53 +195,101 @@
 /* 댓글 창이 열렸을 때 스타일 */
 .post-bottom-buttons_comment_container.open {
   display: block;
-}
-
-.post-bottom-buttons_comment_container {
-  margin-top: 10px;
-  padding: 10px;
-  border-top: 1px solid #ddd;
-  display: none;
-  overflow: hidden;
-  transition: max-height 0.3s ease-out;
-}
-
-.post-bottom-buttons_comment_container.open {
-  display: block;
-  height: auto; /* 최대 높이를 설정, 댓글 수에 따라 조정 */
-}
-
-.comments-top_userPicture {
-  width: 50px;
-  height: 50px;
-  border: 1px solid black;
-}
-
-.comments-top_userPicture img {
-  width: 40px;
-  height: 40px;
-}
-
-.comments-top_text {
-  width: 20rem;
-  height: 35px;
-  margin-left: 10px;
-}
-
-.comments {
-  padding: 10px;
+  height: auto;
 }
 
 .comments-top {
   height: auto;
 }
 
-.comment {
-  padding: 5px 0;
-  border-bottom: 1px solid #ddd;
+.comments-top img {
+  width: 4rem;
+  height: 4rem;
+  border: 1px solid black;
+  border-radius: 35px;
 }
 
-/* 여기까지 */
+.comments-top_text {
+  width: 21.5rem;
+  height: 35px;
+  margin-left: 10px;
+  padding-left: 10px;
+  border: 1px solid #676767;
+  border-radius: 20px;
+}
+
+.comments {
+  height: auto;
+  padding: 10px;
+}
+
+.comments-post-button {
+  width: 60px;
+  height: 25px;
+  background-color: #0966c2;
+  margin-left: 7.5rem;
+  margin-top: 10px;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  border: 0px;
+  border-radius: 15px;
+}
+
+.comment {
+  padding: 5px 0;
+}
+
+.comment-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.comment-container img {
+  width: 4rem;
+  height: 4rem;
+  border: 1px solid black;
+  border-radius: 35px;
+}
+
+.comment-container-top {
+  width: 24rem;
+  height: auto;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  padding: 10px 10px 10px 10px;
+}
+
+.comment-container-top_intro {
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment-container-top_intro-name {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.comment-container-top_intro-job {
+  font-size: 13px;
+  color: #7a7a7a;
+}
+
+.comment-container-top_intro-menu {
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment-container-top_intro-time {
+  font-size: 13px;
+  font-size: #7a7a7a;
+  margin-right: 5px;
+}
+
+.comment-container-text {
+  margin-top: 10px;
+}
 
 .post-bottom-buttons_comment_container {
   margin-top: 10px;
@@ -334,5 +385,69 @@
 }
 
 .popup-menu-item_edit:hover {
+  background-color: #f0f0f0;
+}
+
+/* 댓글 팝업 */
+.comment-container-top-intro-btn {
+  height: 10px;
+  position: relative;
+  font-weight: bold;
+  color: #7a7a7a;
+  cursor: pointer;
+  border: 0px;
+}
+
+.comment-popup-menu {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  border-radius: 8px;
+  z-index: 1000;
+  margin-top: 25px;
+  margin-left: -150px;
+}
+
+.comment-popup-menu.show {
+  display: block;
+}
+
+.comment-popup-menu-item_edit {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.comment-popup-menu-item_edit img {
+  width: 20px;
+  height: 20px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.comment-popup-menu-item_edit:hover {
+  background-color: #f0f0f0;
+}
+
+.comment-popup-menu-item_delete {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.comment-popup-menu-item_delete img {
+  width: 20px;
+  height: 20px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.comment-popup-menu-item_delete:hover {
   background-color: #f0f0f0;
 }
