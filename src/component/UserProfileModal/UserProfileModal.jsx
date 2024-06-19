@@ -32,13 +32,22 @@ const UserProfileModal = () => {
   // 모달 상태와 프로필 정보 가져오기
   const {
     isProfileModalOpen,
-    profileFullName,
+    profileImg,
+    profileBackgroundImg,
     profileIntroduce,
     profileEducation,
     profileLocation,
-    profileImg,
-    profileBackgroundImg,
   } = useSelector((state) => state.profileModal);
+
+  const profileModalStates = useSelector((state) => state.profileModal);
+  console.log(profileModalStates);
+  const profileFullName = useSelector(
+    (state) => state.profileModal.profileFullName
+  );
+  const profileBio = useSelector((state) => state.profileModal.profileBio);
+
+  console.log(profileBio, "바이오");
+  console.log(profileFullName, "이름");
 
   // 배경 이미지 파일 선택 시
   const handleBackgroungImgFileChange = (e) => {
@@ -100,13 +109,18 @@ const UserProfileModal = () => {
   const clickSaveHandler = async (e) => {
     e.preventDefault();
     const profileData = {
-      fullName: profileFullName,
-      introduction: profileIntroduce,
       profilePicture: profileImg,
       profileBackgroundPicture: profileBackgroundImg,
+      fullName: profileFullName,
+      introduction: profileIntroduce,
+      bio: "",
       education: profileEducation,
       location: profileLocation,
+      certification: "",
     };
+
+    console.log(profileData, "프로필데이타");
+
     if (isGoogleClicked) {
       dispatch(updateGoogleProfileInfoToServer(profileData)).then((success) => {
         if (success === true) {

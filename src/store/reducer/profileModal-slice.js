@@ -4,46 +4,27 @@ import axios from "axios";
 import { auth } from "../../firebaseConfig";
 
 // 서버에 프로필 정보 업데이트 요청하는 비동기 액션 생성자 함수 //구글
-export const updateGoogleProfileInfoToServer = (payload) => {
+export const updateGoogleProfileInfoToServer = (
+  updateGoogleUserProfileData
+) => {
   return async (dispatch) => {
-    const {
-      fullName,
-      introduction,
-      profilePicture,
-      profileBackgroundPicture,
-      education,
-      location,
-    } = payload;
-
     try {
       const currentUser = auth.currentUser;
       const uid = currentUser.uid;
-      const url = `http://localhost:8080/api/users/${uid}/profile`;
+      const url = `http://localhost:8080/api/users/update/${uid}/profile`;
 
-      const token = localStorage.getItem("token");
-
-      const requestBody = {
-        fullName,
-        profileBackgroundPicture,
-        profilePicture,
-        introduction,
-        education,
-        location,
-      };
-
+      console.log("첫번째 콘솔로그");
       const requestOptions = {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify(requestBody),
+        body: JSON.stringify(updateGoogleUserProfileData),
       };
 
-      // 콘솔에 requestBody 출력
-      console.log("Request Body:", requestBody);
-
+      console.log("두번째콘솔로그");
       const response = await fetch(url, requestOptions);
+      console.log("세번째콘솔로그", response);
 
       if (!response.ok) {
         throw new Error("프로필 정보 업데이트 서버 응답 실패");

@@ -12,6 +12,7 @@ import vijay from "../../component/svg/vijay.jpeg";
 import LoginNav from "./LoginNav";
 import PostModal from "../../component/PostModal/PostModal";
 import HomeMiddle from "./HomeMiddle";
+import { fetchGoogleUserData } from "../../store/reducer/profile-slice";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -27,34 +28,38 @@ const Home = () => {
     (state) => state.signin.isNormalLoginClicked
   );
 
+  const googleUserData = useSelector(
+    (state) => state.googleSignin.googleUserData
+  );
+
   // 구글 유저 데이터 가져오기
-  const fetchGoogleUserData = async () => {
-    try {
-      const currentUser = auth.currentUser;
+  // const fetchGoogleUserData = async () => {
+  //   try {
+  //     const currentUser = auth.currentUser;
 
-      if (currentUser) {
-        const idToken = await currentUser.getIdToken(true);
-        const uid = currentUser.uid;
+  //     if (currentUser) {
+  //       const idToken = await currentUser.getIdToken(true);
+  //       const uid = currentUser.uid;
 
-        const response = await axios.get(
-          `http://localhost:8080/api/users/${uid}/profile`,
-          {
-            headers: {
-              Authorization: `Bearer ${idToken}`,
-            },
-          }
-        );
-        console.log(response.data);
-        console.log(response.data.fullName);
+  //       const response = await axios.get(
+  //         `http://localhost:8080/api/users/${uid}/profile`,
+  //         {
+  //           headers: {
+  //             Authorization: `Bearer ${idToken}`,
+  //           },
+  //         }
+  //       );
+  //       console.log(response.data);
+  //       console.log(response.data.fullName);
 
-        dispatch(googleSigninActions.setGoogleUserData(response.data));
-      }
-    } catch (error) {
-      console.error("Error fetching user data:", error);
-    } finally {
-      dispatch(googleSigninActions.setGoogleLoading());
-    }
-  };
+  //       dispatch(googleSigninActions.setGoogleUserData(response.data));
+  //     }
+  //   } catch (error) {
+  //     console.error("Error fetching user data:", error);
+  //   } finally {
+  //     dispatch(googleSigninActions.setGoogleLoading());
+  //   }
+  // };
 
   // 일반 유저 데이터 가져오기
   const fetchNormalUserData = async () => {
@@ -80,10 +85,13 @@ const Home = () => {
 
   // 구글이나 일반 유저 로그인 후, home 왼쪽에 유저 간단 프로필 띄우기
   useEffect(() => {
+    console.log("구글유저 로그인 첫 렌더");
     if (!isGoogleClicked && !isNormalLoginClicked) {
       navigate("/");
     } else if (isGoogleClicked) {
-      fetchGoogleUserData();
+      console.log("구글유저데이터 렌더랑");
+      dispatch(fetchGoogleUserData());
+      console.log("구글유저데이터", googleUserData);
     } else {
       fetchNormalUserData();
     }

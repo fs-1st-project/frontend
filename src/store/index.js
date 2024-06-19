@@ -22,7 +22,8 @@ export const store = configureStore({
         ignoredActionPaths: ["register", "rehydrate"],
         ignoredPaths: ["_persist"],
       },
-    }).concat(thunk), // thunk 미들웨어 추가
+    }).concat(thunk),
 });
 
+//, // thunk 미들웨어 추가
 export const persistor = persistStore(store);

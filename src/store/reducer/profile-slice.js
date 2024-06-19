@@ -5,7 +5,7 @@ import { googleSigninActions } from "../../store/reducer/googleSignin-slice";
 import { signinActions } from "../../store/reducer/signin-slice";
 
 // 구글 유저 데이터 가져오기
-export const fetchGoogleUserData = async () => {
+export const fetchGoogleUserData = () => {
   return async (dispatch) => {
     try {
       const currentUser = auth.currentUser;
@@ -14,18 +14,21 @@ export const fetchGoogleUserData = async () => {
         const idToken = await currentUser.getIdToken(true);
         const uid = currentUser.uid;
 
-        const response = await axios.get(
-          `http://localhost:8080/api/users/${uid}/profile`,
-          {
-            headers: {
-              Authorization: `Bearer ${idToken}`,
-            },
-          }
-        );
-        console.log(response.data);
-        console.log(response.data.fullName);
+        const requestOptions = {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${idToken}`,
+          },
+        };
 
-        dispatch(googleSigninActions.setGoogleUserData(response.data));
+        const url = `http://localhost:8080/api/users/${uid}/profile`;
+
+        const response = await axios.get(url, requestOptions);
+
+        const responseData = response.data;
+        console.log(responseData, "구글 유저 데이터 확인");
+
+        dispatch(googleSigninActions.setGoogleUserData(responseData));
       }
     } catch (error) {
       console.error("Error fetching user data:", error);
