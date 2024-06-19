@@ -21,7 +21,6 @@ import {
   commentActions,
   getAllComment,
 } from "../../store/reducer/comment-slice";
->>>>>>> postComment
 
 const Post = () => {
   const dispatch = useDispatch();

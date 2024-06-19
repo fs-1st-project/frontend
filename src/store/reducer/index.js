@@ -7,11 +7,8 @@ import postModalSlice from "./postModal-slice";
 import profileModalSlice from "./profileModal-slice";
 import postSlice from "./post-slice";
 import editPostModalSlice from "./editPostModal-slice";
-<<<<<<< HEAD
 import deletePostModalSlice from "./deletePostModal-slice";
-=======
 import commentSlice from "./comment-slice";
->>>>>>> postComment
 
 const rootReducer = combineReducers({
   signup: signupSlice.reducer,
