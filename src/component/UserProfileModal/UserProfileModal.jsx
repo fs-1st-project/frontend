@@ -7,12 +7,15 @@ import {
   updateProfileInfoToServer,
   profileModalActions,
 } from "../../store/reducer/profileModal-slice";
+import {
+  fetchNormalUserData,
+  fetchGoogleUserData,
+} from "../../store/reducer/profile-slice";
 
 import "./UserProfileModal.css"; // 모달 창 스타일링을 위한 CSS
 
 const UserProfileModal = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const imgFileInputRef = useRef(null);
   const backimgFileInputRef = useRef(null);
 
@@ -96,36 +99,32 @@ const UserProfileModal = () => {
   // 저장 버튼 클릭 시 프로필 정보 업데이트
   const clickSaveHandler = async (e) => {
     e.preventDefault();
-    try {
-      if (isGoogleClicked) {
-        await dispatch(
-          updateGoogleProfileInfoToServer({
-            fullName: profileFullName,
-            introduction: profileIntroduce,
-            profilePicture: profileImg,
-            profileBackgroundPicture: profileBackgroundImg,
-            education: profileEducation,
-            location: profileLocation,
-          })
-        );
-      } else {
-        await dispatch(
-          updateProfileInfoToServer({
-            fullName: profileFullName,
-            introduction: profileIntroduce,
-            profilePicture: profileImg,
-            profileBackgroundPicture: profileBackgroundImg,
-            education: profileEducation,
-            location: profileLocation,
-          })
-        );
-      }
-      dispatch(profileModalActions.setIsProfileModalOpen(false));
-      //navigate("/home");
-      console.log("프로필 업데이트 성공");
-    } catch (error) {
-      console.error("프로필 업데이트 실패:", error);
-      alert("프로필 업데이트에 실패했습니다.");
+    const profileData = {
+      fullName: profileFullName,
+      introduction: profileIntroduce,
+      profilePicture: profileImg,
+      profileBackgroundPicture: profileBackgroundImg,
+      education: profileEducation,
+      location: profileLocation,
+    };
+    if (isGoogleClicked) {
+      dispatch(updateGoogleProfileInfoToServer(profileData)).then((success) => {
+        if (success === true) {
+          dispatch(profileModalActions.reset());
+          dispatch(fetchGoogleUserData());
+        } else {
+          alert("프로필 업데이트에 실패했습니다.");
+        }
+      });
+    } else {
+      dispatch(updateProfileInfoToServer(profileData)).then((success) => {
+        if (success === true) {
+          dispatch(profileModalActions.reset());
+          dispatch(fetchNormalUserData());
+        } else {
+          alert("프로필 업데이트에 실패했습니다.");
+        }
+      });
     }
   };
 
