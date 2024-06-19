@@ -16,6 +16,7 @@ const UserProfile = () => {
   );
   //일반유저
   const normalUserData = useSelector((state) => state.signin.normalUserData);
+  console.log(normalUserData, "일반유저데이타");
 
   const isProfileModalOpen = useSelector(
     (state) => state.profileModal.isProfileModalOpen
@@ -33,6 +34,11 @@ const UserProfile = () => {
   const openProfileModal = (e) => {
     e.preventDefault();
     dispatch(profileModalActions.setIsProfileModalOpen());
+  };
+
+  // Base64 이미지 URL 생성 함수
+  const getImageUrl = (base64Image) => {
+    return base64Image ? `data:image/png;base64,${base64Image}` : "";
   };
 
   console.log(isProfileModalOpen, "모달 오픈 상태");

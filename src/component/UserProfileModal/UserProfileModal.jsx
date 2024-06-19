@@ -118,7 +118,7 @@ const UserProfileModal = () => {
       certification: "",
     };
 
-    console.log(profileData, "프로필데이타");
+    console.log("선택한 프로필데이터", profileData);
 
     if (isGoogleClicked) {
       dispatch(updateGoogleProfileInfoToServer(profileData)).then((success) => {

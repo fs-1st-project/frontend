@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import { auth } from "../../firebaseConfig";
 
-// 서버에 프로필 정보 업데이트 요청하는 비동기 액션 생성자 함수 //구글
+// 서버에 [구글 유저] 프로필 정보 업데이트 요청하는 비동기 액션 생성자 함수
 export const updateGoogleProfileInfoToServer = (
   updateGoogleUserProfileData
 ) => {
@@ -13,7 +13,6 @@ export const updateGoogleProfileInfoToServer = (
       const uid = currentUser.uid;
       const url = `http://localhost:8080/api/users/update/${uid}/profile`;
 
-      console.log("첫번째 콘솔로그");
       const requestOptions = {
         method: "PUT",
         headers: {
@@ -22,7 +21,6 @@ export const updateGoogleProfileInfoToServer = (
         body: JSON.stringify(updateGoogleUserProfileData),
       };
 
-      console.log("두번째콘솔로그");
       const response = await fetch(url, requestOptions);
       console.log("세번째콘솔로그", response);
 
@@ -37,17 +35,13 @@ export const updateGoogleProfileInfoToServer = (
   };
 };
 
-// 서버에 프로필 정보 업데이트 요청하는 비동기 액션 생성자 함수
+// 서버에 [일반 유저] 프로필 정보 업데이트 요청하는 비동기 액션 생성자 함수
 export const updateProfileInfoToServer = (updateNormalUserProfileData) => {
   return async (dispatch, getState) => {
     try {
-      // 로컬 스토리지에서 이메일 가져오기
       const state = getState();
-      const { email } = state.signin.normalUserData; // 이곳에서 이메일 가져오기
+      const { email } = state.signin.normalUserData;
       const url = `http://localhost:8080/home/update/${email}/profile`;
-
-      console.log("첫번째 콘솔로그");
-      //const token = localStorage.getItem("token");
 
       const requestOptions = {
         method: "PUT",
@@ -57,7 +51,7 @@ export const updateProfileInfoToServer = (updateNormalUserProfileData) => {
         body: JSON.stringify(updateNormalUserProfileData),
       };
 
-      console.log("두번째콘솔로그");
+      console.log("일반 유저 프로필 정보 데이터", updateNormalUserProfileData);
       const response = await fetch(url, requestOptions);
       console.log("세번째콘솔로그", response);
 
