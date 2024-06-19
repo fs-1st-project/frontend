@@ -17,36 +17,38 @@
   flex-wrap: nowrap;
   min-height: 560px;
 }
+
 .main-left {
-  padding-right: 42px;
+  padding-right: 2.5%;
   align-self: flex-start;
   flex-shrink: 0;
   width: 55%;
   position: relative;
 }
 .Main-left_head {
-  width: 650px;
+  width: 100%;
   vertical-align: inherit;
   font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell,
     "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
-  font-size: 56px;
+  font-size: 3.5rem;
   font-weight: 200;
   color: #b24020;
 }
-
 .Main-left_body-divider-left-right {
   display: flex;
   align-items: center;
   text-align: center;
-  padding-top: 8px;
-  padding-bottom: 24px;
+  padding-top: 0.5rem;
+  padding-bottom: 1.5rem;
 }
 
 .Main-right img {
-  width: 700px;
-  height: 560px;
+  /* width: 700px;
+  height: 560px; */
+  width: 100%;
+  height: auto;
   display: block;
   z-index: -1;
   position: relative;
@@ -54,21 +56,22 @@
 }
 
 .google-button {
-  width: 400px;
-  height: 40px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  width: 25rem;
+  height: 2.5rem;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
 }
-
+/* 이버튼은 뭐지? */
 .goole-button-1 {
-  max-width: 400px;
+  max-width: 25rem;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
 }
+/*  */
 
 .Main-bottom_form-input {
-  margin-top: 20px;
+  margin-top: 1.25rem;
 }
 
 .input-large {
