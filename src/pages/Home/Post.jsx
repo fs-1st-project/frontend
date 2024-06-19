@@ -13,10 +13,10 @@ import edit from "../../component/svg/edit.svg";
 import deleteicon from "../../component/svg/delete.svg";
 import EditPostModal from "../../component/EditPostModal/EditPostModal";
 import { editPostModalActions } from "../../store/reducer/editPostModal-slice";
-<<<<<<< HEAD
+
 import { deletePostModalActions } from "../../store/reducer/deletePostModal-slice";
 import DeletePostModal from "../../component/DeletePostModal/DeletePostModal";
-=======
+
 import {
   commentActions,
   getAllComment,
