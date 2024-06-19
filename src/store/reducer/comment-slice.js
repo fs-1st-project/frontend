@@ -13,11 +13,49 @@ export const getAllComment = (postId) => {
 
       const responseData = await response.json();
 
-      dispatch(commentActions.setCommentData(responseData));
-      console.log(responseData);
+      dispatch(
+        commentActions.setCommentData({
+          postId: postId,
+          commentData: responseData,
+        })
+      );
       return true;
     } catch (error) {
       console.error("모든 게시물 조회 중 에러 발생");
+      return false;
+    }
+  };
+};
+
+export const createComment = (postId, commentContent) => {
+  return async (dispatch) => {
+    try {
+      const url = `http://localhost:8080/comment/create/${postId}`;
+
+      const currentUserId = localStorage.getItem("userId");
+
+      const requestOptions = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          commentContent,
+          createdAt: new Date(),
+          userId: currentUserId,
+          postId,
+        }),
+      };
+
+      const response = await fetch(url, requestOptions);
+
+      if (!response.ok) {
+        throw new Error("새 게시글 작성 POST 서버 응답 실패");
+      }
+
+      return true;
+    } catch (error) {
+      console.error("새 게시글 POST 요청 중 에러 발생:", error);
       return false;
     }
   };
@@ -29,11 +67,11 @@ const commentSlice = createSlice({
     isCommentPopupOpen: false,
     commentContent: "",
     isCommentOpen: {},
-    commentData: [],
+    commentData: {},
   },
   reducers: {
     setIsCommentPopupOpen(state, action) {
-      state.isCommentPopupOpen = !state.isCommentPopupOpen;
+      state.isCommentPopupOpen = action.payload;
     },
     setCommentContent(state, action) {
       state.commentContent = action.payload;
@@ -43,7 +81,12 @@ const commentSlice = createSlice({
       state.isCommentOpen[postId] = !state.isCommentOpen[postId];
     },
     setCommentData(state, action) {
-      state.commentData = action.payload;
+      const { postId } = action.payload;
+      const { commentData } = action.payload;
+      state.commentData[postId] = commentData;
+    },
+    setCommentContentReset(state, action) {
+      state.commentContent = "";
     },
   },
 });
