@@ -50,10 +50,11 @@
 }
 .Main-right {
   width: 50%;
+  margin-bottom: 10%;
 }
 
 .Main-right img {
-  width: 100%;
+  width: 120%;
   display: block;
   z-index: -1;
   position: relative;
