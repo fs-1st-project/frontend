@@ -36,7 +36,6 @@ const Comment = ({ postId }) => {
   const currentUserId = localStorage.getItem("userId");
 
   useEffect(() => {
-    console.log(isCommentOpen[postId], "해당 포스트의 댓글창이 열렸는지 확인");
     if (isCommentOpen[postId]) {
       dispatch(deleteCommentModalActions.setDeleteCommentPostId(postId));
     }
@@ -44,7 +43,7 @@ const Comment = ({ postId }) => {
 
   // 댓글 입력 핸들러
   const handleCommentChange = (e) => {
-    const commentContent = e.target.value.trim();
+    const commentContent = e.target.value;
     dispatch(commentActions.setCommentContent(commentContent));
   };
 

@@ -39,12 +39,10 @@ const DeleteCommentModal = () => {
 
     dispatch(deleteComment(deleteCommentPostId, deleteCommentId)).then(
       (success) => {
-        if (success === true) {
+        if (success) {
+          dispatch(getAllComment(deleteCommentPostId));
           dispatch(deleteCommentModalActions.reset());
           dispatch(commentActions.setIsCommentPopupOpen(false));
-          console.log("댓글 삭제1");
-          dispatch(getAllComment());
-          console.log("댓글 삭제2");
         }
       }
     );

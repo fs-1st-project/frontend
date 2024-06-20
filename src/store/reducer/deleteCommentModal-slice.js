@@ -9,9 +9,6 @@ export const deleteComment = (postId, deleteCommentId) => {
         method: "DELETE",
       };
 
-      console.log(postId, "포스트 아이디다!");
-      console.log(deleteCommentId, "댓글 삭제 아이디다!!");
-
       const response = await fetch(url, requestOptions);
 
       if (!response.ok) {
