@@ -99,11 +99,19 @@ const PostModal = () => {
               {googleUserData ? (
                 <img
                   src={`data:image/jpeg;base64,${googleUserData.profilePicture}`}
+                  alt="profilePicture"
+                  className="top-profile-picture-img"
+                />
+              ) : normalUserData ? (
+                <img
+                  src={`data:image/jpeg;base64,${normalUserData.profilePicture}`}
+                  alt="profilePicture"
                   className="top-profile-picture-img"
                 />
               ) : (
                 <img
-                  src={`data:image/jpeg;base64,${normalUserData.profilePicture}`}
+                  src="/user.jpeg"
+                  alt="Default user-picture"
                   className="top-profile-picture-img"
                 />
               )}
