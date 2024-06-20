@@ -230,7 +230,7 @@ const UserProfile = () => {
                   <div className="profile-info-section">
                     <div className="aside-box">
                       <div className="followers-title">
-                        Add to LinkedIn Home
+                        Other similar profiles
                       </div>
                       <div className="new-user-add">
                         <div className="followers-person">
