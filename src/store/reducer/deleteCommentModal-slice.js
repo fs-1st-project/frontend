@@ -44,6 +44,7 @@ const deleteCommentModalSlice = createSlice({
 
     reset(state, action) {
       state.isDeleteCommentOpen = !state.isDeleteCommentOpen;
+      state.deleteCommentPostId = null;
       state.deleteCommentId = null;
     },
   },

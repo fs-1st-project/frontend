@@ -44,13 +44,28 @@
   margin-left: 10px;
 }
 
+.info_name {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1.5%;
+}
+
 .post-owner-info_name {
   font-weight: bold;
+  text-transform: capitalize;
+  margin-right: 3%;
+}
+
+.you {
+  font-weight: 300;
+  margin-left: 3%;
+  color: rgb(120, 120, 120);
 }
 
 .post-owner-info_intro {
   font-size: 13px;
   color: #828282;
+  margin-bottom: 1%;
 }
 
 .post-owner-info_time {
@@ -292,14 +307,10 @@
   justify-content: space-between;
 }
 
-.comment-container-top_intro-name {
-  font-size: 15px;
-  font-weight: bold;
-}
-
 .comment-container-top_intro-job {
   font-size: 13px;
   color: #7a7a7a;
+  margin-bottom: 4%;
 }
 
 .comment-container-top_intro-menu {
