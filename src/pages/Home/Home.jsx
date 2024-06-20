@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import NormalProfile from "../../component/NormalProfile/NormalProfile";
 import GoogleProfile from "../../component/GoogleProfile/GoogleProfile";
+import "./Home.css";
+import vijay from "../../component/svg/vijay.jpeg";
 import LoginNav from "./LoginNav";
 import PostModal from "../../component/PostModal/PostModal";
 import HomeMiddle from "./HomeMiddle";
@@ -10,9 +12,6 @@ import {
   fetchGoogleUserData,
   fetchNormalUserData,
 } from "../../store/reducer/profile-slice";
-
-import "./Home.css";
-import vijay from "../../component/svg/vijay.jpeg";
 
 const Home = () => {
   const dispatch = useDispatch();

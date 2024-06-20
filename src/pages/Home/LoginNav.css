@@ -1,18 +1,23 @@
 .LoginNav {
-  height: 80px;
+  height: 70px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  margin-top: 0.7%;
+  /* margin-top: 0.5%; */
   border-bottom: 1px solid #f4f4f2;
   border-top: 1px solid #f4f4f2;
+  margin: 0 4.5% 0 4%;
 }
 
 .LoginNav-menu_left {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 24%;
+  width: 29%;
+}
+
+.LoginNav-logo:hover {
+  cursor: pointer;
 }
 
 .LoginNav-logo img {
@@ -25,6 +30,7 @@
   height: 30px;
   border: 0px;
   background-color: #edf3f9;
+  border-radius: 5px;
 }
 
 .LoginNav-menu {
@@ -38,7 +44,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 1.2%;
+  margin-bottom: 3%;
 }
 
 .LoginNav-menu_click {
@@ -64,6 +70,23 @@
 .LoginNav-menu_pages-icons-click img {
   width: 27px;
   height: 30px;
+}
+
+.LoginNav-menu_pages-icons-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  margin-bottom: 3px;
+  overflow: hidden;
+  position: relative;
+}
+.LoginNav-menu_pages-icons-img .LoginNav-menu_pages-icons-picture {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .LoginNav-menu_click-icons {
