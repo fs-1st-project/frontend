@@ -74,20 +74,22 @@ const LoginNav = () => {
             </div>
           </div>
           <div className="LoginNav-menu_pages-icons">
-            <div className="LoginNav-menu_pages-icons-img">
-              {userData.profilePicture ? (
-                <img
-                  src={`data:image/jpeg;base64,${userData.profilePicture}`}
-                  alt="User Profile"
-                  className="LoginNav-menu_pages-icons-picture"
-                />
-              ) : (
-                <img
-                  src="https://cdn-lostark.game.onstove.com/uploadfiles/user/2021/04/06/637533445557572173.png"
-                  alt="Default user-picture"
-                  className="LoginNav-menu_pages-icons-picture"
-                />
-              )}
+            <div className="LoginNav-menu_pages-icons-click">
+              <div className="LoginNav-menu_pages-icons-img">
+                {userData.profilePicture ? (
+                  <img
+                    src={`data:image/jpeg;base64,${userData.profilePicture}`}
+                    alt="User Profile"
+                    className="LoginNav-menu_pages-icons-picture"
+                  />
+                ) : (
+                  <img
+                    src="https://cdn-lostark.game.onstove.com/uploadfiles/user/2021/04/06/637533445557572173.png"
+                    alt="Default user-picture"
+                    className="LoginNav-menu_pages-icons-picture"
+                  />
+                )}
+              </div>
               <div className="LoginNav-menu_font">My</div>
             </div>
           </div>

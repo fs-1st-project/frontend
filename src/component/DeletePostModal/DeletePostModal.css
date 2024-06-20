@@ -50,7 +50,7 @@
 .line-container {
   height: 1px;
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .line {
   flex: 1;
@@ -61,7 +61,9 @@
 .buttons-cancel-delete {
   display: flex;
   gap: 5px;
+  margin-top: 0;
   margin-left: 40%;
+  /* padding: 10%; */
 }
 
 .button-cancel,

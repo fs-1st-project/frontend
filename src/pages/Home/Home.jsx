@@ -62,19 +62,91 @@ const Home = () => {
       <div className="home-body">
         {showComponentBySigninButton()}
         <HomeMiddle />
-        <div className="followers">
-          <div className="followers-title">Add to LinkedIn Home</div>
-          <div className="followers-person">
-            {/* <div className="followers-person-img"> */}
-            <img src={vijay} alt="vijay" />
-            <div className="followers-person-info">
-              <div className="followers-person-info-name">vijay verma</div>
-              <div className="followers-perosn-info-intro">
-                A Wizard@overlayz stdio ✦ maker of 3dicons.co
+        <div className="scaffold-layout-aside">
+          <div className="profile-info-section">
+            <div className="aside-box">
+              <div className="followers-title">Other similar profiles</div>
+              <div className="new-user-add">
+                <div className="followers-person">
+                  <img
+                    src="/jeongmin.png"
+                    alt="jeonmin"
+                    className="jeongmin-img"
+                  />
+                  <div className="followers-person-info">
+                    <div className="followers-person-info-name">
+                      Jeongmin Choi
+                    </div>
+                    <div className="followers-perosn-info-intro">
+                      안녕하세유 최정민입니다
+                    </div>
+                    <div className="followers-person-info-button">
+                      {" "}
+                      + follower
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="followers-person-info-button"> + follower</div>
+              <div className="new-user-add">
+                <div className="followers-person">
+                  <img
+                    src="/yeonhee.jpg"
+                    alt="yeonhee"
+                    className="yeonhee-img"
+                  />
+                  <div className="followers-person-info">
+                    <div className="followers-person-info-name">
+                      Yeonhee Kim
+                    </div>
+                    <div className="followers-perosn-info-intro">
+                      하이루 저는 김연희입니다
+                    </div>
+                    <div className="followers-person-info-button">
+                      {" "}
+                      + follower
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="new-user-add">
+                <div className="followers-person">
+                  <img
+                    src="/sangyoon.jpg"
+                    alt="sangyoon"
+                    className="sangyoon-img"
+                  />
+                  <div className="followers-person-info">
+                    <div className="followers-person-info-name">
+                      Sangyoon Kim
+                    </div>
+                    <div className="followers-perosn-info-intro">
+                      할라우 저는 김상윤입니다!
+                    </div>
+                    <div className="followers-person-info-button">
+                      {" "}
+                      + follower
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="new-user-add">
+                <div className="followers-person new-user-1">
+                  <img src={vijay} alt="vijay" />
+                  <div className="followers-person-info">
+                    <div className="followers-person-info-name">
+                      vijay verma
+                    </div>
+                    <div className="followers-perosn-info-intro">
+                      A Wizard@overlayz ✦
+                    </div>
+                    <div className="followers-person-info-button">
+                      {" "}
+                      + follower
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            {/* </div> */}
           </div>
         </div>
       </div>

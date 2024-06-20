@@ -102,23 +102,27 @@ const Post = () => {
             <div className="post-owner">
               {/* post owner 정보 */}
               <div className="post-owner-picture">
-                <img
-                  src={`data:image/jpeg;base64,${post.profilePicture}`}
-                  alt="ProfilePicture"
-                  className="post-owner-picture-img"
-                />
+                {post.profilePicture ? (
+                  <img
+                    src={`data:image/jpeg;base64,${post.profilePicture}`}
+                    alt="ProfilePicture"
+                    className="post-owner-picture-img"
+                  />
+                ) : (
+                  <img
+                    src="/user.jpeg"
+                    alt="Default user-picture"
+                    className="post-owner-picture-img"
+                  />
+                )}
               </div>
               <div className="post-owner-info">
-                <div className="info_name">
+                <div className="info-name-container">
                   <div className="post-owner-info_name">{post.fullName}</div>
                   {loggedInUserId == post.userId && (
-                    <>
-                      <div>-</div>
-                      <div className="you">You</div>
-                    </>
+                    <div className="you">- You</div>
                   )}
                 </div>
-
                 <div className="post-owner-info_intro">{post.introduction}</div>
                 <div className="post-owner-info_time">
                   {formattedDistance(post)}
@@ -157,30 +161,37 @@ const Post = () => {
             </div>
           </div>
           <div className="post-contents">{post.content}</div>
-          <div className="post-comments-count">{/* */}</div>
           <div className="post-bottom-buttons">
-            <button type="button" className="post-bottom-buttons_like">
-              <img src={like} alt="like" />
-              Like
-            </button>
-            <button
-              type="button"
-              className={`post-bottom-buttons_comment ${
-                isCommentOpen[post.id] ? "open" : ""
-              }`}
-              onClick={() => handleToggle(post.id)}
-            >
-              <img src={commenticon} alt="comment" />
-              Comment
-            </button>
-            <button type="button" className="post-bottom-buttons_repost">
-              <img src={repost} alt="repost" />
-              repost
-            </button>
-            <button type="button" className="post-bottom-buttons-send">
-              <img src={send} alt="send" />
-              send
-            </button>
+            <div className="button-container">
+              <button type="button" className="post-bottom-buttons_like">
+                <img src={like} alt="like" />
+                Like
+              </button>
+            </div>
+            <div className="button-container">
+              <button
+                type="button"
+                className={`post-bottom-buttons_comment ${
+                  isCommentOpen[post.id] ? "open" : ""
+                }`}
+                onClick={() => handleToggle(post.id)}
+              >
+                <img src={commenticon} alt="comment" />
+                Comment
+              </button>
+            </div>
+            <div className="button-container">
+              <button type="button" className="post-bottom-buttons_repost">
+                <img src={repost} alt="repost" />
+                repost
+              </button>
+            </div>
+            <div className="button-container">
+              <button type="button" className="post-bottom-buttons-send">
+                <img src={send} alt="send" />
+                send
+              </button>
+            </div>
           </div>
           <Comment postId={post.id} postUserId={post.userId} />
         </div>

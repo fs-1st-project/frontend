@@ -44,7 +44,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 1.2%;
+  margin-bottom: 3%;
 }
 
 .LoginNav-menu_click {
@@ -73,11 +73,13 @@
 }
 
 .LoginNav-menu_pages-icons-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 30px;
   height: 30px;
-  margin: 0 20px 0 20px;
   border-radius: 15px;
-  border: 1px solid gray;
+  margin-bottom: 3px;
   overflow: hidden;
   position: relative;
 }

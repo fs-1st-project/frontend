@@ -45,7 +45,7 @@ const StartPost = () => {
               />
             ) : (
               <img
-                src="https://cdn-lostark.game.onstove.com/uploadfiles/user/2021/04/06/637533445557572173.png"
+                src="/user.jpeg"
                 alt="Default user-picture"
                 className="home-body_middle_write-top-profile-image"
               />
@@ -61,15 +61,15 @@ const StartPost = () => {
         <div className="home-body-middle_write-bottom">
           <div className="home-body-middle_write-bottom-icons">
             <img src={media} alt="media" />
-            <div className="middle-font">media</div>
+            <div className="middle-font">Media</div>
           </div>
           <div className="home-body-middle_write-bottom-icons">
             <img src={event} alt="event" />
-            <div className="middle-font">event</div>
+            <div className="middle-font">Event</div>
           </div>
           <div className="home-body-middle_write-bottom-icons">
             <img src={write} alt="write" />
-            <div className="middle-font">writing</div>
+            <div className="middle-font">Writing</div>
           </div>
         </div>
       </div>

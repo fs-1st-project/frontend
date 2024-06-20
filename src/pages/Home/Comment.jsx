@@ -174,26 +174,34 @@ const Comment = ({ postId }) => {
         {isCommentOpen[postId] && (
           <div className="comments">
             <div className="comments-top">
-              <div className="comments-top-user-img-container">
-                <img
-                  src={`
-                  data:image/jpeg;base64,${
-                    googleUserData
-                      ? googleUserData.profilePicture
-                      : normalUserData.profilePicture
-                  }
-                `}
-                  alt="profilePicture"
-                  className="comments-top-user-img"
+              <div className="comments-img-text-container">
+                <div className="comments-top-user-img-container">
+                  {googleUserData?.profilePicture ||
+                  normalUserData?.profilePicture ? (
+                    <img
+                      src={`data:image/jpeg;base64,${
+                        googleUserData?.profilePicture ||
+                        normalUserData.profilePicture
+                      }`}
+                      alt="profilePicture"
+                      className="comments-top-user-img"
+                    />
+                  ) : (
+                    <img
+                      src={"/user.jpeg"}
+                      alt="profilePicture"
+                      className="comments-top-user-img"
+                    />
+                  )}
+                </div>
+                <input
+                  type="text"
+                  className="comments-top_text"
+                  placeholder="Add a comment…"
+                  value={commentContent[postId]}
+                  onChange={handleCommentChange}
                 />
               </div>
-              <input
-                type="text"
-                className="comments-top_text"
-                placeholder="Add a comment…"
-                value={commentContent[postId]}
-                onChange={handleCommentChange}
-              />
               {showCommentPostButton(postId)}
             </div>
             {commentData[postId] &&
