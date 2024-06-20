@@ -46,7 +46,7 @@
   width: 50%;
   height: auto;
   margin: 0 39% 0 39%;
-  padding: 2% 2% 2% 2%;
+  padding: 1% 5% 1% 3%;
   border-radius: 10px;
 }
 
@@ -65,12 +65,14 @@
 }
 
 .consent-understanding {
-  text-align: left !important;
+  /* text-align: left !important; */
   font-size: 15px;
   letter-spacing: 0.5px;
-  margin: 2% 5% 2% 0;
+  /* margin: 2% 5% 2% 0; */
   color: rgb(133, 133, 133);
-  text-align: center;
+  /* text-align: center; */
+  width: 100%;
+  line-height: 1.5;
 }
 
 input[type="checkbox"] {
@@ -83,7 +85,7 @@ input[type="checkbox"] {
   display: flex;
   justify-content: start;
   align-items: center;
-  margin: 15px 0 15px 0;
+  margin: 22px 0 15px 0;
 }
 
 .agree-all-terms--label {
@@ -93,13 +95,13 @@ input[type="checkbox"] {
 .term1-term2--container {
   display: flex;
   flex-direction: column;
-  width: 90%;
+  width: 100%;
   margin-top: 10px;
   gap: 10px;
   padding: 10px;
   background-color: rgb(249, 250, 251);
-  font-size: 16px;
-  font-weight: 300;
+  font-size: 0.9rem;
+  font-weight: 400;
 }
 
 .agree-term1 {
@@ -143,6 +145,7 @@ input[type="checkbox"] {
   flex-direction: column;
   margin-bottom: 4%;
   font-weight: 400;
+  width: 100%;
 }
 
 .email,
@@ -219,5 +222,5 @@ input[type="checkbox"] {
 }
 .bottom-get-help {
   text-align: center;
-  margin: 20px 0 5px 0;
+  margin: 20px 0 20px 0;
 }
