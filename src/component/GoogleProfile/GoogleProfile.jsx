@@ -44,6 +44,7 @@ const GoogleProfile = () => {
             <img
               src={`data:image/jpeg;base64,${googleUserData.profilePicture}`}
               alt="User Avatar"
+              className="picture-image"
             />
           ) : (
             <img

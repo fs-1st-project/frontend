@@ -1,108 +1,72 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { auth } from "../../firebaseConfig";
 
-// 서버에 프로필 정보 업데이트 요청하는 비동기 액션 생성자 함수 //구글
-export const updateGoogleProfileInfoToServer = createAsyncThunk(
-  "profileModal/updateGoogleProfileInfoToServer",
-  async (payload, thunkAPI) => {
-    const {
-      fullName,
-      introduction,
-      profilePicture,
-      profileBackgroundPicture,
-      education,
-      location,
-    } = payload;
-
+// 서버에 [구글 유저] 프로필 정보 업데이트 요청하는 비동기 액션 생성자 함수
+export const updateGoogleProfileInfoToServer = (
+  updateGoogleUserProfileData
+) => {
+  return async (dispatch) => {
     try {
       const currentUser = auth.currentUser;
       const uid = currentUser.uid;
-      const url = `http://localhost:8080/api/users/${uid}/profile`;
+      const url = `http://localhost:8080/api/users/update/${uid}/profile`;
 
-      const token = localStorage.getItem("token");
-
-      const requestBody = {
-        fullName,
-        profileImage: profilePicture,
-        introduction,
-        education,
-        location,
+      const requestOptions = {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updateGoogleUserProfileData),
       };
 
-      // 콘솔에 requestBody 출력
-      console.log("Request Body:", requestBody);
+      const response = await fetch(url, requestOptions);
+      console.log("세번째콘솔로그", response);
 
-      const headers = {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      };
-
-      const response = await axios.put(url, requestBody, { headers });
-
-      if (!response.data) {
+      if (!response.ok) {
         throw new Error("프로필 정보 업데이트 서버 응답 실패");
       }
-
-      return response.data; // 서버에서 반환된 데이터를 payload로 사용할 수 있음
+      return true;
     } catch (error) {
       console.error("프로필 정보 업데이트 요청 중 에러 발생:", error);
-      throw error;
+      return false;
     }
-  }
-);
+  };
+};
 
-// 서버에 프로필 정보 업데이트 요청하는 비동기 액션 생성자 함수
-export const updateProfileInfoToServer = createAsyncThunk(
-  "profileModal/updateProfileInfoToServer",
-  async (payload, thunkAPI) => {
-    const {
-      fullName,
-      introduction,
-      profilePicture,
-      profileBackgroundPicture,
-      education,
-      location,
-    } = payload;
-
+// 서버에 [일반 유저] 프로필 정보 업데이트 요청하는 비동기 액션 생성자 함수
+export const updateProfileInfoToServer = (updateNormalUserProfileData) => {
+  return async (dispatch, getState) => {
     try {
-      // 로컬 스토리지에서 이메일 가져오기
-      const state = thunkAPI.getState();
-      const { email } = state.signin.normalUserData; // 이곳에서 이메일 가져오기
-      const url = `http://localhost:8080/home/${email}/profile`;
+      const state = getState();
+      const { email } = state.signin.normalUserData;
+      const url = `http://localhost:8080/home/update/${email}/profile`;
 
-      const token = localStorage.getItem("token");
-
-      const requestBody = {
-        fullName,
-        profileImage: profilePicture,
-        introduction,
-        education,
-        location,
+      const requestOptions = {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updateNormalUserProfileData),
       };
 
-      // 콘솔에 requestBody 출력
-      console.log("Request Body:", requestBody);
+      console.log(
+        "put 요청: 일반 유저 프로필 정보 데이터",
+        updateNormalUserProfileData
+      );
+      const response = await fetch(url, requestOptions);
 
-      const headers = {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      };
-
-      const response = await axios.put(url, requestBody, { headers });
-
-      if (!response.data) {
+      if (!response.ok) {
         throw new Error("프로필 정보 업데이트 서버 응답 실패");
       }
-
-      return response.data; // 서버에서 반환된 데이터를 payload로 사용할 수 있음
+      return true;
     } catch (error) {
       console.error("프로필 정보 업데이트 요청 중 에러 발생:", error);
-      throw error;
+      return false;
     }
-  }
-);
+  };
+};
 
 // 프로필 모달 슬라이스 정의
 const profileModalSlice = createSlice({
@@ -139,31 +103,31 @@ const profileModalSlice = createSlice({
     setProfileLocation(state, action) {
       state.profileLocation = action.payload;
     },
-  },
-  extraReducers: (builder) => {
-    builder
-      .addCase(updateProfileInfoToServer.fulfilled, (state, action) => {
-        console.log("일반 사용자 프로필 정보 업데이트 성공");
-        state.error = null; // 에러 초기화
-      })
-      .addCase(updateProfileInfoToServer.rejected, (state, action) => {
-        console.error(
-          "일반 사용자 프로필 정보 업데이트 실패:",
-          action.error.message
-        );
-        state.error = action.error.message; // 에러 상태 업데이트
-      })
-      .addCase(updateGoogleProfileInfoToServer.fulfilled, (state, action) => {
-        console.log("구글 사용자 프로필 정보 업데이트 성공");
-        state.error = null; // 에러 초기화
-      })
-      .addCase(updateGoogleProfileInfoToServer.rejected, (state, action) => {
-        console.error(
-          "구글 사용자 프로필 정보 업데이트 실패:",
-          action.error.message
-        );
-        state.error = action.error.message; // 에러 상태 업데이트
-      });
+    updateProfileInfoSuccess(state, action) {
+      console.log("일반 사용자 프로필 정보 업데이트 성공");
+      state.error = null; // 에러 초기화
+    },
+    updateProfileInfoFailure(state, action) {
+      console.error("일반 사용자 프로필 정보 업데이트 실패:", action.payload);
+      state.error = action.payload; // 에러 상태 업데이트
+    },
+    updateGoogleProfileInfoSuccess(state, action) {
+      console.log("구글 사용자 프로필 정보 업데이트 성공");
+      state.error = null; // 에러 초기화
+    },
+    updateGoogleProfileInfoFailure(state, action) {
+      console.error("구글 사용자 프로필 정보 업데이트 실패:", action.payload);
+      state.error = action.payload; // 에러 상태 업데이트
+    },
+    reset(state, action) {
+      state.isProfileModalOpen = false;
+      state.profileFullName = "";
+      state.profileIntroduce = "";
+      state.profileImg = "";
+      state.profileBackgroundImg = "";
+      state.profileEducation = "";
+      state.profileLocation = "";
+    },
   },
 });
 
