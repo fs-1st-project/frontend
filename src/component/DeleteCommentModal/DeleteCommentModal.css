@@ -1,0 +1,48 @@
+.overlays-delete-comment {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.delete-comment-modal-container {
+  position: fixed;
+  width: 40%;
+  height: 19%;
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid;
+  border-radius: 10px;
+  z-index: 1000;
+}
+
+.delete-comment {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.check-statement {
+  text-align: center;
+  color: rgb(102, 102, 102);
+  margin-bottom: 1rem;
+}
+
+.buttons-cancel-delete-comment {
+  display: flex;
+  gap: 5px;
+  margin-left: 60%;
+}

@@ -8,7 +8,7 @@ export const getAllComment = (postId) => {
       const response = await fetch(url);
 
       if (!response.ok) {
-        throw new Error("모든 게시물 조회 중 서버 응답 실패");
+        throw new Error("모든 댓글 조회 중 서버 응답 실패");
       }
 
       const responseData = await response.json();
@@ -21,7 +21,7 @@ export const getAllComment = (postId) => {
       );
       return true;
     } catch (error) {
-      console.error("모든 게시물 조회 중 에러 발생");
+      console.error("모든 댓글 조회 중 에러 발생");
       return false;
     }
   };
@@ -65,7 +65,7 @@ const commentSlice = createSlice({
   name: "comment",
   initialState: {
     isCommentPopupOpen: false,
-    commentContent: "",
+    commentContent: {},
     isCommentOpen: {},
     commentData: {},
   },
@@ -74,7 +74,8 @@ const commentSlice = createSlice({
       state.isCommentPopupOpen = action.payload;
     },
     setCommentContent(state, action) {
-      state.commentContent = action.payload;
+      const { postId, commentContent } = action.payload;
+      state.commentContent[postId] = commentContent;
     },
     toggleIsCommentOpen(state, action) {
       const postId = action.payload;
@@ -86,7 +87,8 @@ const commentSlice = createSlice({
       state.commentData[postId] = commentData;
     },
     setCommentContentReset(state, action) {
-      state.commentContent = "";
+      const postId = action.payload;
+      state.commentContent[postId] = "";
     },
   },
 });
