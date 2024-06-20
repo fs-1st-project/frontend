@@ -9,11 +9,16 @@ import {
 import edit from "../../component/svg/edit.svg";
 import deleteicon from "../../component/svg/delete.svg";
 import "./Post.css";
+import "./Comment.css";
 
 import { formatDistance } from "date-fns";
 import { ko } from "date-fns/locale/ko";
 import { deleteCommentModalActions } from "../../store/reducer/deleteCommentModal-slice";
 import DeleteCommentModal from "../../component/DeleteCommentModal/DeleteCommentModal";
+import {
+  editComment,
+  editCommentActions,
+} from "../../store/reducer/editComment-slice";
 
 const Comment = ({ postId }) => {
   const [menuIndex, setMenuIndex] = useState(null);
@@ -27,8 +32,20 @@ const Comment = ({ postId }) => {
   const isCommentPopupOpen = useSelector(
     (state) => state.comment.isCommentPopupOpen
   );
+
   const commentContent = useSelector((state) => state.comment.commentContent);
   const commentData = useSelector((state) => state.comment.commentData);
+
+  const isEditCommentOpen = useSelector(
+    (state) => state.editComment.isEditCommentOpen
+  );
+
+  const editCommentPostId = useSelector(
+    (state) => state.editComment.editCommentPostId
+  );
+  const editCommentContent = useSelector(
+    (state) => state.editComment.editCommentContent
+  );
 
   const dispatch = useDispatch();
 
@@ -37,6 +54,7 @@ const Comment = ({ postId }) => {
   useEffect(() => {
     if (isCommentOpen[postId]) {
       dispatch(deleteCommentModalActions.setDeleteCommentPostId(postId));
+      dispatch(editCommentActions.setEditCommentPostId(postId));
     }
   }, [isCommentOpen, postId, dispatch]);
 
@@ -87,6 +105,44 @@ const Comment = ({ postId }) => {
   const deleteCommentHandler = (commentId) => {
     dispatch(deleteCommentModalActions.setDeleteCommentId(commentId));
     dispatch(deleteCommentModalActions.setIsDeleteCommentOpen());
+  };
+
+  // 팝업메뉴에서 edit 눌렀을 때
+  const editCommentClickHandler = (commentId) => {
+    dispatch(commentActions.setIsCommentPopupOpen(false));
+    dispatch(editCommentActions.setEditCommentId(commentId));
+    dispatch(editCommentActions.setIsEditCommentOpen(commentId));
+  };
+
+  // 댓글 수정창이 변경되었을 때
+  const editCommentChangeHandler = (e, commentId) => {
+    const editCommentContent = e.target.value;
+    dispatch(
+      editCommentActions.setEditCommentContent({
+        commentId,
+        editCommentContent,
+      })
+    );
+  };
+
+  // edit cancel 버튼 눌렀을 때
+  const editCancelHandler = (e, commentId) => {
+    e.preventDefault();
+    dispatch(editCommentActions.setIsEditCommentOpen(commentId));
+  };
+
+  // edit save 버튼 눌렀을 때
+  const editSaveHandler = async (e, commentId) => {
+    e.preventDefault();
+
+    dispatch(
+      editComment(editCommentPostId, commentId, editCommentContent)
+    ).then((success) => {
+      if (success === true) {
+        dispatch(editCommentActions.reset(commentId));
+        dispatch(getAllComment(postId));
+      }
+    });
   };
 
   // 작성 시간 제대로 뜨게 하기
@@ -155,7 +211,15 @@ const Comment = ({ postId }) => {
                     <div className="comment-container-top_intro">
                       <div className="comment-container-top_intro-info">
                         <div className="comment-container-top_intro-name">
-                          {comment.fullName}
+                          <div className="comment-owner-info_name">
+                            {comment.fullName}
+                          </div>
+                          {currentUserId == comment.userId && (
+                            <>
+                              <div>-</div>
+                              <div className="you-comment">You</div>
+                            </>
+                          )}
                         </div>
                         <div className="comment-container-top_intro-job">
                           {comment.introduction}
@@ -178,7 +242,13 @@ const Comment = ({ postId }) => {
                           <div className="comment-popup-menu show">
                             <div className="comment-popup-menu-item_edit">
                               <img src={edit} alt="edit" />
-                              <div>Edit comment</div>
+                              <div
+                                onClick={() => {
+                                  editCommentClickHandler(comment.id);
+                                }}
+                              >
+                                Edit comment
+                              </div>
                             </div>
                             <div className="comment-popup-menu-item_delete">
                               <img src={deleteicon} alt="delete" />
@@ -192,9 +262,36 @@ const Comment = ({ postId }) => {
                         )}
                       </div>
                     </div>
-                    <div className="comment-container-text">
-                      {comment.commentContent}
-                    </div>
+                    {isEditCommentOpen[comment.id] ? (
+                      <div className="comment-edit-container">
+                        <textarea
+                          onChange={(e) => {
+                            editCommentChangeHandler(e, comment.id);
+                          }}
+                          className="edit-textarea"
+                        >
+                          {comment.commentContent}
+                        </textarea>
+                        <div className="edit-buttons">
+                          <button
+                            className="save-button"
+                            onClick={(e) => editSaveHandler(e, comment.id)}
+                          >
+                            Save Changes
+                          </button>
+                          <button
+                            className="cancel-button"
+                            onClick={(e) => editCancelHandler(e, comment.id)}
+                          >
+                            Cancel
+                          </button>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="comment-container-text">
+                        {comment.commentContent}
+                      </div>
+                    )}
                   </div>
                 </div>
               ))}
