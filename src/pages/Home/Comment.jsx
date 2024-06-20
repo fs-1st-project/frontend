@@ -256,17 +256,24 @@ const Comment = ({ postId }) => {
                           onChange={(e) => {
                             editCommentChangeHandler(e, comment.id);
                           }}
+                          className="edit-textarea"
                         >
                           {comment.commentContent}
                         </textarea>
-                        <button onClick={(e) => editSaveHandler(e, comment.id)}>
-                          Save Changes
-                        </button>
-                        <button
-                          onClick={(e) => editCancelHandler(e, comment.id)}
-                        >
-                          Cancel
-                        </button>
+                        <div className="edit-buttons">
+                          <button
+                            className="save-button"
+                            onClick={(e) => editSaveHandler(e, comment.id)}
+                          >
+                            Save Changes
+                          </button>
+                          <button
+                            className="cancel-button"
+                            onClick={(e) => editCancelHandler(e, comment.id)}
+                          >
+                            Cancel
+                          </button>
+                        </div>
                       </div>
                     ) : (
                       <div className="comment-container-text">
