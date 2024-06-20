@@ -20,9 +20,9 @@ const NormalProfile = () => {
     <div className="home-body_profile">
       <div className="Main-profile">
         <div className="user-background-picture">
-          {normalUserData.profileBackgroundPicture ? (
+          {normalUserData.profileBackGroundPicture ? (
             <img
-              src={`data:image/jpeg;base64,${normalUserData.profileBackgroundPicture}`}
+              src={`data:image/jpeg;base64,${normalUserData.profileBackGroundPicture}`}
               alt="User Background"
               className="background-image"
             />
