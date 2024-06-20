@@ -208,11 +208,19 @@ const Comment = ({ postId }) => {
               commentData[postId].map((comment, index) => (
                 <div className="comment-container">
                   <div className="comment-container-profile">
-                    <img
-                      src={`data:image/jpeg;base64,${comment.profilePicture}`}
-                      alt="profilePicture"
-                      className="comment-container-profile-img"
-                    />
+                    {comment.profilePicture ? (
+                      <img
+                        src={`data:image/jpeg;base64,${comment.profilePicture}`}
+                        alt="profilePicture"
+                        className="comment-container-profile-img"
+                      />
+                    ) : (
+                      <img
+                        src={"/user.jpeg"}
+                        alt="profilePicture"
+                        className="comment-container-profile-img"
+                      />
+                    )}
                   </div>
 
                   <div className="comment-container-top">
