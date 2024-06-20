@@ -60,12 +60,14 @@ const LoginNav = () => {
         <div>
           <div className="LoginNav-menu_click">
             <div className="LoginNav-menu_click-icons">
-              <img src={menu} art="menu" />
+              <div className="LoginNav-menu_click-icons-img">
+                <img src={menu} art="menu" />
+              </div>
               <div className="LoginNav-menu_click-font">Business</div>
             </div>
             <div className="LoginNav-menu_click-icons">
-              <img src={menu} art="menu" />
-              <div className="LoginNav-menu_click-font">aaaa</div>
+              {/* <img src={menu} art="menu" /> */}
+              <div className="LoginNav-menu_click-ADfont">AD</div>
             </div>
           </div>
         </div>
