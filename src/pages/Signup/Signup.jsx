@@ -233,7 +233,11 @@ const Signup = () => {
                 </form>
               </section>
               <div className="google-login-button--container">
-                <span className="or-span">or</span>
+                <div class="container-first">
+                  <div class="line"></div>
+                  <div class="or-text">or</div>
+                  <div class="line"></div>
+                </div>
                 <button
                   onClick={loginWithGoogle}
                   className="google-login-button"
