@@ -8,18 +8,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { profileModalActions } from "../../store/reducer/profileModal-slice";
 import UserProfileModal from "../../component/UserProfileModal/UserProfileModal";
 
-// // Blob을 Base64로 변환하는 함수
-// const blobToBase64 = (blob) => {
-//   return new Promise((resolve, reject) => {
-//     const reader = new FileReader();
-//     reader.onloadend = () => {
-//       resolve(reader.result.split(",")[1]); // data URL 헤더 제거
-//     };
-//     reader.onerror = reject;
-//     reader.readAsDataURL(blob);
-//   });
-// };
-
 const UserProfile = () => {
   const dispatch = useDispatch();
   //구글유저
@@ -43,32 +31,14 @@ const UserProfile = () => {
     ? normalUserData
     : {};
 
-  // const [profileBackgroundPicture, setProfileBackgroundPicture] =
-  //   useState(null);
-  // const [profilePicture, setProfilePicture] = useState(null);
+  console.log("유저데이터 배경사진", userData.profileBackgroundPicture);
+  //profileBackGroundPicture;<< 대문자 G로 바꿔야함.
 
-  // useEffect(() => {
-  //   const convertAndStoreImage = async () => {
-  //     if (userData.profileBackgroundPicture instanceof Blob) {
-  //       const base64Background = await blobToBase64(
-  //         userData.profileBackgroundPicture
-  //       );
-  //       setProfileBackgroundPicture(base64Background);
-  //     } else {
-  //       setProfileBackgroundPicture(userData.profileBackgroundPicture);
-  //     }
-  //     if (userData.profilePicture instanceof Blob) {
-  //       const base64Profile = await blobToBase64(userData.profilePicture);
-  //       setProfilePicture(base64Profile);
-  //     } else {
-  //       setProfilePicture(userData.profilePicture);
-  //     }
-  //   };
-
-  //   if (isGoogleUser || isNormalUser) {
-  //     convertAndStoreImage();
-  //   }
-  // }, [userData, isGoogleUser, isNormalUser]);
+  const BackgroundImg = isGoogleUser
+    ? googleUserData.profileBackgroundPicture
+    : isNormalUser
+    ? normalUserData.profileBackGroundPicture
+    : null;
 
   const openProfileModal = (e) => {
     e.preventDefault();
@@ -88,9 +58,9 @@ const UserProfile = () => {
                   {/* 프로필 레이어는 배경사진 등을 묶는 박스 */}
                   <div className="profile-layout-background-picture">
                     {/* 배경사진 */}
-                    {userData.profileBackgroundPicture ? (
+                    {BackgroundImg ? (
                       <img
-                        src={`data:image/jpeg;base64,${userData.profileBackgroundPicture}`}
+                        src={`data:image/jpeg;base64,${BackgroundImg}`}
                         alt="User Background"
                         className="userprofile-background-image"
                       />
