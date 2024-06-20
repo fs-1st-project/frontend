@@ -10,6 +10,7 @@ import editPostModalSlice from "./editPostModal-slice";
 import deletePostModalSlice from "./deletePostModal-slice";
 import commentSlice from "./comment-slice";
 import deleteCommentModalSlice from "./deleteCommentModal-slice";
+import editCommentSlice from "./editComment-slice";
 
 const rootReducer = combineReducers({
   signup: signupSlice.reducer,
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
   profileModal: profileModalSlice.reducer,
   comment: commentSlice.reducer,
   deleteCommentModal: deleteCommentModalSlice.reducer,
+  editComment: editCommentSlice.reducer,
 });
 
 export default rootReducer;
