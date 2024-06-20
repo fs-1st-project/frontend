@@ -1,0 +1,17 @@
+.comment-container-top_intro-name {
+  display: flex;
+  flex-direction: row;
+  width: 120%;
+}
+
+.comment-owner-info_name {
+  font-weight: bold;
+  text-transform: capitalize;
+  margin-right: 3%;
+}
+
+.you-comment {
+  font-weight: 300;
+  margin-left: 3%;
+  color: rgb(120, 120, 120);
+}

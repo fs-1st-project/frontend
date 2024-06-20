@@ -9,6 +9,7 @@ import {
 import edit from "../../component/svg/edit.svg";
 import deleteicon from "../../component/svg/delete.svg";
 import "./Post.css";
+import "./Comment.css";
 
 import { formatDistance } from "date-fns";
 import { ko } from "date-fns/locale/ko";
@@ -143,7 +144,15 @@ const Comment = ({ postId }) => {
                     <div className="comment-container-top_intro">
                       <div className="comment-container-top_intro-info">
                         <div className="comment-container-top_intro-name">
-                          {comment.fullName}
+                          <div className="comment-owner-info_name">
+                            {comment.fullName}
+                          </div>
+                          {currentUserId == comment.userId && (
+                            <>
+                              <div>-</div>
+                              <div className="you-comment">You</div>
+                            </>
+                          )}
                         </div>
                         <div className="comment-container-top_intro-job">
                           {comment.introduction}

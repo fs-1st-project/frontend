@@ -105,7 +105,16 @@ const Post = () => {
                 <img src={post.profilePicture} alt="ProfilePicture" />
               </div>
               <div className="post-owner-info">
-                <div className="post-owner-info_name">{post.fullName}</div>
+                <div className="info_name">
+                  <div className="post-owner-info_name">{post.fullName}</div>
+                  {loggedInUserId == post.userId && (
+                    <>
+                      <div>-</div>
+                      <div className="you">You</div>
+                    </>
+                  )}
+                </div>
+
                 <div className="post-owner-info_intro">{post.introduction}</div>
                 <div className="post-owner-info_time">
                   {formattedDistance(post)}
