@@ -5,7 +5,7 @@ import event from "../../component/svg/event.svg";
 import write from "../../component/svg/write.svg";
 
 import "./Home.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { postModalActions } from "../../store/reducer/postModal-slice";
 
 const StartPost = () => {
@@ -14,11 +14,43 @@ const StartPost = () => {
     e.preventDefault();
     dispatch(postModalActions.setIsStartPostOpen());
   };
+
+  //구글유저
+  const googleUserData = useSelector(
+    (state) => state.googleSignin.googleUserData
+  );
+
+  //일반유저
+  const normalUserData = useSelector((state) => state.signin.normalUserData);
+
+  const isGoogleUser = googleUserData !== null;
+  const isNormalUser = normalUserData !== null;
+
+  const userData = isGoogleUser
+    ? googleUserData
+    : isNormalUser
+    ? normalUserData
+    : {};
+
   return (
     <>
       <div className="home-body_middle_write">
         <div className="home-body_middle_write-top">
-          <div className="home-body_middle_write-top-profile"></div>
+          <div className="home-body_middle_write-top-profile">
+            {userData.profilePicture ? (
+              <img
+                src={`data:image/jpeg;base64,${userData.profilePicture}`}
+                alt="User Profile"
+                className="home-body_middle_write-top-profile-image"
+              />
+            ) : (
+              <img
+                src="https://cdn-lostark.game.onstove.com/uploadfiles/user/2021/04/06/637533445557572173.png"
+                alt="Default user-picture"
+                className="home-body_middle_write-top-profile-image"
+              />
+            )}
+          </div>
           <div
             className="home-body_middle_write-top-update"
             onClick={clickStartPostHandler}

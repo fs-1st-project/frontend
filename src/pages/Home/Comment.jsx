@@ -118,14 +118,19 @@ const Comment = ({ postId }) => {
         {isCommentOpen[postId] && (
           <div className="comments">
             <div className="comments-top">
-              <img
-                src={
-                  googleUserData
-                    ? googleUserData.profilePicture
-                    : normalUserData.profilePicture
-                }
-                alt="profilePicture"
-              />
+              <div className="comments-top-user-img-container">
+                <img
+                  src={`
+                  data:image/jpeg;base64,${
+                    googleUserData
+                      ? googleUserData.profilePicture
+                      : normalUserData.profilePicture
+                  }
+                `}
+                  alt="profilePicture"
+                  className="comments-top-user-img"
+                />
+              </div>
               <input
                 type="text"
                 className="comments-top_text"
@@ -138,7 +143,14 @@ const Comment = ({ postId }) => {
             {commentData[postId] &&
               commentData[postId].map((comment, index) => (
                 <div className="comment-container">
-                  <img src={comment.profilePicture} alt="profilePicture" />
+                  <div className="comment-container-profile">
+                    <img
+                      src={`data:image/jpeg;base64,${comment.profilePicture}`}
+                      alt="profilePicture"
+                      className="comment-container-profile-img"
+                    />
+                  </div>
+
                   <div className="comment-container-top">
                     <div className="comment-container-top_intro">
                       <div className="comment-container-top_intro-info">
