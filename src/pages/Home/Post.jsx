@@ -45,6 +45,7 @@ const Post = () => {
     setLoggedInUserId(userId);
   }, []);
 
+// 클릭한 게시글의 comment 열기
   const handleToggle = (postId) => {
     dispatch(getAllComment(postId));
     dispatch(commentActions.toggleIsCommentOpen(postId));

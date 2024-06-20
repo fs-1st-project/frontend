@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   commentActions,
@@ -31,6 +31,8 @@ const Comment = ({ postId, postUserId }) => {
   const dispatch = useDispatch();
 
   const currentUserId = localStorage.getItem("userId");
+
+  const clickedPostId = isCommentOpen[postId] ? postId : null;
 
   // 댓글 입력 핸들러
   const handleCommentChange = (e) => {
@@ -74,6 +76,11 @@ const Comment = ({ postId, postUserId }) => {
       setMenuIndex(index);
     }
   };
+
+  useEffect(() => {
+    console.log(postId, "댓글 컴포넌트에서 포스트 아이디");
+    console.log(isCommentOpen[postId] ? postId + "열렸다" : "");
+  });
 
   return (
     <div
