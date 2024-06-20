@@ -86,6 +86,11 @@
   margin-left: 10px;
 }
 
+.joinnow:hover {
+  border-radius: 40px;
+  background-color: rgb(242, 242, 242);
+}
+
 .joinnow a {
   text-decoration: none; /* 링크의 밑줄 제거 */
   color: #404040; /* 링크의 색상 지정 */
@@ -101,6 +106,10 @@
   border-radius: 25px;
   width: 50%;
   height: 48px;
+}
+
+.welcom-signin:hover {
+  background-color: #dbebfa;
 }
 
 .welcom-signin a {

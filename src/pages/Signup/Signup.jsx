@@ -146,15 +146,10 @@ const Signup = () => {
             <div className="container-signup">
               <h2 className="main-subtitle">Join LinkedIn</h2>
               <p className="consent-understanding">
-                To create a LinkedIn account, you must
+                To create a LinkedIn account, you must understand how LinkedIn
+                processes your personal information by selecting learn more for
+                eact item listed.
               </p>
-              <p className="consent-understanding">
-                understand how LinkedIn processes your
-              </p>
-              <p className="consent-understanding">
-                personal information by selecting learn more
-              </p>
-              <p className="consent-understanding">for eact item listed.</p>
               <div>
                 <div className="all-agree">
                   <input
@@ -197,7 +192,6 @@ const Signup = () => {
                 Futher information is available in out{" "}
                 <span className="hightlight">Korea Privacy Addendum.</span>
               </p>
-
               <section className="form-container">
                 <form
                   className="email-password-form"
