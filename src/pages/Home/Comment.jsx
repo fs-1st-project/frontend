@@ -39,12 +39,12 @@ const Comment = ({ postId, postUserId }) => {
   };
 
   //댓글 post 버튼 생기게 하기
-  const showCommentPostButton = (postUserId) => {
+  const showCommentPostButton = (postId) => {
     if (commentContent.length >= 1) {
       return (
         <button
           className="comments-post-button"
-          onClick={() => commentPostHandler(postUserId, commentContent)}
+          onClick={() => commentPostHandler(postId, commentContent)}
         >
           Post
         </button>
@@ -98,55 +98,62 @@ const Comment = ({ postId, postUserId }) => {
               placeholder="Add a comment…"
               onChange={handleCommentChange}
             />
-            {showCommentPostButton(postUserId)}
+            {showCommentPostButton(postId)}
           </div>
-          {commentData.map((comment, index) => (
-            <div className="comment-container">
-              <img src={comment.profilePicture} alt="profilePicture" />
-              <div className="comment-container-top">
-                <div className="comment-container-top_intro">
-                  <div className="comment-container-top_intro-info">
-                    <div className="comment-container-top_intro-name">
-                      {comment.fullName}
+          {commentData[postId] &&
+            commentData[postId].map((comment, index) => (
+              <div className="comment-container">
+                <img src={comment.profilePicture} alt="profilePicture" />
+                <div className="comment-container-top">
+                  <div className="comment-container-top_intro">
+                    <div className="comment-container-top_intro-info">
+                      <div className="comment-container-top_intro-name">
+                        {comment.fullName}
+                      </div>
+                      <div className="comment-container-top_intro-job">
+                        {comment.introduction}
+                      </div>
                     </div>
-                    <div className="comment-container-top_intro-job">
-                      {comment.introduction}
+                    <div className="comment-container-top_intro-menu">
+                      <div className="comment-container-top_intro-time">
+                        {formatDistance(
+                          new Date(comment.createdAt),
+                          new Date(),
+                          {
+                            addSuffix: true,
+                            locale: ko,
+                          }
+                        )}
+                      </div>
+                      {currentUserId != comment.userId && (
+                        <button
+                          className="comment-container-top-intro-btn"
+                          onClick={() => toggleMenu(index)}
+                        >
+                          ∙∙∙
+                        </button>
+                      )}
+
+                      {isCommentPopupOpen && menuIndex === index && (
+                        <div className="comment-popup-menu show">
+                          <div className="comment-popup-menu-item_edit">
+                            <img src={edit} alt="edit" />
+                            <div>Edit comment</div>
+                          </div>
+                          <div className="comment-popup-menu-item_delete">
+                            <img src={deleteicon} alt="delete" />
+                            <div>Delete comment</div>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
-                  <div className="comment-container-top_intro-menu">
-                    <div className="comment-container-top_intro-time">
-                      {formatDistance(new Date(comment.createdAt), new Date(), {
-                        addSuffix: true,
-                        locale: ko,
-                      })}
-                    </div>
-                    {currentUserId != comment.userId && (
-                      <button
-                        className="comment-container-top-intro-btn"
-                        onClick={() => toggleMenu(index)}
-                      >
-                        ∙∙∙
-                      </button>
-                    )}
-
-                    {isCommentPopupOpen && menuIndex === index && (
-                      <div className="comment-popup-menu show">
-                        <div className="comment-popup-menu-item_edit">
-                          <img src={edit} alt="edit" />
-                          <div>Edit comment</div>
-                        </div>
-                        <div className="comment-popup-menu-item_delete">
-                          <img src={deleteicon} alt="delete" />
-                          <div>Delete comment</div>
-                        </div>
-                      </div>
-                    )}
+                  <div className="comment-container-text">
+                    {comment.commentContent}
                   </div>
                 </div>
-                <div className="comment-container-text">test</div>
               </div>
-            </div>
-          ))}
+            ))}
         </div>
       )}
     </div>
