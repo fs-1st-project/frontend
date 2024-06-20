@@ -18,33 +18,42 @@ const NavBar = () => {
         <div className="NavBar-menu_pages">
           <div className="NavBar-menu_pages-icons">
             <div className="NavBar-menu_pages-icons-click">
-              <img src={writing} alt="writing" />
+              <div className="NavBar-menu_pages-icons-click-img">
+                <img src={writing} alt="writing" />
+              </div>
               <div className="NavBar-menu_font">writing</div>
             </div>
           </div>
           <div className="NavBar-menu_pages-icons">
             <div className="NavBar-menu_pages-icons-click">
-              <img src={person} alt="person" />
+              <div className="NavBar-menu_pages-icons-click-img">
+                <img src={person} alt="person" />
+              </div>
               <div className="NavBar-menu_font">person</div>
             </div>
           </div>
           <div className="NavBar-menu_pages-icons">
             <div className="NavBar-menu_pages-icons-click">
-              <img src={onlineclass} alt="online class" />
-              <div className="NavBar-menu_font">online class</div>
+              <div className="NavBar-menu_pages-icons-click-img">
+                <img src={onlineclass} alt="online class" />
+              </div>
+              <div className="NavBar-menu_font">Learning</div>
             </div>
           </div>
           <div className="NavBar-menu_pages-icons">
             <div className="NavBar-menu_pages-icons-click">
-              <img src={Recruitmentnotice} alt="Recruitment notice" />
-              <div className="NavBar-menu_font">Recruitment</div>
-              <div className="NavBar-menu_font">notice</div>
+              <div className="NavBar-menu_pages-icons-click-img">
+                <img src={Recruitmentnotice} alt="Recruitment notice" />
+              </div>
+              <div className="NavBar-menu_font">Jobs</div>
             </div>
           </div>
           <div className="NavBar-menu_pages-icons">
             <div className="NavBar-menu_pages-icons-click">
-              <img src={game} alt="game" />
-              <div className="NavBar-menu_font">game</div>
+              <div className="NavBar-menu_pages-icons-click-img">
+                <img src={game} alt="game" />
+              </div>
+              <div className="NavBar-menu_font">games</div>
             </div>
           </div>
         </div>
