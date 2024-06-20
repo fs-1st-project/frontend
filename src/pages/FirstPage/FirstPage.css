@@ -6,25 +6,30 @@
   display: flex;
 }
 .Main-Section {
-  max-width: 1128px;
+  /* max-width: 75%; */
   padding-left: 0;
   padding-right: 0;
   position: relative;
   display: flex;
-  width: 100%;
+  width: 75%;
   align-items: center;
-  padding-top: 40px;
+  padding-top: 1.5%;
   flex-wrap: nowrap;
-  min-height: 560px;
+  min-height: 60vh;
 }
 
-.main-left {
+.Main-left {
   padding-right: 2.5%;
   align-self: flex-start;
-  flex-shrink: 0;
-  width: 55%;
+  /* flex-shrink: 0; */
+  width: 50%;
   position: relative;
 }
+
+.Main-left_body {
+  width: 75%;
+}
+
 .Main-left_head {
   width: 100%;
   vertical-align: inherit;
@@ -32,7 +37,7 @@
     "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell,
     "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
-  font-size: 3.5rem;
+  font-size: 410%;
   font-weight: 200;
   color: #b24020;
 }
@@ -40,15 +45,15 @@
   display: flex;
   align-items: center;
   text-align: center;
-  padding-top: 0.5rem;
-  padding-bottom: 1.5rem;
+  padding-top: 1%;
+  padding-bottom: 2%;
+}
+.Main-right {
+  width: 50%;
 }
 
 .Main-right img {
-  /* width: 700px;
-  height: 560px; */
   width: 100%;
-  height: auto;
   display: block;
   z-index: -1;
   position: relative;
@@ -56,10 +61,9 @@
 }
 
 .google-button {
-  width: 25rem;
-  height: 2.5rem;
-  margin-top: 1.25rem;
-  margin-bottom: 1.25rem;
+  width: 110%;
+  margin-top: 2%;
+  margin-bottom: 5%;
 }
 /* 이버튼은 뭐지? */
 .goole-button-1 {
@@ -71,14 +75,14 @@
 /*  */
 
 .Main-bottom_form-input {
-  margin-top: 1.25rem;
+  margin-top: 3%;
 }
 
 .input-large {
-  margin: 10px 0 10px 0;
+  margin: 2% 0 2% 0;
   border: 1px solid black;
   border-radius: 5px;
-  width: 410px;
+  width: 97%;
   height: 45px;
 }
 
@@ -87,7 +91,7 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  width: 25rem;
+  width: 90%;
   height: 3rem;
   border-radius: 20px;
   border: 1px solid black;
@@ -96,32 +100,30 @@
 }
 
 .forgot-pw {
-  margin: 10px 0 20px 0;
+  margin: 2% 0 4% 0;
   color: #0000ee;
 }
 
 .container-first {
-  width: 400px;
   display: flex;
   align-items: center; /* 세로 중앙 정렬 */
-  margin-top: 30px;
-  padding: 0px;
+  margin-top: 5%;
 }
 
 .line {
-  flex: 1; /* 동적으로 너비 조절 */
+  flex: 1; /*동적으로 너비 조절*/
   height: 1px;
   background-color: #d2d2d2; /* 가로줄 색상 */
 }
 
 .or-text {
-  margin: 0 10px; /* or 텍스트 양쪽에 여백 추가 */
+  margin: 0 2%; /* or 텍스트 양쪽에 여백 추가 */
   color: #666; /* 텍스트 색상 */
 }
 
 .button-signin-first {
-  margin: 5px 0 20px 0;
-  width: 410px;
+  margin: 2% 0 4% 0;
+  width: 98%;
   height: 50px;
   background-color: #0966c2;
   color: white;
@@ -136,5 +138,5 @@
 }
 
 .Main-footer {
-  margin-left: 100px;
+  margin-left: 15%;
 }

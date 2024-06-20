@@ -139,7 +139,7 @@ const FirstPage = () => {
               Welcome to your professional community
             </div>
             <div className="Main-left_body">
-              <div className="goole-button">
+              <div className="google-button">
                 <button
                   className="button-google-first"
                   onClick={loginWithGoogle}
