@@ -109,16 +109,7 @@ const Post = () => {
                 />
               </div>
               <div className="post-owner-info">
-                <div className="info_name">
-                  <div className="post-owner-info_name">{post.fullName}</div>
-                  {loggedInUserId == post.userId && (
-                    <>
-                      <div>-</div>
-                      <div className="you">You</div>
-                    </>
-                  )}
-                </div>
-
+                <div className="post-owner-info_name">{post.fullName}</div>
                 <div className="post-owner-info_intro">{post.introduction}</div>
                 <div className="post-owner-info_time">
                   {formattedDistance(post)}
@@ -157,7 +148,6 @@ const Post = () => {
             </div>
           </div>
           <div className="post-contents">{post.content}</div>
-          <div className="post-comments-count">{/* */}</div>
           <div className="post-bottom-buttons">
             <button type="button" className="post-bottom-buttons_like">
               <img src={like} alt="like" />
