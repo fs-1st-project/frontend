@@ -18,10 +18,6 @@ const UserProfile = () => {
   //일반유저
   const normalUserData = useSelector((state) => state.signin.normalUserData);
 
-  const isProfileModalOpen = useSelector(
-    (state) => state.profileModal.isProfileModalOpen
-  );
-
   const isGoogleUser = googleUserData !== null;
   const isNormalUser = normalUserData !== null;
 
