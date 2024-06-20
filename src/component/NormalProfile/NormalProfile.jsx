@@ -39,6 +39,7 @@ const NormalProfile = () => {
             <img
               src={`data:image/jpeg;base64,${normalUserData.profilePicture}`}
               alt="User Avatar"
+              className="picture-image"
             />
           ) : (
             <img

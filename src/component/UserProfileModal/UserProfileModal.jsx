@@ -7,13 +7,17 @@ import {
   updateProfileInfoToServer,
   profileModalActions,
 } from "../../store/reducer/profileModal-slice";
+import {
+  fetchNormalUserData,
+  fetchGoogleUserData,
+} from "../../store/reducer/profile-slice";
 
 import "./UserProfileModal.css"; // 모달 창 스타일링을 위한 CSS
 
 const UserProfileModal = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const imgFileInputRef = useRef(null);
+  const backimgFileInputRef = useRef(null);
 
   // 구글 로그인 state
   const isGoogleClicked = useSelector(
@@ -28,12 +32,34 @@ const UserProfileModal = () => {
   // 모달 상태와 프로필 정보 가져오기
   const {
     isProfileModalOpen,
-    profileFullName,
+    profileImg,
+    profileBackgroundImg,
     profileIntroduce,
     profileEducation,
     profileLocation,
-    profileImg,
+    profileFullName,
   } = useSelector((state) => state.profileModal);
+
+  //const profileModalStates = useSelector((state) => state.profileModal);
+
+  //console.log(profileModalStates);
+
+  // const profileFullName = useSelector(
+  //   (state) => state.profileModal.profileFullName
+  // );
+
+  // 배경 이미지 파일 선택 시
+  const handleBackgroungImgFileChange = (e) => {
+    const imgFile = e.target.files[0];
+    if (imgFile) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const base64Url = reader.result;
+        dispatch(profileModalActions.setProfileBackgroundImg(base64Url));
+      };
+      reader.readAsDataURL(imgFile);
+    }
+  };
 
   // 프로필 이미지 파일 선택 시
   const handleImgFileChange = (e) => {
@@ -81,52 +107,47 @@ const UserProfileModal = () => {
   // 저장 버튼 클릭 시 프로필 정보 업데이트
   const clickSaveHandler = async (e) => {
     e.preventDefault();
-    try {
-      if (isGoogleClicked) {
-        await dispatch(
-          updateGoogleProfileInfoToServer({
-            fullName: profileFullName,
-            introduction: profileIntroduce,
-            profilePicture: profileImg,
-            education: profileEducation,
-            location: profileLocation,
-          })
-        );
-      } else {
-        await dispatch(
-          updateProfileInfoToServer({
-            fullName: profileFullName,
-            introduction: profileIntroduce,
-            profilePicture: profileImg,
-            education: profileEducation,
-            location: profileLocation,
-          })
-        );
-      }
-      dispatch(profileModalActions.setIsProfileModalOpen(false));
-      navigate("/home");
-      console.log("프로필 업데이트 성공");
-    } catch (error) {
-      console.error("프로필 업데이트 실패:", error);
-      alert("프로필 업데이트에 실패했습니다.");
+    const profileData = {
+      profilePicture: profileImg,
+      profileBackgroundPicture: profileBackgroundImg,
+      fullName: profileFullName,
+      introduction: profileIntroduce,
+      bio: "",
+      education: profileEducation,
+      location: profileLocation,
+      certification: "",
+    };
+
+    console.log("선택한 프로필데이터", profileData);
+
+    if (isGoogleClicked) {
+      dispatch(updateGoogleProfileInfoToServer(profileData)).then((success) => {
+        if (success === true) {
+          dispatch(profileModalActions.reset());
+          dispatch(fetchGoogleUserData());
+        } else {
+          alert("프로필 업데이트에 실패했습니다.");
+        }
+      });
+    } else {
+      dispatch(updateProfileInfoToServer(profileData)).then((success) => {
+        if (success === true) {
+          dispatch(profileModalActions.reset());
+          dispatch(fetchNormalUserData());
+        } else {
+          alert("프로필 업데이트에 실패했습니다.");
+        }
+      });
     }
   };
 
   // Save 버튼 활성화 여부 체크
   const SaveButton = () => {
-    if (profileFullName.trim().length > 0) {
-      return (
-        <button className="post-button-able" onClick={clickSaveHandler}>
-          Save
-        </button>
-      );
-    } else {
-      return (
-        <button className="post-button-disable" disabled>
-          Save
-        </button>
-      );
-    }
+    return (
+      <button className="post-button-able" onClick={clickSaveHandler}>
+        Save
+      </button>
+    );
   };
 
   // 모달 열려있지 않으면 null 반환
@@ -146,6 +167,21 @@ const UserProfileModal = () => {
             onClick={clickExitHandler}
           />
         </div>
+
+        {/* 배경 사진 변경 버튼 */}
+        <button
+          onClick={() => backimgFileInputRef.current.click()}
+          className="btn-img"
+        >
+          Change BackgroundImg
+        </button>
+        <input
+          type="file"
+          accept="image/*"
+          ref={backimgFileInputRef}
+          style={{ display: "none" }}
+          onChange={handleBackgroungImgFileChange}
+        />
 
         {/* 프로필 사진 변경 버튼 */}
         <button
