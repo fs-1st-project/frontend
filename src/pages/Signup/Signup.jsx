@@ -146,21 +146,31 @@ const Signup = () => {
             <div className="container-signup">
               <h2 className="main-subtitle">Join LinkedIn</h2>
               <p className="consent-understanding">
-                To create a LinkedIn account, you must understand how LinkedIn
-                processes your personal information by selecting learn more for
-                eact item listed.
+                To create a LinkedIn account, you must
               </p>
+              <p className="consent-understanding">
+                understand how LinkedIn processes your
+              </p>
+              <p className="consent-understanding">
+                personal information by selecting learn more
+              </p>
+              <p className="consent-understanding">for eact item listed.</p>
               <div>
-                <input
-                  type="checkbox"
-                  className="agree-all-terms"
-                  checked={isChecked}
-                  onChange={handleAllAgreeCheck}
-                  required
-                />
-                <label for="agree-all-terms" className="agree-all-terms--label">
-                  Agree to all terms
-                </label>
+                <div className="all-agree">
+                  <input
+                    type="checkbox"
+                    className="agree-all-terms"
+                    checked={isChecked}
+                    onChange={handleAllAgreeCheck}
+                    required
+                  />
+                  <label
+                    for="agree-all-terms"
+                    className="agree-all-terms--label"
+                  >
+                    Agree to all terms
+                  </label>
+                </div>
                 <div className="term1-term2--container">
                   <div className="agree-term1">
                     <input type="checkbox" checked={isChecked} />

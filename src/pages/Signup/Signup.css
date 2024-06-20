@@ -1,37 +1,40 @@
 .signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: rgb(243, 242, 240);
   width: 100vw;
   margin: 0;
 }
 .main-container {
-  padding: 20px 80px 30px 80px;
+  width: 70%;
 }
 
 .main-logo--container {
+  margin-top: 3%;
   cursor: pointer;
 }
 
-.main-logo {
-  width: 130px;
-  height: 32px;
-  padding-left: 50px;
+.main-logo--container img {
+  width: 15%;
+  height: auto;
 }
 
 .main-title {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px 350px 5px 345px;
   text-align: center;
   font-weight: 400;
-  font-size: 1.75rem;
-  padding-top: 40px;
+  font-size: 30px;
 }
 
 .container-wrap {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  height: auto;
 }
 
 .consent-signup-container {
@@ -39,20 +42,20 @@
   justify-self: center;
   align-items: center;
   background-color: white;
-  width: 30rem;
-  height: 45rem;
-  margin: 20px 400px 5px 390px;
-  padding: 5px 10px 5px 10px;
+  width: 60%;
+  height: auto;
+  margin: 0 39% 0 39%;
+  padding: 2% 2% 2% 2%;
   border-radius: 10px;
 }
 
 .container-signup {
-  padding: 15px;
+  padding-top: 0;
 }
 
 .main-subtitle {
-  font-weight: 600;
-  font-size: 1.75rem;
+  font-weight: 500;
+  font-size: 25px;
 }
 
 .hightlight {
@@ -61,10 +64,10 @@
 }
 
 .consent-understanding {
-  font-size: 0.9rem;
+  text-align: left !important;
+  font-size: 15px;
   letter-spacing: 0.5px;
-  margin-top: 10px;
-  margin-bottom: 20px;
+  margin: 2% 5% 2% 0;
   color: rgb(133, 133, 133);
   text-align: center;
 }
