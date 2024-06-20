@@ -18,9 +18,7 @@ const DeleteCommentModal = () => {
   const isDeleteCommentOpen = useSelector(
     (state) => state.deleteCommentModal.isDeleteCommentOpen
   );
-  const commentOpenPostId = useSelector(
-    (state) => state.comment.commentOpenPostId
-  );
+
   const deleteCommentId = useSelector(
     (state) => state.deleteCommentModal.deleteCommentId
   );
@@ -39,7 +37,7 @@ const DeleteCommentModal = () => {
   const deleteClickHandler = (e) => {
     e.preventDefault();
 
-    dispatch(deleteComment(commentOpenPostId, deleteCommentId)).then(
+    dispatch(deleteComment(deleteCommentPostId, deleteCommentId)).then(
       (success) => {
         if (success === true) {
           dispatch(deleteCommentModalActions.reset());

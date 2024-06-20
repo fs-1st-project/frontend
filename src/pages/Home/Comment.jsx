@@ -12,8 +12,11 @@ import "./Post.css";
 
 import { formatDistance } from "date-fns";
 import { ko } from "date-fns/locale";
+import { deleteCommentModalActions } from "../../store/reducer/deleteCommentModal-slice";
+import { current } from "@reduxjs/toolkit";
+import DeleteCommentModal from "../../component/DeleteCommentModal/DeleteCommentModal";
 
-const Comment = ({ postId, postUserId }) => {
+const Comment = ({ postId }) => {
   const [menuIndex, setMenuIndex] = useState(null);
 
   const googleUserData = useSelector(
@@ -32,7 +35,12 @@ const Comment = ({ postId, postUserId }) => {
 
   const currentUserId = localStorage.getItem("userId");
 
-  const clickedPostId = isCommentOpen[postId] ? postId : null;
+  useEffect(() => {
+    console.log(isCommentOpen[postId], "해당 포스트의 댓글창이 열렸는지 확인");
+    if (isCommentOpen[postId]) {
+      dispatch(deleteCommentModalActions.setDeleteCommentPostId(postId));
+    }
+  }, [isCommentOpen, postId, dispatch]);
 
   // 댓글 입력 핸들러
   const handleCommentChange = (e) => {
@@ -58,8 +66,8 @@ const Comment = ({ postId, postUserId }) => {
   const commentPostHandler = (postId, commentContent) => {
     dispatch(createComment(postId, commentContent)).then((success) => {
       if (success === true) {
-        dispatch(commentActions.setCommentContentReset());
         dispatch(getAllComment(postId));
+        dispatch(commentActions.setCommentContentReset(""));
       } else {
         alert("댓글 작성 실패");
       }
@@ -77,21 +85,15 @@ const Comment = ({ postId, postUserId }) => {
     }
   };
 
-  useEffect(() => {
-    console.log(postId, "댓글 컴포넌트에서 포스트 아이디");
-    console.log(isCommentOpen[postId] ? postId + "열렸다" : "");
-  });
-
-  // delete comment 눌렀을 때
-  const deleteCommentHandler = (postId, commentId) => {
+  // 팝업메뉴에서 delete 눌렀을 때
+  const deleteCommentHandler = (commentId) => {
     dispatch(deleteCommentModalActions.setDeleteCommentId(commentId));
-    dispatch(deleteCommentModalActions.setDeleteCommentPostId(postId));
     dispatch(deleteCommentModalActions.setIsDeleteCommentOpen());
   };
 
   return (
     <>
-      <deleteCommentModal />
+      <DeleteCommentModal />
       <div
         className={`post-bottom-buttons_comment_container ${
           isCommentOpen[postId] ? "open" : ""
@@ -112,6 +114,7 @@ const Comment = ({ postId, postUserId }) => {
                 type="text"
                 className="comments-top_text"
                 placeholder="Add a comment…"
+                value={commentContent}
                 onChange={handleCommentChange}
               />
               {showCommentPostButton(postId)}
@@ -141,7 +144,7 @@ const Comment = ({ postId, postUserId }) => {
                             }
                           )}
                         </div>
-                        {currentUserId != comment.userId && (
+                        {currentUserId == comment.userId && (
                           <button
                             className="comment-container-top-intro-btn"
                             onClick={() => toggleMenu(index)}
@@ -158,7 +161,11 @@ const Comment = ({ postId, postUserId }) => {
                             </div>
                             <div className="comment-popup-menu-item_delete">
                               <img src={deleteicon} alt="delete" />
-                              <div>Delete comment</div>
+                              <div
+                                onClick={() => deleteCommentHandler(comment.id)}
+                              >
+                                Delete comment
+                              </div>
                             </div>
                           </div>
                         )}
