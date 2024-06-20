@@ -26,10 +26,9 @@ const UserProfile = () => {
   const googleUserData = useSelector(
     (state) => state.googleSignin.googleUserData
   );
-  console.log("전역에 저장된 구글 유저 데이터 가져오기", googleUserData);
+
   //일반유저
   const normalUserData = useSelector((state) => state.signin.normalUserData);
-  //console.log("전역에 저장된 일반 유저 데이터 가져오기:", normalUserData);
 
   const isProfileModalOpen = useSelector(
     (state) => state.profileModal.isProfileModalOpen
