@@ -176,17 +176,23 @@ const Comment = ({ postId }) => {
             <div className="comments-top">
               <div className="comments-img-text-container">
                 <div className="comments-top-user-img-container">
-                  <img
-                    src={`
-                  data:image/jpeg;base64,${
-                    googleUserData
-                      ? googleUserData.profilePicture
-                      : normalUserData.profilePicture
-                  }
-                `}
-                    alt="profilePicture"
-                    className="comments-top-user-img"
-                  />
+                  {googleUserData?.profilePicture ||
+                  normalUserData?.profilePicture ? (
+                    <img
+                      src={`data:image/jpeg;base64,${
+                        googleUserData?.profilePicture ||
+                        normalUserData.profilePicture
+                      }`}
+                      alt="profilePicture"
+                      className="comments-top-user-img"
+                    />
+                  ) : (
+                    <img
+                      src={"/user.jpeg"}
+                      alt="profilePicture"
+                      className="comments-top-user-img"
+                    />
+                  )}
                 </div>
                 <input
                   type="text"

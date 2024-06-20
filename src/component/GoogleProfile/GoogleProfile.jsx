@@ -48,7 +48,7 @@ const GoogleProfile = () => {
             />
           ) : (
             <img
-              src="https://cdn-lostark.game.onstove.com/uploadfiles/user/2021/04/06/637533445557572173.png"
+              src="/user.jpeg"
               alt="Default user-picture"
               className="picture-image"
             />
