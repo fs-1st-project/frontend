@@ -87,7 +87,10 @@ const UserProfile = () => {
                   {/* 이름/한줄소개 등 */}
                   <div className="profile-layout-introduce">
                     <div className="profile-artdeco-button">
-                      <button onClick={openProfileModal}>
+                      <button
+                        className="edit-logo-container"
+                        onClick={openProfileModal}
+                      >
                         <img src={pencil} alt="Edit" />
                       </button>
                     </div>
@@ -128,14 +131,15 @@ const UserProfile = () => {
                 </div>
                 <div className="suggest-for-you">
                   <div className="suggest-box-1">
-                    <div className="suggest-box-1-text">suggest for you</div>
+                    <div className="suggest-box-1-text">Suggested for you</div>
                     <div className="suggest-box-1-private">private to you</div>
                   </div>
                   <div className="suggest-box-2">
                     <div className="suggest-box-2-text">Intermediate</div>
                     <div className="suggest-box-line"></div>
                     <div className="suggest-box-2-allstar">
-                      Complete 3 steps to achieve All-star
+                      Complete 3 steps to achieve{" "}
+                      <span className="all-star">All-star</span>
                     </div>
                   </div>
                   <div className="suggest-box-first-and-two">
@@ -166,7 +170,7 @@ const UserProfile = () => {
                     </div>
                   </div>
                 </div>
-                <div className="suggest-for-you Activity">
+                <div className="suggest-for-you-activity">
                   <div className="suggest-box-1 activity-box-align">
                     <div className="activity-box-align">
                       <div className="suggest-box-1 Activity-box-1">
@@ -180,7 +184,7 @@ const UserProfile = () => {
                       <div className="Activity-parent-container">
                         <div className="Activity-box-2">
                           <button className="Activity-button-default">
-                            create a post
+                            Create a post
                           </button>
                           <div className="Activity-pencil-default">
                             <button>
@@ -206,78 +210,105 @@ const UserProfile = () => {
                   </div>
                 </div>
               </div>
-              <div className="scaffold-layout-aside">
-                <div className="profile-info-section">
-                  <div className="aside-box">
-                    <div className="followers-title">Add to LinkedIn Home</div>
-                    <div className="new-user-add">
-                      <div className="followers-person new-user-1">
-                        {/* <div className="followers-person-img"> */}
-                        <img src={vijay} alt="vijay" />
-                        <div className="followers-person-info">
-                          <div className="followers-person-info-name">
-                            vijay verma
-                          </div>
-                          <div className="followers-perosn-info-intro">
-                            A Wizard@overlayz stdio ✦ maker of 3dicons.co
-                          </div>
-                          <div className="followers-person-info-button">
-                            {" "}
-                            + follower
+              <div className="aside-container">
+                <div className="aside-ad">
+                  <div className="ad-top">Ad</div>
+                  <div className="ad-statement1">
+                    Restart your Premium free trial today
+                  </div>
+                  <img
+                    className="ad-logo"
+                    src="/Linkedin-ad.png"
+                    alt="linkedin-ad"
+                  />
+                  <div className="ad-statement2">
+                    The smarter way to grow your career
+                  </div>
+                  <button className="ad-try-button">Try for free</button>
+                </div>
+                <div className="scaffold-layout-aside">
+                  <div className="profile-info-section">
+                    <div className="aside-box">
+                      <div className="followers-title">
+                        Add to LinkedIn Home
+                      </div>
+                      <div className="new-user-add">
+                        <div className="followers-person">
+                          <img
+                            src="/jeongmin.png"
+                            alt="jeonmin"
+                            className="jeongmin-img"
+                          />
+                          <div className="followers-person-info">
+                            <div className="followers-person-info-name">
+                              Jeongmin Choi
+                            </div>
+                            <div className="followers-perosn-info-intro">
+                              안녕하세유 최정민입니다
+                            </div>
+                            <div className="followers-person-info-button">
+                              {" "}
+                              + follower
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div className="new-user-add">
-                      <div className="followers-person">
-                        {/* <div className="followers-person-img"> */}
-                        <img src={vijay} alt="vijay" />
-                        <div className="followers-person-info">
-                          <div className="followers-person-info-name">
-                            vijay verma
-                          </div>
-                          <div className="followers-perosn-info-intro">
-                            A Wizard@overlayz stdio ✦ maker of 3dicons.co
-                          </div>
-                          <div className="followers-person-info-button">
-                            {" "}
-                            + follower
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="new-user-add">
-                      <div className="followers-person">
-                        {/* <div className="followers-person-img"> */}
-                        <img src={vijay} alt="vijay" />
-                        <div className="followers-person-info">
-                          <div className="followers-person-info-name">
-                            vijay verma
-                          </div>
-                          <div className="followers-perosn-info-intro">
-                            A Wizard@overlayz stdio ✦ maker of 3dicons.co
-                          </div>
-                          <div className="followers-person-info-button">
-                            {" "}
-                            + follower
+                      <div className="new-user-add">
+                        <div className="followers-person">
+                          <img
+                            src="/yeonhee.jpg"
+                            alt="yeonhee"
+                            className="yeonhee-img"
+                          />
+                          <div className="followers-person-info">
+                            <div className="followers-person-info-name">
+                              Yeonhee Kim
+                            </div>
+                            <div className="followers-perosn-info-intro">
+                              하이루 저는 김연희입니다
+                            </div>
+                            <div className="followers-person-info-button">
+                              {" "}
+                              + follower
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div className="new-user-add">
-                      <div className="followers-person">
-                        {/* <div className="followers-person-img"> */}
-                        <img src={vijay} alt="vijay" />
-                        <div className="followers-person-info">
-                          <div className="followers-person-info-name">
-                            vijay verma
+                      <div className="new-user-add">
+                        <div className="followers-person">
+                          <img
+                            src="/sangyoon.jpg"
+                            alt="sangyoon"
+                            className="sangyoon-img"
+                          />
+                          <div className="followers-person-info">
+                            <div className="followers-person-info-name">
+                              Sangyoon Kim
+                            </div>
+                            <div className="followers-perosn-info-intro">
+                              할라우 저는 김상윤입니다!
+                            </div>
+                            <div className="followers-person-info-button">
+                              {" "}
+                              + follower
+                            </div>
                           </div>
-                          <div className="followers-perosn-info-intro">
-                            A Wizard@overlayz stdio ✦ maker of 3dicons.co
-                          </div>
-                          <div className="followers-person-info-button">
-                            {" "}
-                            + follower
+                        </div>
+                      </div>
+                      <div className="new-user-add">
+                        <div className="followers-person new-user-1">
+                          <img src={vijay} alt="vijay" />
+                          <div className="followers-person-info">
+                            <div className="followers-person-info-name">
+                              vijay verma
+                            </div>
+                            <div className="followers-perosn-info-intro">
+                              A Wizard@overlayz ✦
+                            </div>
+                            <div className="followers-person-info-button">
+                              {" "}
+                              + follower
+                            </div>
                           </div>
                         </div>
                       </div>

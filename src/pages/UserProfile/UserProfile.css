@@ -74,7 +74,7 @@
 
 .profile-layout-introduce {
   width: 756px;
-  height: 180.49px;
+  height: 190px;
   background-color: white;
   position: relative;
   z-index: 1;
@@ -100,6 +100,15 @@
   height: 24px;
 }
 
+.edit-logo-container {
+  padding: 1%;
+}
+
+.edit-logo-container:hover {
+  background-color: rgb(242, 242, 242);
+  border-radius: 20px;
+}
+
 .profile-introduce-card {
   width: 756px;
   height: 119.5px;
@@ -117,6 +126,7 @@
   height: 31.99px;
   font-size: 24px;
   font-weight: bolder;
+  text-transform: capitalize;
 }
 
 .userprofile-edu-layout {
@@ -142,7 +152,7 @@
   width: 500px;
   height: 20px;
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 400;
   padding: 3px 0px;
 }
 
@@ -172,6 +182,7 @@
   display: flex;
   gap: 10px;
   padding: 10px 0px;
+  margin-bottom: 15%;
 }
 
 .first-button,
@@ -188,6 +199,7 @@
   font-weight: bold;
   padding: 6px 16px;
   cursor: pointer;
+  text-align: center;
 }
 
 .first-button {
@@ -224,8 +236,9 @@
 
 .suggest-box-1-text,
 .suggest-box-2-text {
-  font-weight: bold;
-  font-size: 20px;
+  font-weight: 500;
+  font-size: 1.2rem;
+  margin-bottom: 1%;
 }
 
 .suggest-box-line {
@@ -234,6 +247,16 @@
   padding: 5px 0px;
   border-radius: 10px;
   width: 731px;
+  margin-bottom: 1%;
+}
+
+.suggest-box-2-allstar {
+  margin-bottom: 1%;
+}
+
+.all-star {
+  color: rgb(11, 101, 194);
+  font-weight: 500;
 }
 
 .suggest-box-first-and-two {
@@ -248,19 +271,19 @@
   background-color: #f8fafd;
   padding: 12px 32px 12px 12px;
   border-radius: 10px;
-  width: 320px;
+  width: 50%;
   height: 191.18px;
 }
 
 .suggest-box-first-text-1,
 .suggest-box-two-text-1 {
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 1.25rem;
+  font-weight: 500;
 }
 
 .suggest-box-first-text-2,
 .suggest-box-two-text-2 {
-  font-size: 14px;
+  font-size: 1rem;
   margin-top: 10px;
 }
 
@@ -270,6 +293,13 @@
 
 .suggest-box-two-text-2 {
   margin-bottom: 60px;
+}
+
+.suggest-for-you-activity {
+  background-color: white;
+  border-radius: 10px;
+  height: 10%;
+  margin-top: 1.5%;
 }
 
 .activity-box-align {
@@ -286,8 +316,7 @@
 .Activity-box-2 {
   display: flex;
   align-items: center;
-  padding: 12px 12px 0px;
-  margin-left: 8px;
+  margin-left: 20px;
 }
 
 .Activity-button-default {
@@ -311,6 +340,12 @@
 .Activity-pencil-default {
   display: flex;
   justify-content: flex-end;
+  padding: 1%;
+}
+
+.Activity-pencil-default:hover {
+  background-color: rgb(242, 242, 242);
+  border-radius: 20px;
 }
 
 .Activity-pencil-default button {
@@ -325,7 +360,7 @@
 }
 
 .Activity-written-post {
-  margin-top: 20px;
+  margin-top: 6%;
   padding: 0px 24px 10px;
 }
 .Activity-written-post-user {
@@ -336,13 +371,71 @@
 
 .Activity-written-post-user-name,
 .Activity-written-post-user-createdAt {
-  /* 스타일을 추가할 수 있음 */
-  font-size: 12px;
+  font-size: 0.9rem;
+}
+
+.Activity-written-post-user-name {
+  text-transform: capitalize;
 }
 
 .Activity-written-post-content {
   font-size: 14px;
   margin-top: 5px;
+}
+
+.aside-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.aside-ad {
+  background-color: white;
+  width: 100%;
+  height: 11%;
+  border-radius: 10px;
+  border: 1px solid rgb(233, 231, 227);
+  margin-top: 7%;
+  margin-left: 4%;
+  padding: 4% 8% 4% 8%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ad-top {
+  margin-bottom: 3%;
+  margin-left: 90%;
+}
+
+.ad-statement1 {
+  color: rgb(102, 102, 102);
+  text-align: center;
+  font-size: 0.8rem;
+  margin-bottom: 5%;
+}
+
+.ad-statement2 {
+  color: rgb(86, 86, 86);
+  text-align: center;
+  margin-bottom: 4%;
+}
+
+.ad-logo {
+  width: 23%;
+  height: 32%;
+  margin-bottom: 5%;
+}
+
+.ad-try-button {
+  width: 40%;
+  height: 20%;
+  background-color: white;
+  border: 1px solid rgb(17, 102, 195);
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: rgb(17, 102, 195);
+  margin-bottom: 1%;
 }
 
 .scaffold-layout-aside {
@@ -363,6 +456,16 @@
   height: 550.78px;
 }
 
+.followers-title {
+  margin-top: 0;
+  margin-bottom: 10%;
+  font-weight: 500;
+}
+
+.followers-person-info-name {
+  font-weight: 500;
+}
+
 .followers-person {
   display: flex;
   justify-content: center;
@@ -375,4 +478,10 @@
 .new-user-add {
   width: 300px;
   height: 120px;
+}
+
+.jeongmin-img,
+.yeonhee-img,
+.sangyoon-img {
+  display: block;
 }
