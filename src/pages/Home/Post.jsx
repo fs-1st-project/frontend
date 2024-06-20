@@ -102,11 +102,19 @@ const Post = () => {
             <div className="post-owner">
               {/* post owner 정보 */}
               <div className="post-owner-picture">
-                <img
-                  src={`data:image/jpeg;base64,${post.profilePicture}`}
-                  alt="ProfilePicture"
-                  className="post-owner-picture-img"
-                />
+                {post.profilePicture ? (
+                  <img
+                    src={`data:image/jpeg;base64,${post.profilePicture}`}
+                    alt="ProfilePicture"
+                    className="post-owner-picture-img"
+                  />
+                ) : (
+                  <img
+                    src="/user.jpeg"
+                    alt="Default user-picture"
+                    className="post-owner-picture-img"
+                  />
+                )}
               </div>
               <div className="post-owner-info">
                 <div className="info-name-container">
