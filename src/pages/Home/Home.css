@@ -25,10 +25,12 @@
 
 .home-body_middle_write {
   width: 33rem;
-  height: 9rem;
+  /* height: 40%; */
   background-color: white;
   border: 2px solid #eeece8;
   border-radius: 15px;
+  padding-top: 2%;
+  padding-bottom: 2%;
 }
 
 .update-write {
@@ -103,7 +105,7 @@
   justify-content: space-around;
   align-items: center;
   margin-top: 5px;
-  width: 33rem;
+  width: 90%;
 }
 
 .home-body-middle_write-bottom img {
@@ -116,6 +118,7 @@
   justify-content: center;
   align-items: center;
   padding-top: 10px;
+  width: 33.3%;
 }
 
 .followers {
