@@ -28,6 +28,14 @@
   margin-left: 5px;
   border: 1px solid black;
   border-radius: 35px;
+  overflow: hidden;
+  position: relative;
+}
+
+.post-owner-picture .post-owner-picture-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .post-owner-info {
@@ -199,13 +207,23 @@
 
 .comments-top {
   height: auto;
+  display: flex;
+  align-items: center; /* 수직 정렬 */
 }
 
-.comments-top img {
+.comments-top-user-img-container {
   width: 4rem;
   height: 4rem;
   border: 1px solid black;
   border-radius: 35px;
+  overflow: hidden;
+  position: relative;
+}
+
+.comments-top-user-img-container .comments-top-user-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .comments-top_text {
@@ -246,11 +264,19 @@
   margin-top: 10px;
 }
 
-.comment-container img {
+.comment-container-profile {
   width: 4rem;
   height: 4rem;
   border: 1px solid black;
   border-radius: 35px;
+  overflow: hidden;
+  position: relative;
+}
+
+.comment-container-profile .comment-container-profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .comment-container-top {
