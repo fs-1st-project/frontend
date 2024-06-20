@@ -26,7 +26,7 @@ export const fetchGoogleUserData = () => {
         const response = await axios.get(url, requestOptions);
 
         const responseData = response.data;
-        console.log(responseData, "구글 유저 데이터 확인");
+        //console.log(responseData, "구글 유저 데이터 확인");
 
         dispatch(googleSigninActions.setGoogleUserData(responseData));
       }
@@ -54,7 +54,7 @@ export const fetchNormalUserData = () => {
       });
 
       const responseData = response.data;
-      console.log(responseData, "구글 유저 데이터 확인");
+      console.log("get요청: 일반 유저 데이터", responseData);
 
       dispatch(signinActions.setNormalUserData(responseData));
     } catch (error) {

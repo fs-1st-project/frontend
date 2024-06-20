@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import LoginNav from "../Home/LoginNav";
 import "./UserProfile.css";
 import education from "./education.svg";
@@ -8,15 +8,28 @@ import { useDispatch, useSelector } from "react-redux";
 import { profileModalActions } from "../../store/reducer/profileModal-slice";
 import UserProfileModal from "../../component/UserProfileModal/UserProfileModal";
 
+// // Blob을 Base64로 변환하는 함수
+// const blobToBase64 = (blob) => {
+//   return new Promise((resolve, reject) => {
+//     const reader = new FileReader();
+//     reader.onloadend = () => {
+//       resolve(reader.result.split(",")[1]); // data URL 헤더 제거
+//     };
+//     reader.onerror = reject;
+//     reader.readAsDataURL(blob);
+//   });
+// };
+
 const UserProfile = () => {
   const dispatch = useDispatch();
   //구글유저
   const googleUserData = useSelector(
     (state) => state.googleSignin.googleUserData
   );
+  console.log("전역에 저장된 구글 유저 데이터 가져오기", googleUserData);
   //일반유저
   const normalUserData = useSelector((state) => state.signin.normalUserData);
-  console.log(normalUserData, "일반유저데이타");
+  //console.log("전역에 저장된 일반 유저 데이터 가져오기:", normalUserData);
 
   const isProfileModalOpen = useSelector(
     (state) => state.profileModal.isProfileModalOpen
@@ -31,18 +44,37 @@ const UserProfile = () => {
     ? normalUserData
     : {};
 
+  // const [profileBackgroundPicture, setProfileBackgroundPicture] =
+  //   useState(null);
+  // const [profilePicture, setProfilePicture] = useState(null);
+
+  // useEffect(() => {
+  //   const convertAndStoreImage = async () => {
+  //     if (userData.profileBackgroundPicture instanceof Blob) {
+  //       const base64Background = await blobToBase64(
+  //         userData.profileBackgroundPicture
+  //       );
+  //       setProfileBackgroundPicture(base64Background);
+  //     } else {
+  //       setProfileBackgroundPicture(userData.profileBackgroundPicture);
+  //     }
+  //     if (userData.profilePicture instanceof Blob) {
+  //       const base64Profile = await blobToBase64(userData.profilePicture);
+  //       setProfilePicture(base64Profile);
+  //     } else {
+  //       setProfilePicture(userData.profilePicture);
+  //     }
+  //   };
+
+  //   if (isGoogleUser || isNormalUser) {
+  //     convertAndStoreImage();
+  //   }
+  // }, [userData, isGoogleUser, isNormalUser]);
+
   const openProfileModal = (e) => {
     e.preventDefault();
     dispatch(profileModalActions.setIsProfileModalOpen());
   };
-
-  // Base64 이미지 URL 생성 함수
-  const getImageUrl = (base64Image) => {
-    return base64Image ? `data:image/png;base64,${base64Image}` : "";
-  };
-
-  console.log(isProfileModalOpen, "모달 오픈 상태");
-  console.log("유저 프로필 홈페이지다아아아아앙아ㅏ");
 
   return (
     <div>
@@ -59,7 +91,7 @@ const UserProfile = () => {
                     {/* 배경사진 */}
                     {userData.profileBackgroundPicture ? (
                       <img
-                        src={userData.profileBackgroundPicture}
+                        src={`data:image/jpeg;base64,${userData.profileBackgroundPicture}`}
                         alt="User Background"
                         className="userprofile-background-image"
                       />
@@ -75,7 +107,7 @@ const UserProfile = () => {
                   <div className="profile-layout-user-picture">
                     {userData.profilePicture ? (
                       <img
-                        src={userData.profilePicture}
+                        src={`data:image/jpeg;base64,${userData.profilePicture}`}
                         alt="User Profile"
                         className="userprofile-picture-image"
                       />

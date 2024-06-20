@@ -51,9 +51,11 @@ export const updateProfileInfoToServer = (updateNormalUserProfileData) => {
         body: JSON.stringify(updateNormalUserProfileData),
       };
 
-      console.log("일반 유저 프로필 정보 데이터", updateNormalUserProfileData);
+      console.log(
+        "put 요청: 일반 유저 프로필 정보 데이터",
+        updateNormalUserProfileData
+      );
       const response = await fetch(url, requestOptions);
-      console.log("세번째콘솔로그", response);
 
       if (!response.ok) {
         throw new Error("프로필 정보 업데이트 서버 응답 실패");
