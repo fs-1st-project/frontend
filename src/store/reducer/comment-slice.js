@@ -65,7 +65,7 @@ const commentSlice = createSlice({
   name: "comment",
   initialState: {
     isCommentPopupOpen: false,
-    commentContent: "",
+    commentContent: {},
     isCommentOpen: {},
     commentData: {},
   },
@@ -74,7 +74,8 @@ const commentSlice = createSlice({
       state.isCommentPopupOpen = action.payload;
     },
     setCommentContent(state, action) {
-      state.commentContent = action.payload;
+      const { postId, commentContent } = action.payload;
+      state.commentContent[postId] = commentContent;
     },
     toggleIsCommentOpen(state, action) {
       const postId = action.payload;
@@ -86,7 +87,8 @@ const commentSlice = createSlice({
       state.commentData[postId] = commentData;
     },
     setCommentContentReset(state, action) {
-      state.commentContent = "";
+      const postId = action.payload;
+      state.commentContent[postId] = "";
     },
   },
 });

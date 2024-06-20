@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { formatDistance } from "date-fns";
-import { ko } from "date-fns/locale";
+import { ko } from "date-fns/locale/ko";
 import "./Post.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllPost, postActions } from "../../store/reducer/post-slice";
@@ -45,7 +45,7 @@ const Post = () => {
     setLoggedInUserId(userId);
   }, []);
 
-// 클릭한 게시글의 comment 열기
+  // 클릭한 게시글의 comment 열기
   const handleToggle = (postId) => {
     dispatch(getAllComment(postId));
     dispatch(commentActions.toggleIsCommentOpen(postId));
@@ -74,6 +74,24 @@ const Post = () => {
     dispatch(deletePostModalActions.setIsDeletePostOpen());
   };
 
+  // 작성 시간 제대로 뜨게 하기
+  const formattedDistance = (post) => {
+    const postTime = formatDistance(new Date(post.createdAt), new Date(), {
+      addSuffix: true,
+      locale: ko,
+    });
+
+    if (postTime === "1분 미만 전") {
+      return "방금 전";
+    }
+
+    if (postTime === "1분 미만 후") {
+      return "방금 전";
+    }
+
+    return postTime;
+  };
+
   return (
     <>
       <EditPostModal />
@@ -90,10 +108,7 @@ const Post = () => {
                 <div className="post-owner-info_name">{post.fullName}</div>
                 <div className="post-owner-info_intro">{post.introduction}</div>
                 <div className="post-owner-info_time">
-                  {formatDistance(new Date(post.createdAt), new Date(), {
-                    addSuffix: true,
-                    locale: ko,
-                  })}
+                  {formattedDistance(post)}
                 </div>
               </div>
             </div>

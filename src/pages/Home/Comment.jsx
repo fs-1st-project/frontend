@@ -11,9 +11,8 @@ import deleteicon from "../../component/svg/delete.svg";
 import "./Post.css";
 
 import { formatDistance } from "date-fns";
-import { ko } from "date-fns/locale";
+import { ko } from "date-fns/locale/ko";
 import { deleteCommentModalActions } from "../../store/reducer/deleteCommentModal-slice";
-import { current } from "@reduxjs/toolkit";
 import DeleteCommentModal from "../../component/DeleteCommentModal/DeleteCommentModal";
 
 const Comment = ({ postId }) => {
@@ -44,16 +43,16 @@ const Comment = ({ postId }) => {
   // 댓글 입력 핸들러
   const handleCommentChange = (e) => {
     const commentContent = e.target.value;
-    dispatch(commentActions.setCommentContent(commentContent));
+    dispatch(commentActions.setCommentContent({ postId, commentContent }));
   };
 
   //댓글 post 버튼 생기게 하기
   const showCommentPostButton = (postId) => {
-    if (commentContent.length >= 1) {
+    if (commentContent[postId]) {
       return (
         <button
           className="comments-post-button"
-          onClick={() => commentPostHandler(postId, commentContent)}
+          onClick={() => commentPostHandler(postId, commentContent[postId])}
         >
           Post
         </button>
@@ -66,7 +65,7 @@ const Comment = ({ postId }) => {
     dispatch(createComment(postId, commentContent)).then((success) => {
       if (success === true) {
         dispatch(getAllComment(postId));
-        dispatch(commentActions.setCommentContentReset(""));
+        dispatch(commentActions.setCommentContentReset(postId));
       } else {
         alert("댓글 작성 실패");
       }
@@ -88,6 +87,24 @@ const Comment = ({ postId }) => {
   const deleteCommentHandler = (commentId) => {
     dispatch(deleteCommentModalActions.setDeleteCommentId(commentId));
     dispatch(deleteCommentModalActions.setIsDeleteCommentOpen());
+  };
+
+  // 작성 시간 제대로 뜨게 하기
+  const formattedDistance = (comment) => {
+    const postTime = formatDistance(new Date(comment.createdAt), new Date(), {
+      addSuffix: true,
+      locale: ko,
+    });
+
+    if (postTime === "1분 미만 전") {
+      return "방금 전";
+    }
+
+    if (postTime === "1분 미만 후") {
+      return "방금 전";
+    }
+
+    return postTime;
   };
 
   return (
@@ -113,7 +130,7 @@ const Comment = ({ postId }) => {
                 type="text"
                 className="comments-top_text"
                 placeholder="Add a comment…"
-                value={commentContent}
+                value={commentContent[postId]}
                 onChange={handleCommentChange}
               />
               {showCommentPostButton(postId)}
@@ -134,14 +151,7 @@ const Comment = ({ postId }) => {
                       </div>
                       <div className="comment-container-top_intro-menu">
                         <div className="comment-container-top_intro-time">
-                          {formatDistance(
-                            new Date(comment.createdAt),
-                            new Date(),
-                            {
-                              addSuffix: true,
-                              locale: ko,
-                            }
-                          )}
+                          {formattedDistance(comment)}
                         </div>
                         {currentUserId == comment.userId && (
                           <button
