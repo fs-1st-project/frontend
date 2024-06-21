@@ -8,6 +8,21 @@
   z-index: 1000;
 }
 
+.top-profile-picture {
+  width: 3.7rem;
+  height: 3.7rem;
+  background-color: white;
+  border-radius: 10rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.top-profile-picture .top-profile-picture-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .edit-post-modal-container {
   position: fixed;
   width: 48%;

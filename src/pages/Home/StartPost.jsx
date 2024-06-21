@@ -23,30 +23,25 @@ const StartPost = () => {
   //일반유저
   const normalUserData = useSelector((state) => state.signin.normalUserData);
 
-  const isGoogleUser = googleUserData !== null;
-  const isNormalUser = normalUserData !== null;
-
-  const userData = isGoogleUser
-    ? googleUserData
-    : isNormalUser
-    ? normalUserData
-    : {};
-
   return (
     <>
       <div className="home-body_middle_write">
         <div className="home-body_middle_write-top">
           <div className="home-body_middle_write-top-profile">
-            {userData.profilePicture ? (
+            {googleUserData?.profilePicture ||
+            normalUserData?.profilePicture ? (
               <img
-                src={`data:image/jpeg;base64,${userData.profilePicture}`}
-                alt="User Profile"
+                src={`data:image/jpeg;base64,${
+                  googleUserData?.profilePicture ||
+                  normalUserData.profilePicture
+                }`}
+                alt="profilePicture"
                 className="home-body_middle_write-top-profile-image"
               />
             ) : (
               <img
-                src="/user.jpeg"
-                alt="Default user-picture"
+                src={"/user.jpeg"}
+                alt="profilePicture"
                 className="home-body_middle_write-top-profile-image"
               />
             )}

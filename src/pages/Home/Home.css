@@ -73,7 +73,7 @@
 .home-body_middle_write-top-profile {
   width: 3.7rem;
   height: 3.7rem;
-  background-color: gray;
+  /* background-color: gray; */
   border-radius: 10rem;
   overflow: hidden;
   position: relative;
