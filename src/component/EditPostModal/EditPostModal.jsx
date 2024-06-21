@@ -94,14 +94,18 @@ const EditPostModal = () => {
         <div className="modal-top">
           <div className="top-picture-name-anyone">
             <div className="top-profile-picture">
-              {googleUserData ? (
+              {googleUserData && googleUserData.profilePicture ? (
                 <img
                   src={`data:image/jpeg;base64,${googleUserData.profilePicture}`}
+                  alt="Google User Profile"
                 />
-              ) : (
+              ) : normalUserData && normalUserData.profilePicture ? (
                 <img
                   src={`data:image/jpeg;base64,${normalUserData.profilePicture}`}
+                  alt="Normal User Profile"
                 />
+              ) : (
+                <img src="/user.jpeg" alt="Default user-picture" />
               )}
             </div>
             <div className="name-anyone">
