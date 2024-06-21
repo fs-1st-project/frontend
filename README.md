@@ -1,70 +1,34 @@
-# Getting Started with Create React App
+LinkedIn 클론 코딩입니다!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React를 사용하며, Redux-toolkit으로 전역 상태 관리 합니다
+각각 추가, 조회, 수정, 삭제 HTTP 요청을 서버로 axios 또는 fetch로 보냅니다 
 
-## Available Scripts
+첫번째 화면
+![firstpage](https://github.com/fs-1st-project/frontend/assets/103073389/0baa2d4c-c6eb-49a1-8810-ac139f396ce8)
 
-In the project directory, you can run:
+회원 가입을 할 수 있는 페이지
+![signup](https://github.com/fs-1st-project/frontend/assets/103073389/ac6c40ae-a716-4dd9-8878-f814d5e288bf)
 
-### `npm start`
+회원 가입한 아이디와 패스워드로 로그인
+![signin](https://github.com/fs-1st-project/frontend/assets/103073389/b6fbdbc5-e8d8-451f-bfdb-5628d529d51b)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+로그인을 하고 나면 보이는 feed 
+![feed](https://github.com/fs-1st-project/frontend/assets/103073389/9c4313cc-19fc-4cc2-8da9-578b4655bb35)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+유저가 게시글을 작성할 수 있는 모달
+![post](https://github.com/fs-1st-project/frontend/assets/103073389/53d73ef8-91bd-4040-b7f1-c5bd1526ee9a)
 
-### `npm test`
+게시글 작성한 유저는 수정이나 삭제 가능
+![postPopup](https://github.com/fs-1st-project/frontend/assets/103073389/d166403c-ebaf-4709-96e0-5f0f9bbbec8d)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+유저는 다른 사람들의 댓글 조회, 내 댓글 생성, 수정, 삭제까지 가능
+![comment](https://github.com/fs-1st-project/frontend/assets/103073389/2b8e0492-18b6-4f1d-ad6a-e063bfce9604)
 
-### `npm run build`
+각 유저의 프로필
+![userProfile](https://github.com/fs-1st-project/frontend/assets/103073389/a330f400-fea3-46ed-9533-6a0d828b89f8)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+유저 본인의 프로필 추가/수정
+![updateProfile](https://github.com/fs-1st-project/frontend/assets/103073389/71a62b9e-0611-438d-8fdf-797f92d5d18e)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+구글 로그인으로 로그인 가능
+![google](https://github.com/fs-1st-project/frontend/assets/103073389/3435ee72-25d2-4aac-bd5a-093453ae434e)
