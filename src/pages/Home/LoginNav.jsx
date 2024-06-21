@@ -22,15 +22,6 @@ const LoginNav = () => {
   //일반유저
   const normalUserData = useSelector((state) => state.signin.normalUserData);
 
-  const isGoogleUser = googleUserData !== null;
-  const isNormalUser = normalUserData !== null;
-
-  const userData = isGoogleUser
-    ? googleUserData
-    : isNormalUser
-    ? normalUserData
-    : {};
-
   return (
     <div className="LoginNav">
       <div className="LoginNav-menu_left">
@@ -75,24 +66,32 @@ const LoginNav = () => {
           </div>
           <div className="LoginNav-menu_pages-icons">
             <div className="LoginNav-menu_pages-icons-click">
-              <div className="LoginNav-menu_pages-icons-img">
-                {userData.profilePicture ? (
+              <div
+                className="LoginNav-menu_pages-icons-img"
+                onClick={() =>
+                  navigate(
+                    `/profile/${encodeURIComponent(
+                      googleUserData?.fullName || normalUserData?.fullName
+                        ? googleUserData.fullName || normalUserData.fullName
+                        : null
+                    )}`
+                  )
+                }
+              >
+                {googleUserData?.profilePicture ||
+                normalUserData?.profilePicture ? (
                   <img
-                    src={`data:image/jpeg;base64,${userData.profilePicture}`}
-                    alt="User Profile"
+                    src={`data:image/jpeg;base64,${
+                      googleUserData?.profilePicture ||
+                      normalUserData.profilePicture
+                    }`}
+                    alt="profilePicture"
                     className="LoginNav-menu_pages-icons-picture"
-                    onClick={() =>
-                      navigate(
-                        `/profile/${encodeURIComponent(
-                          userData.fullName ? userData.fullName : "null"
-                        )}`
-                      )
-                    }
                   />
                 ) : (
                   <img
-                    src="/user.jpeg"
-                    alt="Default user-picture"
+                    src={"/user.jpeg"}
+                    alt="profilePicture"
                     className="LoginNav-menu_pages-icons-picture"
                   />
                 )}
