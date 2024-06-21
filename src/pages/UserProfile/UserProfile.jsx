@@ -18,9 +18,9 @@ const UserProfile = () => {
   //일반유저
   const normalUserData = useSelector((state) => state.signin.normalUserData);
 
-  const isGoogleUser = googleUserData !== null;
-  const isNormalUser = normalUserData !== null;
-
+  const isGoogleUser = googleUserData.length !== 0;
+  const isNormalUser = normalUserData.length !== 0;
+  console.log("구글유저", isGoogleUser);
   const userData = isGoogleUser
     ? googleUserData
     : isNormalUser
