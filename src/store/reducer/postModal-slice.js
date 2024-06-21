@@ -21,6 +21,8 @@ export const createPostToServer = (postContent, imgContent, currentUserId) => {
         }),
       };
 
+      console.log(imgContent, "이미지 컨텐트임")
+
       const response = await fetch(url, requestOptions);
 
       if (!response.ok) {

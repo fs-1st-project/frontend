@@ -24,7 +24,7 @@ export const postSigninEmailPasswordToServer = (signinData) => {
       // 로그인 성공 시, 로컬 스토리지에 토큰과 유저 아이디 저장
       const responseData = await response.json();
       localStorage.setItem("token", responseData.token);
-      localStorage.setItem("userId", responseData.userId)
+      localStorage.setItem("userId", responseData.userId);
 
       return true;
     } catch (error) {
@@ -40,7 +40,7 @@ const signinSlice = createSlice({
     email: "",
     password: "",
     isNormalLoginClicked: false,
-    normalUserData: null,
+    normalUserData: [],
     isLoading: true,
   },
   reducers: {

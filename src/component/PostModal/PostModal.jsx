@@ -88,6 +88,22 @@ const PostModal = () => {
     }
   };
 
+  const displayName = () => {
+    if (normalUserData.length !== 0) {
+      if (!normalUserData.fullName) {
+        return normalUserData.email;
+      }
+      return normalUserData.fullName;
+    }
+
+    if (googleUserData.length !== 0) {
+      if (!googleUserData.fullName) {
+        return googleUserData.email;
+      }
+      return googleUserData.fullName;
+    }
+  };
+
   if (!isStartPostOpen) return null;
 
   return createPortal(
@@ -117,11 +133,7 @@ const PostModal = () => {
               )}
             </div>
             <div className="name-anyone">
-              <div className="top-name">
-                {googleUserData
-                  ? googleUserData.fullName
-                  : normalUserData.fullName}
-              </div>
+              <div className="top-name">{displayName()}</div>
               <div className="top-anyone">Post to Anyone</div>
             </div>
           </div>

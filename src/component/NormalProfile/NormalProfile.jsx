@@ -55,10 +55,12 @@ const NormalProfile = () => {
               to={`/profile/${encodeURIComponent(normalUserData.fullName)}`}
               className="link-no-underline"
             >
-              {normalUserData.fullName}
+              {normalUserData.fullName
+                ? normalUserData.fullName
+                : normalUserData.email}
             </Link>
           </div>
-          <div className="user-introduction">{normalUserData.introduction}</div>
+          <div className="user-introduction">{normalUserData.introduction || "한 줄 소개를 적어주세요"}</div>
         </div>
       </div>
 
