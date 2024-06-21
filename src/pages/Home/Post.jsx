@@ -35,6 +35,11 @@ const Post = () => {
   const postData = useSelector((state) => state.post.postData);
   const isMenuOpen = useSelector((state) => state.post.isMenuOpen);
 
+  const normalUserData = useSelector((state) => state.signin.normalUserData);
+  const googleUserData = useSelector(
+    (state) => state.googleSignin.googleUserData
+  );
+
   // 홈 가운데 전체 게시글 띄우기 요청
   useEffect(() => {
     dispatch(getAllPost());
@@ -92,6 +97,14 @@ const Post = () => {
     return postTime;
   };
 
+  const dispalyEmail = () => {
+    if (normalUserData.length !== 0) {
+      return normalUserData.email;
+    } else if (googleUserData.length !== 0) {
+      return googleUserData.email;
+    }
+  };
+
   return (
     <>
       <EditPostModal />
@@ -118,7 +131,9 @@ const Post = () => {
               </div>
               <div className="post-owner-info">
                 <div className="info-name-container">
-                  <div className="post-owner-info_name">{post.fullName}</div>
+                  <div className="post-owner-info_name">
+                    {post.fullName ? post.fullName : dispalyEmail()}
+                  </div>
                   {loggedInUserId == post.userId && (
                     <div className="you">- You</div>
                   )}

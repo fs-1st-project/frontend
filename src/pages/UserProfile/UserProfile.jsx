@@ -97,7 +97,7 @@ const UserProfile = () => {
                     <div className="profile-introduce-card">
                       <div className="userprofile-name-edu-box">
                         <div className="userprofile-name">
-                          {userData.fullName || "Default Name"} {/* 이름 */}
+                          {userData.fullName || userData.email} {/* 이름 */}
                         </div>
                         <div className="userprofile-edu-layout">
                           <div className="userprofile-edu-icon">
@@ -109,12 +109,12 @@ const UserProfile = () => {
                         </div>
                       </div>
                       <div className="userprofile-one-line-introduce">
-                        {userData.introduction || "Default Introduction"}{" "}
+                        {userData.introduction || "한 줄 소개를 적어주세요"}{" "}
                         {/* 소개 */}
                       </div>
                       <div className="userprofile-location-contact-box">
                         <div className="userprofile-location">
-                          {userData.location || "Default Locatiom"}
+                          {userData.location || "Default Location"}
                         </div>
                         <div className="userprofile-contact">Contact info</div>
                       </div>

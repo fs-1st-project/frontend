@@ -163,6 +163,14 @@ const Comment = ({ postId }) => {
     return postTime;
   };
 
+  const dispalyEmail = () => {
+    if (normalUserData.length !== 0) {
+      return normalUserData.email;
+    } else if (googleUserData.length !== 0) {
+      return googleUserData.email;
+    }
+  };
+
   return (
     <>
       <DeleteCommentModal />
@@ -228,7 +236,9 @@ const Comment = ({ postId }) => {
                       <div className="comment-container-top_intro-info">
                         <div className="comment-container-top_intro-name">
                           <div className="comment-owner-info_name">
-                            {comment.fullName}
+                            {comment.fullName
+                              ? comment.fullName
+                              : dispalyEmail()}
                           </div>
                           {currentUserId == comment.userId && (
                             <>
