@@ -81,10 +81,17 @@ const LoginNav = () => {
                     src={`data:image/jpeg;base64,${userData.profilePicture}`}
                     alt="User Profile"
                     className="LoginNav-menu_pages-icons-picture"
+                    onClick={() =>
+                      navigate(
+                        `/profile/${encodeURIComponent(
+                          userData.fullName ? userData.fullName : "null"
+                        )}`
+                      )
+                    }
                   />
                 ) : (
                   <img
-                    src="https://cdn-lostark.game.onstove.com/uploadfiles/user/2021/04/06/637533445557572173.png"
+                    src="/user.jpeg"
                     alt="Default user-picture"
                     className="LoginNav-menu_pages-icons-picture"
                   />

@@ -87,6 +87,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  cursor: pointer;
 }
 
 .LoginNav-menu_click-icons {
@@ -112,7 +113,7 @@
 }
 
 .LoginNav-menu_click-ADfont {
-  margin-left: 60%;
+  margin-left: 100%;
   color: #b2401f;
 }
 
