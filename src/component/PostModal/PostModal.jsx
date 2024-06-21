@@ -112,22 +112,20 @@ const PostModal = () => {
         <div className="modal-top">
           <div className="top-picture-name-anyone">
             <div className="top-profile-picture">
-              {googleUserData ? (
+              {googleUserData?.profilePicture ||
+              normalUserData?.profilePicture ? (
                 <img
-                  src={`data:image/jpeg;base64,${googleUserData.profilePicture}`}
-                  alt="profilePicture"
-                  className="top-profile-picture-img"
-                />
-              ) : normalUserData ? (
-                <img
-                  src={`data:image/jpeg;base64,${normalUserData.profilePicture}`}
+                  src={`data:image/jpeg;base64,${
+                    googleUserData?.profilePicture ||
+                    normalUserData.profilePicture
+                  }`}
                   alt="profilePicture"
                   className="top-profile-picture-img"
                 />
               ) : (
                 <img
-                  src="/user.jpeg"
-                  alt="Default user-picture"
+                  src={"/user.jpeg"}
+                  alt="profilePicture"
                   className="top-profile-picture-img"
                 />
               )}
